@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e74365ef3aede98323d41d3643b394f492ef402621ce101e41f31cde3565f291
-size 257
+#!/bin/bash
+cat './dynabook/Cuis5.0-4526.image' | gzip | tee './dynabook/Cuis5.0-4526.image.gz' > /dev/null
+git add ./dynabook/*.sources
+git add './dynabook/Cuis5.0-4526.image.gz' './dynabook/Cuis5.0-4526.changes' ./dynabook/*.sources addImageAndChanges $@
