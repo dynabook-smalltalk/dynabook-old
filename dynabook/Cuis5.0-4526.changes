@@ -8903,3 +8903,2626 @@ kAhYR7wCmMrLL4kFADubHHBJAAAA! !
                             z#H4sIAAAAAAAAAMvMyyzJTMzJrErlSstJTFeIVygpKk3V4youLUgtUkDIAgAJOBGoKAAAAA==! !
 
 ----SNAPSHOT----(5 June 2021 13:41:33) Cuis5.0-4526.image priorSource: 404873!
+
+StandardFileStream methodDictionary!
+
+StandardFileStream methodDict at: #fullName put: self!
+
+'From Cuis 5.0 [latest update: #4415] on 22 October 2020 at 9:27:24 pm'!
+
+'Description '!
+
+SystemOrganization addCategory: 'JSON'!
+
+OrderedDictionary subclass: #JsonObject
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+!classDefinition: #JsonObject category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+OrderedDictionary subclass: #JsonObject
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+JsonObject class
+	instanceVariableNames: ''!
+
+!classDefinition: 'JsonObject class' category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+JsonObject class
+	instanceVariableNames: ''!
+
+Error subclass: #JsonSyntaxError
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+!classDefinition: #JsonSyntaxError category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+Error subclass: #JsonSyntaxError
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+JsonSyntaxError class
+	instanceVariableNames: ''!
+
+!classDefinition: 'JsonSyntaxError class' category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+JsonSyntaxError class
+	instanceVariableNames: ''!
+
+Object subclass: #Json
+	instanceVariableNames: 'stream ctorMap'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+!classDefinition: #Json category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+Object subclass: #Json
+	instanceVariableNames: 'stream ctorMap'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'JSON'!
+
+Json class
+	instanceVariableNames: 'escapeArray'!
+
+!classDefinition: 'Json class' category: 'JSON' stamp: 'GDK 6/6/2021 07:42:26'!
+Json class
+	instanceVariableNames: 'escapeArray'!
+!JsonSyntaxError commentStamp: '<historical>' prior: 0!
+         Class Json signals instances of me when an input stream contains invalid JSON input.!
+!Json commentStamp: '<historical>' prior: 0!
+                             This class reads and writes JSON format data - strings, numbers, boolean, nil, arrays and dictionaries. See http://www.json.org . It has been extended with syntax for invoking a prearranged list of constructors on read objects.!
+!JsonObject methodsFor: 'accessing' stamp: 'rh 2/27/2010 00:03' overrides: 16963839!
+      z#H4sIAAAAAAAAAMtLzE3lUsovSy0qykxJVVBPTiwtTlXwT8pKTS5RSElNy8xLLVYoycgsVuLi
+jCtOzUlTSCyxUlAHaVMHAAaEuVQ8AAAA! !
+!JsonObject methodsFor: 'accessing' stamp: 'rh 2/19/2010 21:34' overrides: 16865746!
+                            z#H4sIAAAAAAAAAEsssVJI9E6t5OLiVMpNzE5VyCxRKM8vylbIzS9KVcjJBIpkJZYlFicXZRaU
+KOQnZaUmlxQrcXHGKRSn5qQpwLQrZKY5JhWn5gG50XmZObEAPvZmGVcAAAA=! !
+!JsonObject methodsFor: 'accessing' stamp: 'rh 2/27/2010 00:04' overrides: 16962752!
+z#H4sIAAAAAAAAACtLzClN5VLKL0stKspMSVVQT04sLU5V8E/KSk0uUUhJTcvMSy1WKMnILFbi
+4owrTs1JU0gssVJQB+tTBwD8fJPePgAAAA==! !
+!JsonObject methodsFor: 'as yet unclassified' stamp: 'rh 2/19/2010 21:33' overrides: 16962569!
+              z#H4sIAAAAAAAAAH1QPWvDMBCd5V9xQ4ZmCWQVZGiHLm2TIclkFDjbp2AiS+ZOIhjy4yvLJaVL
+b3nc13vvrgsk+xDPviOWiL7TgF8kgleq1ANuNMGjUjPo3bMDQo7aGHiztHo5e+SM9sSJNNSX
+ecICRl0YevvaCPmc1b53xuS1C7wsmx803QN3UKTrUgxtm5jJtyQHq2Gl17CDrVlXSj0VfhzN
+gM69pfiJEgHlOA1NcFkgxx8PY4q/pwHyNQ3ZkYDt892mUL+jk5lb0kgM/3zGFPpKfQPDhchX
+PQEAAA==! !
+!JsonObject class methodsFor: 'as yet unclassified' stamp: 'Igor.Stasenko 1/9/2010 16:51'!
+                   z#H4sIAAAAAAAAAEsrys91LC7OT85MLMnMzyu2UkjOz8lJTQZx/NOQZbi4OGsUilKLS3NKFGq4
+OKEsK1uF4tScNIW81HI9Lk4uTly6FVLyrRSirVITkzNAumHaE0usFMBi2amVCgWlMF5ZYk5p
+qkIs0MQ4qJUACttqGagAAAA=! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:19'!
+             z#H4sIAAAAAAAAAD2NvQqDMBSFZ32Ks2URHyDgaIcuHRzFQhpvJUVvys0VUvDhmw52Oz/wfT5y
+2jeycINK4AVCuguXVCa+PV7kta7Oc44Wo/U4kFTIbWDKiq6DR3he3JoKaLymyMOH1eVeJApS
+WNitFqbP70KjGcaY5hQ2v2YmTG1d3f/KL2O2wxSXAAAA! !
+!Json methodsFor: 'private' stamp: 'jmv 8/28/2013 12:15'!
+  z#H4sIAAAAAAAAAI2Ruw7CMAxF5/QrPDDzAZU6IfZKlAkBco1TIopb5SEY+vGUCCEeGbJe+xxb
+ukY829Gy33hrpFs7wpGboQScA8ZroSYgmApFcAQXIxC+++UzqSpYtGB0YwOXsCuUelFxpQ6+
+hNUZLdJ8A1qkixuReEbVARz3GvZvjeRqep3kdS4vfKuxSz9hcyVkk7zP5T22SUH4EsRhEI6d
+bMXQcPqs5sfwd44eA7viEtwBAAA=! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:39'!
+z#H4sIAAAAAAAAAIXPwWrDMBAE0LP0FQMpOIHiDxD0EEpyKJQeGughuLBYm1RElsyuSmvIx1f2
+uSH3mTe7wuS3IjRZcwXhag3BPeFNPAv75xwj9yXkhMQ/rbVGOZ6glzB+fIXCOlLPrTVrLRUa
+MDJf9lkcHroNwukg3+xwxCdW6w261lTgaE2dIO8dFqv2/DZNFblh38crp8sP3f/xR8z5PUWd
+Cy+a0/uUCv3uRLJAwzlRdGheg2pIZ/R5GKiZra5eNzKV1v4BgPvNLScBAAA=! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:20'!
+z#H4sIAAAAAAAAAIVQy2rDQAw8r79Ch4ITKP4Agw+hxIfSRyAtPQQXto4clthas5LdBPLx1dp9
+0UtPi2ZGszMKaPc3nljCUIsPibkAQw0jxAkuiWHIC3gJTnArKu7AUw5pmiVmlxhTR5Znokc8
+ZhPmmgfX5rC7ZU/bM4k9rUNQO3YHskqkm4CdlSEgrB9L0O29owPUPzmAbIdpFe0WixqKAq6y
+JfigpmrPdyiCoVoqbVzzFAZUgoHwJJtBcqizr1ARqmZZaVuOujiZcQqObTP9vqJzNsFTW45J
+BEl4BqdAisf33vaxnpe54V/K6uesgtUb674KyLVV9cvm39M805H8O833T6+BP7dfZ+T7RmXw
+XTTJYdR+ldbo0UqWfABg2Umt0QEAAA==! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:43'!
+          z#H4sIAAAAAAAAAJVSXUvDMBR9Tn/FoQhTkP6AgA+i7kERHyb4MCZk7e2MbdKSpNXC/O/etLgx
+tgf3lOSeez5uEkequNd50I1VbkjEFgYVelii4q4xRmGbCAN5g0ff2Jf1J+WBwa8sEfsWRktV
+e+LiMhHCU13CV7p9+9CBfKvyiIhLH9jNoCWq5o2TuPi5gi5fXUcSS7zDrGLbTpb3Yg8fs68j
+ex59GY/pFoMN6vvBucbB641VtcTsWXuv7QZ5lJyNDuJkxNXk9yd4MF3gEExNhajicWRzmuLW
+DhnSk7Ol/0r3RAO0RbF7AZjOB6wJLMixp8CHposRyc65aHnmVdWNnZz7o3G5aKCC5F/Sdrz0
+XFkx2pIKWfIL6MSMM08CAAA=! !
+!Json methodsFor: 'private' stamp: 'jmv 11/17/2016 11:35:09'!
+                       z#H4sIAAAAAAAAADVQwWrDMAw9218heskG7T4gsMM2VshgWVkPO4QU1NgdIo5cbHdroB8/Oclu
+0nvSe08KFk19GY42aHUD7Dro4KZVLspH+AqU7D7J0ACeSyiKB60ardTExpk4W9sLrO46oFiT
+A/YJkE0JzVv0DDzJx3ccXzwnJNHp2nug0xZdtDIlu6o5zOYyYTlFwDinaiff1xB8AOMXyf0o
+OtcZjPTN6CRaxT/oyCx2RdvmTFmT7TXtLklcM7KEzqC0LQR7tiilVqsn5/wv1MhrqPhETGnM
+d8Dmv5OFZ9nuI+SzPG92PlIiz3h0y5viGhz1FvbJVB+fFs3yvZgM8UpMtDrMl4kzmm3wQ7k8
+Usg/4kDMPY4BAAA=! !
+!Json methodsFor: 'private' stamp: 'jmv 8/28/2013 12:18'!
+   z#H4sIAAAAAAAAAEWOwQrCMBBEz8lXLCL01g8I9FjPggUPNUqoWwnUNOxuwUM/3k0reNyZ2XlD
+GJ4XoZhe1qzAMMBqDcMDrhQF1cHwhjk5qKramt6aQT3e5YQfqYvSNHC8WWPi2NGCDnpgnEaI
+SZAyoeyAloeQsZudYvyWPoWJS1yPX8sB/h33MmfWjiT6UJcQb8zzIk6Heg+EGYN8Ac3t/8HE
+AAAA! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:22'!
+                        z#H4sIAAAAAAAAAF2OMQ+CMBCFZ/gVN5iQOMhOwqLBRGPiIJvp0NiraShX0qsG/r0CAup49773
+3XFlmp2ra6QQRxw8yhoaxAryHFYpGF36B2ZwjaMpJWzDZhkX+L2LZp7RaujlpStInfXJEIqR
+2EvLA/InWPfxj+PrIMzCz7dbpzoxNybnkR1dOgqyLbx3HtjcSdoMkgM9pTUKbmMbeIASIUT8
+AuYppu4DAQAA! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:22'!
+                z#H4sIAAAAAAAAACvOzixwzs/NTc0rccpPqeTijObi5IwuLilKTcxVyEutKFGwtVVQ0YpVKM/I
+zEl1S8wpTtUDqoAqKEhNzQYr0OfiRFOCZISeghLIGoWSjMQShZzE4hKFYiCZoQRUlJqTpgCS
+C8/ILEktLkhMTtUDAMqtbyySAAAA! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:24'!
+         z#H4sIAAAAAAAAAFWOMQsCMQyF5/ZXZNTlfsBBJ9FJcBEcjg6lvtJytVfSgg73403BxSGQvO/l
+JW1N9b6dy/MWrqlAq508Uw60ayXNbOgUHTvfwQKmQf60HCatFpItqYMfsHWGe1EF1iMZM/I2
+nmkRi0w5WEvvmDIuLjeI/vMXfLqVsAa5Md56xNTRqvP4AjhY47alAAAA! !
+!Json methodsFor: 'private' stamp: 'Igor.Stasenko 4/7/2010 01:24'!
+             z#H4sIAAAAAAAAACvOziwIz8gsSS0uSExO5eKMLi4pSk3MVShITc1WyCwOTi1ILEosyS+KVSjP
+yMxJDSkqTbVSgCnKS60oidXj4ixOzUlTAJnknJ+bm5pXogcAjgQjeFYAAAA=! !
+!Json methodsFor: 'private' stamp: 'jmv 8/28/2013 12:17'!
+                           z#H4sIAAAAAAAAAJ2PMQuDMBCFZ/Mr3tguhS4dsgqFbgXrLGlyaAaTkJzUwR/fBBU7dzvevXf3
+vclR0ipQ66z2hl5eQjUcSY2iWpA4WtejbJ7eOsYiqk3rcGrW6WN5kMWaQ3A083/KGSq1IVDU
+KtFFVMfTDg/H1FNENpt79KPcyYqw4uKdYxLXW45uYMqYrVa935I/XfjoioFmCY4TfQHN8gV+
+EAEAAA==! !
+!Json methodsFor: 'accessing' stamp: 'tonyg 11/29/2005 11:40'!
+                        z#H4sIAAAAAAAAAEsuyS/yTSzg4oxTgDIBV5iznBIAAAA=! !
+!Json methodsFor: 'accessing' stamp: 'dkb 12/25/2009 02:52'!
+                 z#H4sIAAAAAAAAAEsuyS/yTSywUsjl4oSyFaxsFXIBKonc2RgAAAA=! !
+!Json methodsFor: 'accessing' stamp: 'tonyg 8/16/2005 20:20'!
+        z#H4sIAAAAAAAAACsuKUpNzOXiVHLMKy5PLVIoyUhVKEvMKU1VyE9TgEgqcXFxxkHZADgA6m4v
+AAAA! !
+!Json methodsFor: 'accessing' stamp: 'jmv 11/17/2016 11:09:38'!
+             z#H4sIAAAAAAAAAEWOsQrCQBBE69xXDKm0MGARiAErbaws4g+scfUOkju43Qj+vatG7ZZ5Mzsj
+mpnGFtTp63BF2bFCPeNOw8RIV8iblIZmE8ZJFGeDEQTTQrxVrjj5IBiZolieFEEhPk3DBX2K
+SiGaf3hg5ylTr5wFi1BxhUN3RNPUm9W6XpbOFZ8+tNvvKPtt5fuEmBSZZR743/XLvKEJTwpC
+SQ3WAAAA! !
+!Json methodsFor: 'parsing' stamp: 'jmv 8/8/2018 13:21:08'!
+                           z#H4sIAAAAAAAAAIWSwYrbQAyGz85T/ISCt4fkAQwpXdou7ELdQ7b0sLQwdeRExNaYGbld0334
+yk7aSVhIYC6W9P36JSuQ29zKMMvmjzuOsKc7QutYQKJhQOdZFLUPU+Jh/aVE50KksMSaCK6J
+HqPIXfBtAS9TWdW4GBF5Q8v5LHtBhZdZFqmpEffcfduxUuxcRctZVqFYIapJtOiI9lNotcKb
+P+D6MfRU4OmYFnrWJX5gEhp7fuRK2YsLw/f/2NN17DYEd0LMrxNrDSzbhGhCjlWVl9i3FsjV
+4rlR2gcxqMAYSGh9Aa1tm+fsFEmwXIClb5ozVrhJ5PvrQ34wKfNaqQ+JWyQO2bykrVP+RZC+
+/UkBdhX54l5qFtYhxwLvcNd4pyZ+KPyXg51BdtrYPk//iAwHhDYYe988RLukQ5P42Q1mTe0k
+C1RvX21g5MupMrkuL+ypdOXZmo6GnST8/gKepn2lwcfUKDQOsB7M9fOnEGxNkbfiGuO/yl78
+b8E0IUvXa/4XoZxYYIQDAAA=! !
+!Json methodsFor: 'parsing' stamp: 'jmv 1/18/2017 16:52:22'!
+      z#H4sIAAAAAAAAAD2PMU8DMQyF57tf8dSlVKInMVQ6uhUEEiwdWibUSu7FIUGJgxKfqvv3hALd
+/J797M+ZyTznFNegnVYR22b2VyGORXFiJAGhel4+urbZO18QmaRAHSm8org0BoMhiZKXOh8m
+PDrKNCjnghvfcYeX3RZ9v7pf3q0WP2sSHIkJXHc/TMqbnGnC2avDqHbZ3+IrMBWGSZj/Hoet
+oG9q+wp7jcyRMoqPPlCetc0/O+mTGHi7zyOv8Y4jXkuS7emTB4XwGYfKUDhYlEvg+n+1j7g0
+qjIbmb4B7R5a1iIBAAA=! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'ul 11/9/2010 04:07'!
+                       z#H4sIAAAAAAAAAEstTk4sSHXLL3LOSCxKTC5JLbJSSObi5OKsUUgsTs7MDEvMKU1VqOHi1EDi
+WtkqJCNJayrYKBgaWXBxcmamhRSVplopRCvEQQx2LCpKrFRILLFCNk1bwVAhVo+LMy4vMwcA
+gexNrYAAAAA=! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'ul 11/4/2008 06:23' overrides: 16964803!
+                             z#H4sIAAAAAAAAAI2QTUvDQBCGz8mveEkLSbCGpgqWBQXxIp4EwYvxMNlMmqUhDZuN9fO/u90V
+SnPyMuz7POwMM6pTRlGrPjkMoodh1+FIsigMwoAHST3fak0fENfwj473AvlqnYVBsoTZCVzk
+6QKzJF9dpahsfoFgkg2+w+CkBRkBJ86Qox9tiosxXiBxsNeqM0/G1s09v6OnquJKYNZybdyY
+S+yVaQTmyxSvdvqXbT+PcH5j20RxdkiFT4VLdw1pkoY1SpLboSfJXpcT3daedxNuN32kzd+n
+eiKl9lxPuKHSC3MQP/87yJZtGKRSz9SOfLyPk2+O2Y1/AdkfflSxAQAA! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'DSG 9/10/2013 17:26'!
+                  z#H4sIAAAAAAAAAMvNzE0NqSxI5eKMU1BPLCjIyUxOLMnMz9PPKs7PUwcA3Rv8rx4AAAA=! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'dkb 12/25/2009 02:51'!
+         z#H4sIAAAAAAAAAE2PvQrCMBSF5/QpzqhLHyDiIBUXEQcFB6lwSVMN5KfkByn04U3aDm6X830H
+zrXy+1Dx0zgbok8iOh84qHFaSxGVsxWbYDBVzIDvcVRzSH5ELtYV+zPROY4nlyQ+xWeb+VLh
+rGx37TkOITihqKjbjJnq7z7JXDGgruMoeruAE+mwkrgAWDISFG7RK/vGkNa8bfOIF4LUfVmE
+8sCFBg6zw+iSL6D+ATx3tbTkAAAA! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'tonyg 8/17/2005 09:09'!
+                     z#H4sIAAAAAAAAAMsrzU1KLSr2Tax0zs8rSczMs1JIdM5ILOLijIMwFDKLXTLTM0sU8ousFKKV
+NVR0FVS0FVT0FFRSFVRcNRUy85JzSlNSi6H6YgEkEFvbUQAAAA==! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'tonyg 11/29/2005 17:45' overrides: 16964660!
+                          z#H4sIAAAAAAAAACtKTUxxK8rPtVJIDC4BcnK5OOMUilNz0hTyUssVgAKosnoAM2wL+zAAAAA=! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'tonyg 8/17/2005 07:45'!
+    z#H4sIAAAAAAAAACtKzUtJLbJSSMzzT8pKTS7h4qxRKFao4eIsVrCyVQgvyixJDS4pSk3MVcjP
+s1IAMjPz0hXyUsv1uDhhWhSyivPzwCr9gUqKgTJxQCOS8/NKUvNKivUASmKV5GIAAAA=! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'tonyg 11/30/2005 16:32'!
+                              z#H4sIAAAAAAAAACtKzUtJLbJSSMzzT8pKTS5RKM8syXDOzysuKSpNLskHySDx/BJzUxXy84CC
+wSVFqYm5XJxQhkJeakVJQGmJY06OlYK6g7oOhjY9oFqYHVnF+XnhRZklqf4Io/S4AFREGKeL
+AAAA! !
+!Json class methodsFor: 'as yet unclassified' stamp: 'dkb 12/25/2009 02:52'!
+                       z#H4sIAAAAAAAAAE2PsQ6CQAyGZ3iKjrr4AJc44eKigwmLcShH0TNHj/QOiQkPb4EEmZq/7f/1
+rxDXJGeOCdlSieKw8hQNYBG8J5tcYAiNar5Wb9UQWMUtCWGbZyO02MGYZ1MxRzi52YHyBabh
+kGdbTB0M3I37oFywJVi8mAysra5XtVtPOY1VLqP6v7V/KDeSb2AJb2bO4NKrCGqQ3qYgm8DW
+Y4zAEx+jBnf83D7xAy6pIxsCAQAA! !
+!Object methodsFor: '*JSON' stamp: 'Igor.Stasenko 1/9/2010 16:18'!
+z#H4sIAAAAAAAAAEss9irOzwsuKcrMS+fi4oxTgDAVikuKUhNznfPzSlLzSoqtFKKtgCIKNVyc
+nMWpOWkKWUBN4UWZJan+eVYgtQqxAIevu6dJAAAA! !
+!False methodsFor: '*JSON-writing' stamp: 'tonyg 8/17/2005 00:43'!
+      z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIDC4pSk3M5eKEMhTyUitKAkpLHHNyrBTU0xJzilPV
+AQuIzg8xAAAA! !
+!True methodsFor: '*JSON-writing' stamp: 'tonyg 8/17/2005 00:44'!
+   z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIDC4pSk3M5eKEMhTyUitKAkpLHHNyrBTUS4pKU9UB
+T34qDjAAAAA=! !
+!UndefinedObject methodsFor: '*JSON-writing' stamp: 'tonyg 8/17/2005 00:45'!
+                        z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIBLOCS4pSE3MVuDhRuHmpFSUBpSWOOTlWCup5pTk5
+6gDnNycYOwAAAA==! !
+!Number methodsFor: '*JSON-writing' stamp: 'ul 11/4/2008 04:46'!
+z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIBLOCS4pSE3MVuLg4i1Nz0hQKijLzSjBkkxKLU60U
+DA0AmU++G0AAAAA=! !
+!Integer methodsFor: '*JSON-writing' stamp: 'Igor.Stasenko 12/27/2009 08:05' overrides: 50344757!
+                               z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIBLOCS4pSE3O5OOMUilNz0hQKijLzStBlFZISi1Ot
+FAwNuAAA58RoQQAAAA==! !
+!Association methodsFor: '*JSON-writing' stamp: 'jmv 6/2/2016 09:35'!
+                       z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIDC4pSk3M5eIsTs1JU8hOrVRILAYKZealK2BTp8fF
+CWUp5KVWlASUllgpqFhZKxQXJCan6kFNKUvMKU3Frh0A0jp0YnwAAAA=! !
+!Collection methodsFor: '*JSON' stamp: 'jmv 5/17/2016 13:11'!
+                           z#H4sIAAAAAAAAAG2QQU/CQBCFz9tf8YImQIL+gBoPRuLBg5hA4sFwGOsUFra7ZGeLEvG/O20V
+JJr00Hl9/d7MW0nwk5cVF+kp2sQTn4OmKTJVmem1EkjQv59OHtD5+ihDrChlZra0An0IzkpC
+KDHwVHG+JVfzEBuyUUYg/9qaPLmwCLUgBUwrci6RW2Nsi2SDp2hZ8LbkyGgYgsGadzIEqSAp
+Wr+Qy8zciNQVIy0ZkQu2W44Nm60qMc/Mhe5yIO66uQjOcSs1GyohFJa6sb1Ho0KEBOVKiO0Z
+3QeNIR09zpqSDvVsdJmkF6+1Gf+bN+xlmdnDM7/ehqoi7DNzHPJrlOSE9YrvgtX5nh7rlOP8
+Q1VhV2rXB5yMQ45n5K3UsI4wfTe2nMWaG8df3AhXkA0VPO+cd01wYz1ZJ+n/mGuy6SJOrvyB
+zv/d9/MLLN8YzDcCAAA=! !
+!Collection methodsFor: '*JSON' stamp: 'jmv 7/11/2018 17:31:14'!
+               z#H4sIAAAAAAAAAEWOsQ6CQBBEa+4rRipJrLSjo9DWwsJ6uSxmzXFnbpdc+HtFg3STmUzee2qK
+9yzG58AjR2vBv4AUW9DNMtPoqroLIRUMKUNf7GUQD516H0iVFftLSGRdzjQfMKnEB05H9GL4
+DrprYOkz8PYuNC9dWdgQ05WrtXPV6vC3u24yb0gvENiyAAAA! !
+!Collection methodsFor: '*JSON' stamp: 'jmv 7/11/2018 17:31:50'!
+                       z#H4sIAAAAAAAAAGWPwQrCMBBEz8lXDMVj6Qf0KHgTFRQ8SJC13WIkppKkaMGPN23Fqr3OvJ2d
+ufja7p0OvLY5aBsc01WKZN6i5IoaE1I0nkHOUYuTo4I9Eimenbri+1LbKDyleJ/C8iNsmpBj
+dsikFN/UEVabTArPpkJZ5zggZyrO3fkPqKuVNtGO8l9Aj2u/jH0dGdg6QMXEIfIzZWH4yjZ2
+6PF6HBZRBc83chS4nLfDj2n1FNmk0s413FUe6d6CUt3OaYZ6Ab+d7iFaAQAA! !
+!String methodsFor: '*JSON-writing' stamp: 'ul 11/9/2010 04:07' overrides: 50344803!
+              z#H4sIAAAAAAAAAHWOsQoCMRBE6+QrFrHQ5j5gOxEsLFSwsJAUS9wjkVxybFaw8OONcoUodgPz
+5jHXWvJJovI+I9BRhWmw1kwJMt/1cFOE+ayzpnLq4VIQzoA+wMMas9jWkoGrp5E3RdaBhLyy
+IPiwbL2J/S6m1+JH2QxuIopOEAqPiTwPnPXtN99XVqmBn5QD1/05/ASb97K93QAAAA==! !
+!FloatArray methodsFor: '*JSON' stamp: 'jmv 7/11/2018 18:14:09' overrides: 50344794!
+               z#H4sIAAAAAAAAAFWPTQuCUBBF1/orLq4KJEqjhTsDg1pk4KL1s4Z8oe/FvAnx3+cHIu0uM4cz
+d97OmjtroaymhowkoCnAmgSqECbV+F5wqq2SlFl1M+CgmKCMa4npCeVw2KPUghENUX5lJHpB
+XXeIo2W58b17RQZtf1ibF8TiUuRXrCzjw9oMw3U4RUhFzWD/EwS+781FRyx15yzL4uio5cb0
+0E5bM6L58gZK5SjBbvsDhFakxPUAAAA=! !
+!Text methodsFor: '*JSON-printing' stamp: 'cwp 10/26/2006 22:25' overrides: 50344803!
+         z#H4sIAAAAAAAAAMsqzs8LL8osSfXPs1JIDC4pSk3M5eIsTs1JUyguKcrMS1fApgIAr08F0jYA
+AAA=! !
+!Dictionary methodsFor: '*JSON-writing' stamp: 'jmv 5/17/2016 12:47' overrides: 50344803!
+                   z#H4sIAAAAAAAAAF2NMQ7CQAwE67tXWGnS8QBqqhRcESFqE23A0Z0P2Zb4PonoqHd2ZvOud5NA
+0TPxHAZuOQ0XWUK6sgmc2ECfnQkosdM4zeVK5bFhCR9zujkoXqAnFMaVpL0rGjT4UNDabZ85
+TkPOyVFXOpq/+3/5Czmj2JuOAAAA! !
+!Array2D methodsFor: '*JSON' stamp: 'jmv 7/11/2018 17:33:20'!
+              z#H4sIAAAAAAAAAI2PPwvCMBTE5+RTHMVBQQTXuAlugoKDg3SI5tWm1LQkr2jBD29s/TOo4Nvu
+ePfjrgiV23rLtHIKesOe9EmKZN7CUKabksdoAkF7r1vsvT5QQCLF4xOOLrxuWGGwm0gxBVcK
+OdljzlIIE8UOyuIaxY9IvD51tobzTj9zBa6gkk7kOODVc9E7CsNAZQarYFEoFCNU7wVIe1Kg
+WnvNZOZtRH42GGOGUMdR6eR7xbQj/YNxdF5aR7iTvnBuKyW4umgBAAA=! !
+!WriteStream methodsFor: '*JSON-printing' stamp: 'cwp 10/25/2006 12:27'!
+                              z#H4sIAAAAAAAAAMsqzs8LKMrMK7FSSMzzT8pKTS7h4oSxFECy4UWZJan+eVYKxak5aQAUNm2p
+LwAAAA==! !
+!FileEntry methodsFor: '*json' stamp: 'pb 5/25/2016 01:32'!
+             z#H4sIAAAAAAAAAMsqzs9zzs8rSc0rKebiVOLiVM/LTy0uSdQDSagrJBa7ZeakuuaVFFUqgERQ
+lMYVp+akKRSlJqYElwDJXJd8K4VoBatiMEehhouT0wuoBazArSg/10oBKhMLAGKh+pN1AAAA! !
+
+Json initialize!
+
+----End fileIn of /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/JSON.st----!
+
+----SNAPSHOT----(6 June 2021 07:43:00) Cuis5.0-4526.image priorSource: 406701!
+
+ClassDescription!
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/6/2021 07:50:18'!
+             z#H4sIAAAAAAAAAA3LMQoCMRAF0N5T/NItvEAKQdjKxsJSFOL4V0eTDGRmhQUP7/bvSWcOjkuz
+ze3o1k73NyUwdasHdxPNodY8YessEyrjZY9RV6LB6hArZQ0Jl6Q/xYcLdnsovrnMxJNxtrkL
+r8MfXVoD7WkAAAA=! !
+
+----SNAPSHOT----(6 June 2021 07:50:26) Cuis5.0-4526.image priorSource: 423268!
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/6/2021 07:53:36'!
+                             z#H4sIAAAAAAAAAMvMKy5JzMlxqczLt1Ko4KpQKEvMKU0tdgHyoq3KaopTc9IUkvNzCzJzUq0U
+ymL1AAfXhwYwAAAA! !
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/6/2021 08:00:52' prior: 50344892!
+      z#H4sIAAAAAAAAABWKvQqDMBCA9z7Fjbr4AIEOhdBZKHQpGUI8a8iZFO8MJ/jwjeP3EzOLJ7JH
+Lgb0ppDw4Eee3p52ZNvkxyQw9ewq3KFbUZYy2RgEvBhIEOdxQ8Ys16h6qsIX5VX2LaDr+9af
+nhhbZaQZQll/kRpW54Y/vb3yEXwAAAA=! !
+
+----SNAPSHOT----(6 June 2021 08:00:58) Cuis5.0-4526.image priorSource: 423623!
+
+----STARTUP---- (6 June 2021 08:02:38) as /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/Cuis5.0-4526.image!
+
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/6/2021 08:03:37'!
+                 z#H4sIAAAAAAAAAB2MsQqDMBRFd7/iju3SDwh0k84Fx5IhJNf6NDFingXBj290vJxzz5fa7nM2
+CE2AKFNBqOtj5BD8XNyIJ26JOuTQilc4NRBM3CH9e2XhrKc+HiNqq8vb6mnvFb5cLKyoMPbw
+OS0SeV6vqLWPP8xjQUp6AAAA! !
+
+----SNAPSHOT----(6 June 2021 08:03:43) Cuis5.0-4526.image priorSource: 423623!
+
+----STARTUP---- (6 June 2021 08:04:13) as /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/Cuis5.0-4526.image!
+
+
+MethodContext methodDict!
+
+MethodContext methodDict at: #startpc put: self!
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/6/2021 08:06:08'!
+            z#H4sIAAAAAAAAAB2MMQrDMBAEe79iy6TJAwTpROqAy6BCyGvniGQF6yxs8OMjp1xmdiaq3eds
+sHUbRJmKbeNl5BBUH1fijkuivvNgJSi8Ggg+3CHjc2HhrKdej4qW6vO6BLprgw8fCxsqjCNC
+Tl+JPK//qHO3H7ib2v15AAAA! !
+
+----SNAPSHOT----(6 June 2021 08:06:19) Cuis5.0-4526.image priorSource: 423623!
+
+Object subclass: #DynoDeps
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Kernel-Dyno'!
+
+!classDefinition: #DynoDeps category: 'Kernel-Dyno' stamp: 'GDK 6/6/2021 08:52:22'!
+Object subclass: #DynoDeps
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Kernel-Dyno'!
+!DynoDeps class methodsFor: 'no messages' stamp: 'GDK 6/6/2021 08:55:22'!
+    z#H4sIAAAAAAAAAD3MsQrCQBAE0P6+YsAipskHHFgJCrYKFmIkeisGLjdhswkI+XhPgjbDwDxG
+ZWCcxCPQzSBmtw5EYx4re/dSYoNikhSoBdrnScdML/WPLMu1csQNZ7lvYyvJ8DLr95LB/2vU
+WC6KeDBZVpWrDwMTVJqwU3Y+T99+tJzdByfnXF+YAAAA! !
+
+----SNAPSHOT----(6 June 2021 08:55:36) Cuis5.0-4526.image priorSource: 425199!
+
+----SNAPSHOT----(6 June 2021 09:27:13) Cuis5.0-4526.image priorSource: 425891!
+
+SystemOrganization addCategory: #'ByteSurgeon-MW'!
+
+SystemOrganization addCategory: #'ByteSurgeon-Tests'!
+
+SystemOrganization addCategory: #'ByteSurgeon-Compiler'!
+
+MessageSend subclass: #BSMessageReceive	instanceVariableNames: 'methodClass'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #BSMessageReceive category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:28:21'!
+MessageSend subclass: #BSMessageReceive
+	instanceVariableNames: 'methodClass'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!BSMessageReceive methodsFor: 'accessing' stamp: 'md 11/17/2006 15:17'!
+          z#H4sIAAAAAAAAAMtNLcnIT3HOSSwu5uWMQ+IBAHy65/AZAAAA! !
+!BSMessageReceive methodsFor: 'accessing' stamp: 'md 11/17/2006 15:17'!
+  z#H4sIAAAAAAAAAMtNLcnIT3HOSSwutlJIBNO8nEiCCla2cGEAMXJHQiwAAAA=! !
+!BSMessageReceive methodsFor: 'evaluating' stamp: 'md 11/17/2006 15:17' overrides: 16937434!
+ z#H4sIAAAAAAAAAH2PMQvCMBCF5wz5D0dd2sUfULAgzjro4CAKsT3bQJqUu7Qu/fHGFKpU8KbL
+470v7wZlepQiOaGtwDcILTKrGkGFt7L8RIoyoe/JQrQnUooRHOlaW2X26BtXwSiFFAst30Da
+xnVnFHNRMBosvaMMOnIdktfIoHwOqztPmXXASKGo7lu0nkE/DtrkcLkt/4tNzto3RyxRD0h5
+6DhtMMcDOM3gGqA/eSnC/INEwxcpDeUfUDrzPmH70WdL9gIEyS9dTAEAAA==! !
+
+!classDefinition: #BSASTTranslatorForValue category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:28:21'!
+ProtoObject subclass: #BSASTTranslatorForValue
+	instanceVariableNames: 'inliner'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!BSASTTranslatorForValue methodsFor: 'visiting' stamp: 'md 6/23/2005 16:02'!
+       z#H4sIAAAAAAAAAEtMTk4tKHGqLEkNLi1KT83P88tPSbVSSARRvJy5qSUZ+SlOpZk5KalFCgWl
+xRkhqbkFVgoamXk5mXlAIYX01BL/tLTi1BK3/CK/xFyYVoWi1My0Sk09ADhisJZfAAAA! !
+!BSASTTranslatorForValue methodsFor: 'accessing' stamp: 'md 6/16/2005 13:57'!
+                               z#H4sIAAAAAAAAAMvMy8nMSy2yUkjM88wDM3k5MyEMBStbhCgAlvig8igAAAA=! !
+
+ASTTranslator subclass: #BSASTTranslator	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #BSASTTranslator category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:28:23'!
+ProtoObject subclass: #BSASTTranslator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!BSASTTranslator methodsFor: 'visitor-double dispatching' stamp: 'md 6/29/2005 12:19'!
+                         z#H4sIAAAAAAAAAH2QS2vDMBCEzz74Pwzkkl5CVs7T0EsphVxKSU0vJQfF2rgC2TJ6BAL58RUx
+pXUL3ZO0s6P9NLKuuQ+PdheereIS8uuIPLvC17ZnXPM8azl8WPUQtVHs0MV2L13jS9DstyaV
+qrjtkzaZejYnEAQKLLDECmtssAXNQQQSoCLPhqIFaAlagdagDWgLMYdIVgFR3KUl32DHS+DX
+6Bq2XYngIid1AC3v8eMDt94/eIMnpMubdH60YpC41eHFWWObmJIZPZOmz9JErpzsvJHBOpy1
+139CPFp1GcOnBoz0Yef3HKLroE9P0vjkek9ZjFndbaKy/WH2CVxBAK6oAQAA! !
+!BSASTTranslator methodsFor: 'initialize' stamp: 'md 2/25/2005 12:27' overrides: 16990961!
+                               z#H4sIAAAAAAAAAMvMyyzJTMzJrErl5eXMTS3JyE9xKs3MSUktUrCyVfAMgnHyUsv1eDlT09JS
+k0tCihLzinMSS/LBaopTc9IUEoutFByDQxAybvlFrmDFQF1liTmlqTg0OQWjawsDqcZmV2Ze
+cUlYYpFfYm5qipWCMoZ8QWmJlQK6KBEGoTsPbA6aIBZfkGUKAEy7qZ9vAQAA! !
+!BSASTTranslator methodsFor: 'initialize' stamp: 'md 6/16/2005 13:57'!
+     z#H4sIAAAAAAAAAMvMy8nMSy2yUkjM88wDM3k5yxJzSlNDihLzinMSS/KLFDLz0NXoAQAov+9B
+NwAAAA==! !
+
+inlinerClass	^IRInlinerSend !
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:47'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 7/7/2005 16:40'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 7/7/2005 16:47'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:48'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 11:14'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 11:14'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 12:05'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:57'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:57'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:57'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:48'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 11:04'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:48'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 12:06'!
+
+Behavior methodsFor: '*bytesurgeon' stamp: 'md 7/20/2005 09:17'!
+
+uninstallByteSurgeon		self methodDict values copy do: [:meth |		meth uninstallByteSurgeon	]	!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'dr 4/7/2005 20:08'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:18'!
+
+inlinerClass	^IRInliner!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:08'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:20'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:17'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/12/2006 16:20'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:09'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:21'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:16'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/12/2006 16:21'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 7/15/2006 14:33'!
+
+next	^self sequence after: self!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:10'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:21'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:22'!
+
+IRInstruction methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/12/2006 16:21'!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'md 6/23/2005 12:26'!
+
+selector	^self method selector.!
+
+IRInstruction methodsFor: '*bytesurgeon' stamp: 'abc 1/11/2006 12:14'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 3/8/2006 14:04'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:08'!
+
+flagByteSurgeon	self properties at: #bytesurgeon put: true.!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 8/2/2006 10:36'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:07'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:08'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:42'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:47'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:09'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 7/10/2005 09:23'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'abc 1/12/2006 11:34'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:44'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:47'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:42'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 8/2/2006 10:40'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/5/2005 16:58'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 7/12/2005 00:34'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 11:19'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 11:19'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 12:28'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:56'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:56'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:56'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:44'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/27/2005 22:36'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 10:43'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 6/13/2005 12:28'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:09'!
+
+isByteSurgeon	^self properties at: #bytesurgeon ifAbsent: [false].!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:09'!
+
+makePrivateCopy	self properties at: #orig put: self copy. !
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:10'!
+
+numTmpVars	"Answer number of temps of self. 	This information is stored in the property #origTempNum	Because this method does not read the byte code to count the number of temps. one always gets the original number	of temps, even ByteSurgeon has added some tmps later on."	self isByteSurgeon ifFalse: [^self numTemps].	^self properties at: #origTempNum.!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:10'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:10'!
+
+rbAST	^SqueakParser parseMethod: (self methodClass sourceCodeAt: self selector).!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:11'!
+
+recompile	"recompile the method from source. Works only if who can find out the      class/selector"		self methodClass recompile: self selector.!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:10'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 11/3/2005 15:44'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:52'!
+
+CompiledMethod methodsFor: '*bytesurgeon-multiple' stamp: 'md 10/10/2006 16:54'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:11'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:11'!
+
+CompiledMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:11'!
+
+uninstallByteSurgeon	| orig |	self isByteSurgeon ifFalse: [^self].	orig := self properties at: #bsMethod.	self replaceMyselfWith: orig.	self flag: #fixme	" need to reset the properties"!
+
+RBProgramNode methodsFor: '*byteSurgeon' stamp: 'md 6/21/2005 13:50'!
+
+isMeta	^false.!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 8/10/2005 12:12'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:22'!
+
+inlinerClass	^IRInlinerMethod!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:08'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:23'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:09'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:23'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 3/1/2006 11:29'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 9/23/2005 14:30'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'dr 4/5/2005 20:12'!
+
+originalMaxTemp	^self compiledMethod numTmpVars	!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/4/2005 16:10'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:22'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:15'!
+
+selector	self flag: #fixme. "allways use the selector from the annotation"	selector ifNil: [		compiledMethod ifNotNil: [selector := compiledMethod selector]].	^selector.!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 2/25/2006 16:11'!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 7/29/2005 09:27'!
+
+strip	self removeEmptyStart removeReturnSelf!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 6/21/2005 13:44'!
+
+updateSequenceNumbers	IRNumberer on: self.!
+
+IRMethod methodsFor: '*bytesurgeon' stamp: 'md 9/28/2005 17:44'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 6/29/2005 17:05'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:08'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:05'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:05'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:05'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:05'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:06'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:06'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:06'!
+
+Class methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:06'!
+
+!classDefinition: #BSMethodWrapperTest category: 'ByteSurgeon-MW' stamp: 'GDK 6/6/2021 09:28:43'!
+TestCase subclass: #BSMethodWrapperTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-MW'!
+!BSMethodWrapperTest methodsFor: 'testing' stamp: 'md 7/10/2005 09:36'!
+                              z#H4sIAAAAAAAAALWQsQrCQBBE6xT5hwEbbYIiWARSaLC0UcFCLI444sHlctyuxMKPN0FQ0cLK
+apvZN29XKbqinpvjLpoQGNPk1t7SZFE2F6+MiBRqhsVmeTV1cBRUTR2s49y5LE2TFnmBLT8o
+G9tn0fgcA2Ud5lVFEVhfOiOSv+GyHmG9qHnwhO6ELsOoOYZPjaqfKDAedQtTqK0pawaaLrX/
+2HmperZ4qy8wGR2ynx2zrgPfL2hx8U/Rfzv0d94BdQZFY5wBAAA=! !
+!BSMethodWrapperTest methodsFor: 'testing' stamp: 'md 7/10/2005 09:45'!
+   z#H4sIAAAAAAAAALWPPQvCQBBE6xT5Dws2pglKukAKDZY2KqQQiyOO5OByOW5XzsIf70nws7Cz
+Xd6+mRGwrCHdcGy8cg6+0dJtRQnSJE2u4ZqmybIezlbgyYMheTxsVxfVOwOmduidNlgYk0cy
+UFnRDl/Kx/tgS5oIerdoWzCTtrVRzCW9fPndoS2LGoUMc6LIwEtJ0xDjRlVFsyyyBYnuwRs4
+qAjsP/G3mhaB3pIrmmeH/Je+yMY9Z/toQ+G5/3+x91U3RYs6H5MBAAA=! !
+
+TestCase subclass: #ByteSurgeonTest	instanceVariableNames: 't'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #ByteSurgeonTest category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:28:55'!
+TestCase subclass: #ByteSurgeonTest
+	instanceVariableNames: 't'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+
+ByteSurgeonTest class	instanceVariableNames: 'rem'!
+
+!classDefinition: 'ByteSurgeonTest class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:28:56'!
+ByteSurgeonTest class
+	instanceVariableNames: 'rem'!
+!ByteSurgeonTest commentStamp: '<historical>' prior: 0!
+                            These are some tests for Bytesurgeon.!
+
+ByteSurgeonTest class	instanceVariableNames: 'rem'!
+
+!classDefinition: 'ByteSurgeonTest class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:28:56'!
+ByteSurgeonTest class
+	instanceVariableNames: 'rem'!
+!ByteSurgeonTest class methodsFor: 'as yet unclassified' stamp: 'md 6/24/2005 16:05'!
+               z#H4sIAAAAAAAAACtKTc7PLcjMSbVSKE7N4eXldAp2rUjMLchJLVZAldMDAGT2MVcrAAAA! !
+!ByteSurgeonTest class methodsFor: 'as yet unclassified' stamp: 'md 2/10/2005 18:24'!
+z#H4sIAAAAAAAAACtKzeXljAOSegAJdHgOCgAAAA==! !
+!ByteSurgeonTest class methodsFor: 'as yet unclassified' stamp: 'md 2/10/2005 18:24'!
+                            z#H4sIAAAAAAAAACtKzbVSSMzzT8pKTS7h5QRyFaxs4QJ6ALv6Y/wfAAAA! !
+!ByteSurgeonTest methodsFor: 'tools' stamp: 'md 6/24/2005 16:14'!
+z#H4sIAAAAAAAAACtKTc7PLcjMSbVSKE7N4eXldAp2rUjMLchJLVZAldMDAGT2MVcrAAAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 10/4/2005 16:08'!
+         z#H4sIAAAAAAAAAH1QTWsCMRA972H/wwMP6sHFegy6sNIKXhV6KR7C7mgDSVYysVVc/3vHtKI9
+tIcMD+blfUwkjlVdE3PVNCaa1mv7qgPnedbhQwC6PGOyWwSqW7c3lhR6xt9+FT9bzUwhKgzm
+65ejdntLDE+fuDMxw9OwEN2kqmZ4NnXyC6crcxFap3DuvZO1LUYlJuPLlf0gWJYPxsMkHQ6O
+fFwKktAr0o3Cm0oLdMiz7BvKlHDVNlJQ6P/KO3UUtTRKtqVknIz7OLDxO5XqS7+NvD9bFf9f
+5wtVwS+BXwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 10/4/2005 16:09'!
+                         z#H4sIAAAAAAAAAH2PsQrCQAyG5w59h4BD7WBRx0MPKjq4OCi4iMPRpnpwvZbLFQX13Q2tYh10
+SAjJnz9fPJJPswyJ0jzXXldWmb1ytKmWOvNhGBCaAhxmVVlrgwIG2r43ktdUEaHzAoaL3eqq
+ytoggcULfJQwh0mcsFtPImXPKm7FrinR+jVXjLBFlQs4iHYAdwiDoCs587m08OgERF8EsxK9
+YsYzGlNJvjodR9CQticBcOvaMJLcfjD8keMncvL/9Sf/W3Y0OAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:12'!
+                          z#H4sIAAAAAAAAAJWQMQuDMBCF5wz5DwcdNIu0uAUqaOnQ1UIX6RDiCQGNkou0Q398o6VWOrVL
+csm9x/vuPJLP6zpvPLqTJX9RrkRVc8ZZcehHG77BIaFPOCNsm/DQfTeYFiVsTDDkWiNRwjmL
+i/PxrrqhRcqyVU/AVLuxQ+tXERIqOTfgAZyxVxlOdH6mkRAtBMbqKABc3xCKJpmEeFHo6YY9
+bEXQpOBNh1TigCqoqi/PggkWb/ABDfad+CEjFdO4/62HPQGMgoPkaQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 7/22/2005 14:34'!
+                      z#H4sIAAAAAAAAAJWQMQuDMBCF5wz5Dwcd1EVa3AIVtHToWqGLdJB4gmCi5E7aoT++0VIrndol
+ueTe4313jMRZXWcNoztZ4kvlCu4dSiFFfuhH6//BISHHUhB2jX/o3gxthwo2rXdkWiNRLKUI
+8+J4r8zQIaXpqhfBVLvRoOV1hoJSzR14gBTiVfoTHc88CoIFobU68ATXN0VFk0xBuCj0dMMe
+tpHXJMCtQTrjgJVXlV+ehRMs3uBD6u276IeMJJrm/W8/4gnt6e/JawEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:15'!
+                      z#H4sIAAAAAAAAAJWPsQqDMBCG5wx5h4MO6lLoGqqg0KFLF8GldAjxBCFRycXaoQ/fq7bULoUu
+xx33Jff9ASnkdV1g0/tjR6HSvgy9x3JA02rL4wmnStsRpRSEtgGPpndDa1HBpuUXuTFItH2v
+NRH6oCAuysNNu8EiQYcTfFBIYZcwL8WKybLVZ8lM+9FhF9ZSCs5q3sAdpBBLy5UPzgEYiL4l
+9g6DZlE2uD5DZMvxSIrLH8bpy/dnfvEAhQ6UoksBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:14'!
+      z#H4sIAAAAAAAAAJWQPwvCMBDF5wz5DgcONUtRugUUrDi4KrgUh5A+IdCmJRfRwQ9vqljFSZf7
+w73H/e4iOK7qusSpC9h6jgcTdjC1FFKU6+7sIwIFMGIuBaM5pcZ2be8aaJq4ZFhZC+ZcSjEt
+95urafsGvFx+zBQNdTi38PFjhaZKPwZ0IynEs0wRIT5xNGUjgvM2SwTHF4XhQadpOirskGlB
+M5U0BUXXgnfoYZKq+vKMnORxoTdpss/VDzsKNdz733/EHbp+FdVrAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 7/1/2005 11:30'!
+                           z#H4sIAAAAAAAAAHWOsQqDQBBE6yvuHxZSGBsLy4MIGlKkFtKEFMc5gqCn3K4kRT4+pwmJTbo3
+zCxvBSxl01Rox4CzZ7nYUEtkrbSqjuPsBYECGJJpxejbGNw4TF0PQ7suXpTOgTnTWu2r+vSw
+w9SDi2LTpbRwmAd42ToMXc3a0JO0Um8MmHrrUPrms0nyJKpvi2D1W2YEMbSxkcedfj46UJ5+
+9//+VS8mQI2u/AAAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/24/2005 16:11'!
+                               z#H4sIAAAAAAAAAJ2QsQqDQBBEawv/YSGF2kiI3UGEKPmBWIqFeCMI3mnuVpIiH587C0PSJKQa
+lpndeSzD8knKcpI49QxTQcswDIpyWrQbycCC0zCwGHs3dJOahxGCdga8GH2orktrIFO3ExfV
++d6qeYTN8w8/oUFbNouCZl8hqBbWKT1oFefC8EogKNraB91Fjb+91rfWhwTFm995pSPtE4eY
+EQ8K9oIZrUvVLxzSuNE7UJN+PZol6V+f+An2CX65m8R4AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 10/4/2005 16:09'!
+   z#H4sIAAAAAAAAAIWPuU4DQRBE4w7mH0pyYAhYIYcjvJLN8QMrkSCCkbcNI81heno5xPLvzE6C
+5ISoD5WqXikX3Y3jbR55d1SWgdNYb685ufDoxNCMdycFs6HC4QjhQ44nH9hiJayTpM3wNjnh
+sSNDTWq3uPMH9dVCvpD440FytPhevXIIGVc9Ntc/nTF0sR/uP108BS59f+Z2CZ+KyhQ56QJl
+8WRLnZhhiKitVcGijdti3fBcWV4WN5HVVcQW2WNbI9eYik8vtvUx9NwZ+stfMHHW5//GtcMv
+p7iuK0EBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - blocks' stamp: 'md 2/25/2006 16:18'!
+                             z#H4sIAAAAAAAAAJWQMQuDMBCFZwf/w2EXXaTUTaig0j9Qx+IQzBNCNdrkpB3645s4CO3Sdnrk
+3uW9j2NYLqWsJ4myZ5gGWlbD1F3DMIiqelq0G5KBBadhYDH07tFN46wG5LQz4MXoQ3NbhIFM
+3ae4ak4PMc4DbFF8+AkpbdksIzT7opwuuXVKT1rFuTC8cjhra1e6a1ufvdYL65dyije/80pH
+2icOMSNWI+wZMwT7lA2HNO70DtSmX0OzxDf/f4kfYKMweAFdK8hGfwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/24/2005 16:11'!
+                       z#H4sIAAAAAAAAAJ2QPw+CMBDFZwa+wyUOwEL8szVKosYvIG6GgcAjIYGK7TUy+OG9MpDoorHL
+9bXv3v1ahuV9XR9vNfYNw+TQIvqhwxiGweF4c1pOycCC0zCw6BoRlTjaDooWBuyMXud3VxrU
+qfTEh/w0lj7BZtnHfUKttmxcD81+kqKrslLpSWEga9qLBYYnGkVRvNqupa25GCfzrh9yBmx1
+VRRR4QEmxtL6EEXx7Kh8pR0tE3nHhrjtYc8YULLPmZlJ40Hv1EX6NXSTpH9910+wLxikWzOk
+AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:16'!
+  z#H4sIAAAAAAAAAJ2QMQvCQAyF5w79DwGHtksRBYeCQhVHFzsWh9J7wsH1Wu9y6OCPN+2g6KI4
+PZK8vHyE4blUatcrlGeGq2DVIRjWgwHFcbTd9cFKnxw8OI8jD3OWou27QRsUNHPg4OyiuoTG
+QeWyk26r/a3pJMFvNh/zjLT17EIHy+OtgurCi9KdJpEpHE8opTESnyZPBG3bhN7L7DQenJga
+P24WlD4N7ai0pnkm3Eti3cEfMaARV/1iJIsrvVOe8q+hqyz/6z0/wD4Aae7AmJQBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/24/2005 16:09'!
+               z#H4sIAAAAAAAAAJ2QsWrDQBBEaxX6h0UqbIERwe4OLLCMfyAqjYqzbgwKupNyu0dS+ONzUsDG
+aRJSDcvMzj5WwHIw5jga1LiOHg2cSZOMtcWG3gILBQbl2pjL4qssTZP6OAYn8OTBkDJNGMM1
+Dt1op36AotxDgnfb5j1oD1PGnXXdnD61nQZwVf3wC+odiw8WTmYARWfFUelGi0QXXr4BFa3u
+53vXrdq5fLmveU4pWt/9blba00sRGXckvQW/YoKOqfODhxw+6JmoLX8t3RXlv17xJ9gvuWQn
+JpgBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/24/2005 16:07'!
+  z#H4sIAAAAAAAAAJ2QwWrDMBBEzzroH5bkEBuKaZObaAN16A/UvQUf1GgMLracalc0h358JRcM
+zaWlp9WgmeHtClgenTtMDjW6KaCBT2o8D7hotWI74obeIgtFBq2tc6+zzay0VvVhil4QKIAh
+lVaMoUvilPL9AEPrAInBb5v3aANclTJF3TxdbO7n/f7qv6Tes4Q4wkvmMHQ0nCZ9aqXU/EoG
+BPlGNbQp7u63KdW9hJjk8UoufL0/te1GqzYTzJCWc4+hYvGc8qQHui3TIjuSfgQ/4wwruWmB
+Jo8P+ondVr+W7srqX/f6E+wX5KzZkcQBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:13'!
+  z#H4sIAAAAAAAAAJ2QsQrCQBBE6xT5hwWLJE0QBYuAgSRY2pgyWITcBA4ul3i3hxZ+vBcFRRvF
+ahh2d+axDMuFENUoUKIfDWposXeK5aRAYRiU1eg0w5CBBadhYKF6b7pxmKRCRgsDdkav6pNr
+DUTqb+Ky3l3awSfYPP+YJyS1ZeMGaJ67Mmoy65WudBc/heEHS6GUz4+jJ4PUXUTvNjnOjXeo
+1s6nGcXPhW5W2tIy8eBrYjnAHjCh9VvNC5I0zvSOeUy/hm6S9K///AB7AwIXUkCWAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/12/2006 15:27'!
+           z#H4sIAAAAAAAAAJ2SwU4CMRCGz3vYd5iEA3CwgZJ4aGQTQL2ZGIknwqHuDtKk7WLbFYn47s52
+YVUuqJdON/3/mW9mNqAPk6KYlQVOcVU6nKMt7iod1EbjvUNpnjSmabKHV+n8MJ4cfHDKPg8P
+kYN0Tu5gT7rprKxsQAcOPQaWJh71ij7y0myURgEdh6Fyls9fKumwIEWaNKnFGK5VHlRppduB
+xe2tK42A984atS7hIgM++GCNmv9CParVBHBgJUO3pVM2ZxDRpPfogoArg0ESXrRnMKZirMuO
+dv5n+yja06QZDbkn8ZImyVaFtWhHSKCx/ZMHfnzgdZLedH7zJg2txGfZyQT7REOeyqAN9fIE
+LISnCPu6WBKvpCDKZsETrR89VRDN1pZxRt9b6bVt5nWkXgZ9GsQIgjLoH3CDklSLL6R6+vAT
+asnOJr3ss//9L+dhPwGBe7kZ1QIAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/24/2005 16:15'!
+                        z#H4sIAAAAAAAAAJ2QMWvDMBCFZw36D0cyxIZi2mQTbaAJ/QN1t+BBsZ7BwZZT3Ylm6I+vlIKh
+WVo63T3u3tOnE7A8O7efHF5xHmyLGj7J8TzgotWC7Yg7OkUWigxaWueO6KYAs9Ba7fZT9IJA
+AQyptGIMXRJt8vcDDC0DJAa/rt+jDXBV8hS7+uVicz5vtzfzknrPEuIIL5nD0MFwqvRJWil1
+bcM3pqFV8fC4To7uLcQkDzdyZut92zQrrZr8+hXQMiOIoWLeaXOlJ7ov0yc2JP0ITveAlZw0
+A5PHB/1EbqpfQzdl9a9b/Qn2C2uN3dHBAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:39'!
+  z#H4sIAAAAAAAAAJ2QMWvDQAyF5wz+D4IOsRdTEshgSCA2HbPEY8hw+F7g4Hx2TjraoT8+Sltc
+3KUh00Po6emTBCx7a5vB4ojRmw4tgj0kL270oCxb1M2QgiBSBEPKbMHwFy26oR+dR0UvEZJi
+WLXXZCJsqTN53b59mF4TeLf70y/IBZaYegS576roVLEqfdKXxG+MvfcanS+n9S50S5qXxVlx
+foAMM6JUlE+O7q60pddCXWsS14P1Rhh1nX4BKeCd5ojn8t/QTVE+9ZsHYG/tMl3EkwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:07'!
+            z#H4sIAAAAAAAAAIWPMQvCMBCF5wz5DwcOqUvA4hRUUOkvqJt0CPGKhTatdwnt4I83xYLi4vYe
+997ddwE5HOuAdO67ocWpmAZC5qb3uRRSMLY1ELo0bFo0sCIMkXxePqIlvGkpRQanspjs3ObD
+4ScAa2g8B4od+nDuk7Q+GLgaN2t4ghRCvHXKIb1ZDKhss4M8lesLxXT3mvy3vZD17KgZAvC9
+H1NBuWW7UlWllZai0gu/5XmzAfEBBY8j/KDuYav/f/wC5qfvcDEBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 8/10/2005 13:37'!
+                          z#H4sIAAAAAAAAAJ2QwQqCQBCGzx72HQY6qBcpvUkJGR27ZLfwsOhIC7ra7iz1+I1IQl6K5jLM
+z/DNxxBa2jeE5oR062shvPzQO80BGLRIkfAstg0PVd8NqsUUVgbJGR0XdycN1pEQwBXkxfEp
+u6FFm2WLlRCUtmimQyn4wWYbc9ZcjGPedTHOAkpXZekzf1KQdmSkfOm9UI0ddrAOWTMBUh3a
+Mw4oacTMPqDxAZ9GZfQVmoTRX9/4SfYFX3rh3XcBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 10/4/2005 16:09'!
+      z#H4sIAAAAAAAAAIWPMWvDMBSEZw36DwcZkgwxwaNoDC5tt0yGLCWDiF4agSw5T3LaEPe/V1GH
+Qjt0usfjuPsuUUztMRFvKZ2CaY2xyQav3U6zlGLCRXPEJEUkdwTTIfSDdaQwY0oj+7o7j5rJ
+VFIUp9rgyR5KBF/h6f2FQ69wm53IuYBVg3r9WeXkxWP3/KH7wVFsml9hS1gfE489+dSRNwqv
+KmbFBCmEKGd2EH+jK8wLnY73l8JDpit1DTa5bo4xWv+myhQp9hn1p/uOiD9T/hv7BX3Nos82
+AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:21'!
+     z#H4sIAAAAAAAAAKWQMQvCQAyF5w73HwIObZcuHQpFCy04CoKDc7CpHvSuJRet/ntzLk4KYoYs
+eUm+94SCtIMQ70guU9/yuULfl8YkgcYBmE6Tm+1INayY5Mp+j4zuaOVSL19boSey7rC9o5tH
+Ck3z434O1gdi6WiYWN+bRCt9QWGIgxqytSNBJUOlbmADVV7AR0UZFWWeRrA3F3haokuyN80A
+/UMTCIVJ/vf/BOaNFFBaAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:21'!
+                          z#H4sIAAAAAAAAAKWPMQvCQAyF5w73HwIObZeuQtFCBUdBcHA+9LU96F1Lklr113t1cRPEDG8J
+L/k+hWjdKPgA7YZrza0Ykwj6hhiXwY+uR0krhk4cjpatPzvtyvlrFPFEtjvt79aPPaSqfuzn
+5IKAdYdm4PjeJHHSN5SVZVFStvFQG8kst5NHUKlI3BO0pXVO6ULwAaCAedGBu0VRGx6LZmGS
+/0VfJu0UQj8BAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:45'!
+                               z#H4sIAAAAAAAAAJWQMQvCQAyF5w73HwIObZciCg4FC604drGjOBxtigfXa73LoT/f1KJSFzVL
+CHn53iOEjvKW0JZI574pvSY1aBQiKHa9N7wAiw4pEYFD3fJQ992gNKawsEjemlV18dJikwgB
+XFFR7W+yY4bLsg9JDMo4tJNhrjUzovDlo0wdwnyMGTr5Sjcepox/7uuxwxaWLArWQKpDd8AB
+JauO7xBg8ArzGKfkK3TzcP7/BT+EvQNXNOlQcgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 8/10/2005 11:55'!
+      z#H4sIAAAAAAAAAJ2PMQvCQAyF5w73HwIOtcshditYsOLoYkdxOOorHrTXeknRn++VoqKLYpaQ
+5OV9iYBlXQv8DnLuTqVt+wZKRcWmG1xokwdDtIoYTR2Kqmt72yCjmYcM3i3Ly2A8TlopCjEv
+yu3NjB6c5x+ShKxj+AmXUfxEWFfFYX9CGB41WXB6jKsx04oWSTgjJbEteI8eJqgOLx45XOmd
+eNRfTdNE//XtT8feAU3+onNdAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 8/10/2005 17:44'!
+                      z#H4sIAAAAAAAAAJ2QPQvCMBCG5w79DwcObZcguhVasMXRxYKLOIT0pME0qckV/fmmflTqojjd
+9/s+HKGj1ZHQbpAaU++4LY0mvFIYBkVpep9bsOiQWBg4VEdfCNN2UmEKM4vUW72ozj23WDN/
+ExfV+srbTqHL8495AlI7tA+/FKJRX2rB4C7O3bCQAjXSPUFAKN+FLINCGXF6daPBbXITj3pi
+iJDBPPHQSyDZottih9xv7d+AoPECU8QD+yq6TNhfv/kJ9gYm+HosjwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:21'!
+                      z#H4sIAAAAAAAAAJ2QQQuCQBCFzx78DwMd1MsS2UlKyOjYRaFLdFj0SYKutjtSP7/VwLBL0WkY
+5s03H8MwvCsZ+gi+tsVJ6hSmr9l1nWTf9spOSMOAhesY1KVt8rbpqhoRLTS412qV3XqpUQi7
+4yfZ4SGbroaJ4495QJUy0K9zEXkTv1K5oBEuzRCIaNOA5XhgcIlpS2vyBv4s5U+EfKg2tQys
+ZkhcNTApOkibOr+VSOFOc6mL+AoNA/HXN36SfQJgyToJgAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:20'!
+                               z#H4sIAAAAAAAAAIWOvQoCMRCE6xR5hwWL00a4NujBCT5BwEYswjkngSSG7PpT+PDmrpGrrGZg
+lv0+AUs/CorNGLwLJ1f6cmu1VowwUsFwj9kHGFrVDv/EtPO2HqwP9vh2MQdw1y3WDfnEUh4R
+SSzS1dDZcE36kFZKzbUgBzfUv80McswoYmgXIa7CXJXoaE9to9Vlov1glPCipcwf2S/Xt7Oe
+5QAAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:20'!
+           z#H4sIAAAAAAAAAIWPMQvCQAyF5xv6HwIOrYtDx0MLCu5CxaV0CDWVwt31yKXq4I837SK6OCXk
+vZd8EUqy74W4jtQN6C7Ie76VWWYSuR6YutHHwZGFlfY03GnWU7lRR3Goj0/00VGqqm95DUNI
+wpOnIDWFq4XGJq3wgsyYYmn1AHUyMuzm3TJxOCGjt6h2zfdnnvRso35jlgBTdNjpLF/YMCVi
+sbD1JKh8qNyVLitzjbSZaWfGDyIEesDPD+bvm28Nl9TDIAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:20'!
+                               z#H4sIAAAAAAAAAI2OPQvCMBCG5wz5DwcO1cW1ELRQwdGp4CIOR30rgTSGu/gF/nhjFwcXp3uH
+h3ueDM3tkCFdQu857FlaOdfWGkUYSNBfxuQDHM3Khr9BdhyfhdFlgeabbvvgMQVo0/wQC/JR
+s1xHxNwhnhwdnJZLL7LGmGkKUuC+/K8mIatCsqPViMxFyiWmoTXVlTXHj/ErpIg7/UaZf9Lf
+9gxSjfcAAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:20'!
+       z#H4sIAAAAAAAAAI2PPwvCMBDF5wz5DgcO1aVLh0LQQgVHp4KLOBztVQJJDHfxH/jhjV0ciuD0
+HrzHvd8lktSOibiL1Ft0B+SWzzWGodJaCbkRmPqLj9aRgUX2ZG/EewzP3JMyl5bbbvdAHx1J
+08waK7BBEl89hdRRGAwcjWSFF2ilJscUHfb5fDHtoQhxMrD2lDBvYuZpYAN1Cb/y6pNXhVan
+D9CXBwLdYcas/nnsDUQ/9UoZAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:21'!
+                       z#H4sIAAAAAAAAAIVQPWvDMBCdNfg/HHRIunjwKFpDCtlDXbqEDIfyHAySYk7nJEN/fM+mJbQU
+Op249+59SFF00yukGxEGju8sGzm9ImC4QKrKFcSeBOGcxiHC04N8YUYrTW2M9Uu3vXEaI0rb
+/oQfachFZUrI2iEfPe19sUkfVDnn1svbHBD0LPQ8i+skecfCybPxTaB/k8l89/OBWw4EY+Rg
+u9USjkuBqKenBGULyHJqWhNravoT/07YUoiGGfNeYFXPNofKHeZm9z1lXOlXc/fv53wCP8Ss
+Cl0BAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:21'!
+  z#H4sIAAAAAAAAAIWPMQuDQAyF5xv8D4EO6iLU8WgFC90Lli7iEGwUwTsld7Yd+uMbr0Npl04J
+yct7Xzw5X3aeuJqpHXC8IJfcuyhSjsYOmNrJzMNIGjbS03CjsM8zUSSH6vhAM4/kiuJ7ncJg
+nefFkPUV2auGWjup8IRIqSS0EkCtnxj2q7df2J6Q0WgUudx3Z14ktha9CnpxJH7DaogDHrp1
+pGFnyKMgIvch0hWrabKFPI0zMWgi1azEH2CwdIefj/69/ALT9wlFLAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - blocks' stamp: 'md 10/29/2005 15:40'!
+                     z#H4sIAAAAAAAAAIWPMQvCQAyF5xvuPwRd6iLoeKDQgrtQcZEOoaZSvLuW3FUd/PHmzkF0cUpI
+Xr73EinEsovE9Uhtj/aIXPIlVHZor1rPVCDbAVM7uLG3ZGAuPfU3yqr1UmtVVPXugW60FLbb
+7/UCeh8iT458rMmfDZxMkApP0EoVuRUDauPAsEnsOLHfI6MzKHK57w48ie1J9CrrhUj8jpxw
+jiIKLsfEkFYG8gz5kn1DAhcrWC+apUAarZqU+hMaPN3h56u/bys9ewGZQ0L0OgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:22'!
+               z#H4sIAAAAAAAAAIWPMQvCQAyF5xvuPzxwqF06dDy0oOAuFlzE4agpFO7OkkvRwR/vtUWsk1MS
+3kveF6Eou1aI656azrqz5RPFwYnWKpJrwdTcfd85MlgxycDhaNl6UyTDel8fntb3jmJV/ag5
+uhCFB09Bago3g4uJqeIFrZSa2uQgnsMNsu8pjOoMYbDxJHaKHucqK7S6Fh82G8cLBgsOBHpg
+SYIyxxZl2vv30BuOABh3CwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+                       z#H4sIAAAAAAAAAJ2QTUvEMBCGzzn0PwzroVtYi/QYtGDFs0LFi3jI1mmJpEmZya4e/PFOsmAV
+D4KXyXzP+yQix+sxIvULDta4R0NcqM0DcgRG/2L9BAZmniCG5GA0Yf+KQwSTpiS1N4znDo/o
+8sCmKFR3Ew4+VQkZY10oRjdKMIR5sQ41nBHGA/l7Q2bWtUxsu/723cyLQ27bH9UKrOdIhxl9
+7GW/hied7sAHFEqp7EoH0glDQ7muyoI6HAPhHZ3K5S4nxTiBCAQLWVkcxU47KMHQxBouE6fI
+lCgf5lbw17SQoD0itaWwPSf9GdBwkqFh+8U/pBeu4KKqf/WsKj2+wXdkaCqZaeo/1zZV/Y/f
+Vp/fhIvd9AEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+                 z#H4sIAAAAAAAAAKVRPU/DQAydM+Q/WO2QRioR6gKKaCRSMTMEwYAYrsEJhy6XyHZKB348vlQi
+AyCQWHz289d7PkGW60aQqgFra9y9Id7E0eIOWYDRP1vfgoGOW5A+OCim379iLWBCm0J7w3jm
+8IBualjEcVTu+tGHLCGjZHHE6BoN6r4brMMcloQykn+w8rJTzOGx0tZMW1dldXM0AeKi+L4s
+BetZaOzQS4hzeMzDZniHOIqiydUKpJOyHJJ55kSxxKYnvKVTOllPoBqnsnqCgawOFrXtOgFD
+LedwFYQrb42mvVzoPWZYpaE9IBWJin0KOibFhgOLHFafB6nDC1s4T7MvNTNJj2/wg/QtbC6z
+X8dfpNl/vuFP7D8AWjDa2jsCAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/24/2005 16:13'!
+    z#H4sIAAAAAAAAAJ2PsQrCQBBE6xT5hwWLJM0hpguYImJpY0qxOOIED5K7uLdBP9+LSEQbxWpZ
+ZmbfrMBLhdYxdpCzO8VxVG3caAVMDA9RceTRtWFpXD+YDgUtGDKyXdWXUTNOKmTSqt7edD90
+8GX5oWdkrAc/MQUlM8DYJpnSD4D2k6mgdJabadKallkokZOYHn6PATq4Di8gWVzpHXlUX4/m
+mfrr15/K3gEA4uAQVgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/24/2005 16:15'!
+                          z#H4sIAAAAAAAAAJ2QPQ+CMBCGZwb+wyUOwEIUNqIMEEcXcTMMBF5iE2ixH5Gfb2sMiSwap8t7
+vXvuSTWULtALiRP0TXSlGKcBs+97RSkM15AkoaBj31MYehtaO8EGZLSR0EbypLqbRqKL7U5Y
+VMe5cQSV56v3iBhXkO9rGQXhbp/YZn+RxsbrKi7nGW/rOnD0l0CjHCSjcBloXaUDbSMrmZJm
+I9QZExrtMIsQcTzoU6mOv0LTKP7rL36SfQJNJhFRfQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:45'!
+                               z#H4sIAAAAAAAAAJWQOwvCQBCE6xT3HxYskjRBFCwCBoxYpjGlWBzJiAeXu3gP9Od78Uls1G2W
+ZWe/GdbBuhIHbVDBHXVbeelEL8FYVK61Vw6GDCxcxiILeQhDo7teSOQ0MXDeqFl98tygzRij
+UElZby68CwxbFB+SlISyMA/HlZQBksQvI6GamMZjGqh3Y26Hyzzwn/tm6LSkaRBFc3Kig92i
+Bw+q3TsFKZxpnGOffYUubs7//+CHsFfuPRXXdAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:22'!
+      z#H4sIAAAAAAAAAI2OMQvCQAyF5w79DwGH6tJBt4IdKrq5WDdxOOwrFq53NcmhP987EUQnx+Tl
+fV8Uog16z9hDr747csDOWEGeZ83GB6dgYgi0zDOB7eNw8eM0WFQ0Y2hgt2xvwTC6MnbmTbt9
+mHGykLr+yRc0OAG/fRUVL56RtKtIo5nW1Cc5Oa9Fwq1IhxFywAQTb04fOjnc6Zt/To0/vsye
+7X9X4vUAAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:22'!
+      z#H4sIAAAAAAAAAJ2QOwvCMBSF5w79DxccapcguhV0aHF0seAiDiEeMZAmNbnF/nxTn+iiOOW+
+zjkfYQQucXAeK/DR7TfSV84yek7TpKxcF2tPHgEs0iTAHGKjXNNqg4JGHtx5O61PnfTYi6gZ
+l/Wyl01rEBaLj31O2gb4e2BB2TNAWyXo6i7DcFEQH3W4k5AycUpzuiE+ppQNeW+i8dNQDW+U
+TPKIPSPWDcIaLWS82r4QyeJM75A78dV0lou/fucn2AsrFczRkgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:23'!
+                          z#H4sIAAAAAAAAAJ2QsQrCQBBEa4v8w4JFTHOIdsGkiFjaKNiIxXGZ4EFyiXsX9fO9qERjo1gt
+y87MG9bBugxFzVjDHet8J3kDBX0GB8EoW9atcWBiWDgRjCzKwi+qrhpdIqYxw7VsZttTKxm5
+8J5Jtl1dZdWUsGn6cY9IGwt+EmMKe4A2StA9XdpOEdOigpN3wqNOSqr0N0oSehEo7JAD36TP
+VN2khKaRbz4npyvYDRpIr9q/ZRhcaNjzIL6GziPx14N+KnsDmCZLqpYBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:17'!
+                      z#H4sIAAAAAAAAAJ2QsQrCQBBEa4v8w4KFpjnEdAEtIpY2BmzE4ogTcpDcxb0N+vlegihJo1gt
+y+zMPFbgJUPpGAdI5a4nzTlqFOI4imbZznVWwMTwEBXNPOoyLIVrWlMjpTlDOrbr/NZpxlUF
+zzLL9w/dtDX8djvRYzLWg1+NKS3eBcYWimiI174/SUkq43cuqA/phYGJNtNKokXfOnIu37FF
+P4NpFQf4hMQ08Ee00OHq/AElizuNcy/qa2gSq79+9BPsE6cuMd+ZAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:23'!
+                          z#H4sIAAAAAAAAAJ2QMQ+CMBSEZwb+w0scgKUxspHAgHF0kcTFODTliE2gxbZEf75FDYqLxqm5
+967fXZ6DdSUabbCFO+l6z02FtgnDoFzrQTkYMrBwLAysn3shdNfLFhktDNxg1Ko6D9ygZv5P
+XFabK+/6FrYoPvYJSWVhnmkZRVOAVILRnc7t6MgeQrReUp7TC0rRmDKzxhNGjC/ltEx82ZSc
+7GB36MG96/DGULjQvNqRfYWmCfvrJj+VvQFzJBPyhQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/27/2005 16:17'!
+  z#H4sIAAAAAAAAAJ2QPWvDQAyG5wz+D4IOsZejJJupPTh07FKXLCHDYb9pDfadK8m0+fc5m+Dg
+Lg2ZhND78SCFaIGTZ7xBv3y9t1zC1eAoWhU7PzgFE0OgJloJ2lNYKt/1TYuUnhg6sNuU34Nl
+1CZ44qJ8/bVd30Ly/M89ocYJ+NqX0nouaFxlaEq3MipSeumgNjTIBJNT1YYLZRkVZ0U58Ce8
++4AorcfWhTWeY6txUkbPSYDfkjYd5B09bFAdbqDk8ENL1KP5N3SbmId+dBfsBRgUvEWXAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'dr 9/10/2005 20:48'!
+          z#H4sIAAAAAAAAAJ1QTWvCQBA9e8h/GPCguSyit6A5RDyVUjHQi/SwJC+4kOzGmQn157sRsbWX
+lp7m6817b0YhWqAJjFfoKdTvlkv4GrwNXnHRJJkU2zDEnIkhUJNMBG0Tiyp0vWuR0ZShA/tl
+eR4sozZxZ16Uu4vt+haS5z/mKTkv4LtsRrOHgPOVoRu7lRGR0XzdQW2UkO+mcnLy4nz91mR0
+b+0ta0o0G8WfGR7s1RhpQ4s03rAidR3kgB42oo5ffsnjk54df5hfSVep+der/mT2CpaaX+yl
+AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+      z#H4sIAAAAAAAAAJ2QTUvEMBCGzzn0PwzroVtYi/QY1oIVzwoVL+IhW6clkiZlJl09+OOdVLGK
+B8XLZL7nfRKRY4N9IGwn7Kxxd4Y4U5tb5AiM/tH6AQyMPEAMycFowuEJuwimj0iSOhjGU4dH
+dMvAJstUcxlmn6qEjLHMFKPrJejCOFmHGk4I40z+xpAZdSkT26a9ejHj5JDr+lu1AOs50jyi
+j63s13Cv0x14hUwptbjSgfTBoSFfdy2K3vPXdJEE63y3JMU4oQgEE1nZHMUOuxwMDaxhnzhF
+pkTLYa4Ff00LCdojUp0L20PSvwAaTjI0bD/5u/TCOZwV5Y+eVaTHZ/iKDFUhM1X569qqKP/x
+238S+waSAVMcGQIAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+             z#H4sIAAAAAAAAAKWRsU7DMBCGZw95h1M7pJFKhLqALBqJVswMQTAgBjdcg5HrVHeX0oGH5xwQ
+GQCBxHL2/b47/58tyLLCbUdY77HxLtw64kVmJjfIAozx0ccWHOy4BenSBsV1m2dsBNxWkFTa
+OMaTgAcMQ8Mky8xq3fUxnRIySpkZxrDVpOl2ex/QwpRQeop3Xp7WqgU81tpaautsVV8dXZK4
+qr4vK8BHFup3GCXlFu5tuhleITPGDFutQPpAs5CPQweP7/o1XSYEm88HUUNQro5gT14ni8Z2
+noOjli1cJHI1rtlwMVf6IKOsbOgPSFWutA8JZEB2nGxYmH2+SJNWWMJpUX6pGU1GfIEf2Jew
+OC9/HX9WlP/5hz+5fwPc/KmlPQIAAA==! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 7/9/2005 21:29'!
+     z#H4sIAAAAAAAAAHVPTUvDQBA972H/w1APrQghqfWyh1qjIgieKl7EQ5K+JEs3u2GySxT88Y4t
+ePMyb3gP3kfEFMvUFVotfl+a2cYIT21gqlPHGANHo9Vb8IYUUV/NR4td7RJm67Om16pEZLSt
+yPWXeCTuEMQAvQPfavVQxTSIuMnoOTlL6zy/kWOKjbku6Onl9SpfmzzX6u6ccIA/gne2GrLk
+bQ3JWGit1QTXEqMJw2gdDF1IvSITYVXuHz+rYXSYttsTe0nWT5HTAB/38AdD72YSpG86gajg
+WEJGitGyvA/JR7DwzZI+Mq1k1J8necx0zvq/ww+IlI+iRwEAAA==! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'ch 10/3/2005 17:30'!
+                         z#H4sIAAAAAAAAAHWOuwrDMAxFZw/+B0GHtEtoVw+BBvIFGUMGp1Fagx9BsmmHfnwdp9CpGgS6
+F3FORI5tul/OUkjBaBcgvAW3GosKDtPW1FKKY9t3L+1Wi9w0e3wC4zlScuhjj35WMKiSwBuk
+yLMfeSPF6xKRFFSFoHmLFORnrKQY6y+ZHyHZ2edm+OHA4xMKcATShrNWRxRos/rj+wGRDtUm
+1AAAAA==! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 10/27/2005 22:10'!
+             z#H4sIAAAAAAAAAG1PsQrCQAydb7h/CHSoXYSuB3Y48QfUrTiUkspBm5Ykhw5+vHdVioOBEN4L
+L+9FUdTHe11bY43gOABjP09LGNFBoXtr/HGOpMhpIZgIa3b+cnp20zKiNE2hFQQS5TghqYPW
+rQheYE2qDwhyRo1MEIYrx3S5/fIkyOpxmDmR5WYVqC9vyTv3jxsQPirIodaknWS1g03W5wkH
+qHPKP8+8AS3U6jztAAAA! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 10/29/2005 15:46'!
+ z#H4sIAAAAAAAAAI1RvWrDMBCePfgdjmRIsxgayGJIIA4dOhXa0CVkUKSzo1Y+mZPclJKH7ykN
+LqS0dNKh+/7uLmKIVd/czvJshMye4XhAgoBkLDUwflNMqkWIHhREbDulNYYAfv+COoKtocV4
+8Aa0p6gsBdg7r19BeFbtHYZRnmenM/NZcYBTng11uYAHNsho1t45kbOegPBYQJ4FdDUwat92
+1mEJ48SqkvSKzIqbssizau17isiCCxgLMbqpnu7eVduJ73L5gzIFyRe5b5HiRnqr8yglbMvz
+P5zEN/sqbXhE5SSlTLjhXgJspfcdXRlTfqnBZUNF6l/IFJBjhbVnIU6GmJb0JMF2eba7SpvG
+huu8MJ+Kukvu8+KyEhWSdgmDqE4vLGB2jRiyBvuBfwJqyyFJjDvF6ncZOQaZBFN0L9YNsmD/
+c6lP5DJDVGQCAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 2/8/2006 10:24'!
+            z#H4sIAAAAAAAAAHWOsQrDMAxEZw/+B0EHt0sgdDMkg0u/oF8gBaWkOHGwHOiQj6/tDF3aTdy9
+O11iSW57tlet1Q6BXrBrJexHiDyEeZ08WzihJdtk4uwe9zfOq2fp+6peYFqEY3I8hphR425h
+WxLHrA+m0apU2g6+QcBMIaIBygcRFap+RClNtq5A6A7ql0nFPJL/xn4Ax7GyLtgAAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 7/14/2005 13:48'!
+                           z#H4sIAAAAAAAAAI1RwW7bMAw96+B/IJpDWwwwHK+7qGvQZh0GFO0uCXYJUkBWaIeILAWUBKNA
+Pn60vZ23C0Hy8T0+UQljWueuLtTVmMLAlBJ6aANDkzvGc+CkC/UreA0K4GiGE+Fj4zIO5Et7
+LNQaE2PbChyTsScIOUFoIX54W6hnk3Iv0PJzCS/ZEdRV9QWWS11Xur6DH2/bT1Wtq6pQT/OC
+5kN8ZO4w+EcyfZk9NSh7ropCXcA6EyNcJJ8z/QCb3jiXjDuBSRoWb9+esSVPiYIHap+aiF76
+nlz5l0TtT3Iadu8RXbsvRexmBqa4Wi3Iy0u8xVc6ob4FRhv6MzkcR0cOxGPI7jDq7gr1D/ZY
+cu4nF7DTUwkXEJ66mQuKG/QHMP4genNLtqBN8gcPsPA47G9BXG85o0xMVPWH6iNyWqN8l0DX
+WzY+WqZzGi0OGr72mIxcxXA3WYgrODP5tEkSu3uwXF7DXm6g1B7YUBSV78yBy/8+itzkN4CR
+WWJFAgAA! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 7/14/2005 13:53'!
+          z#H4sIAAAAAAAAAHVQsWrDMBCdNegfjnRIS0E4cbqoJU1NQ6HQKaFLySDbZ1vElsxJwi3043tJ
+KJ16w+PuHnrvnSKGWKQ2l2J2amEiGyM6aDxBmVrC0VPUUrx7p0EAdGY6WtyUfcLJOlV1UhQY
+CZuG6fKLNRK16FkAux7pUYpnE9PA5ErBa+otLLPsjkEvVjpfwMvb/jZb6iyT4uniUKM7Im2s
+GVRytkT2mEkpRcC+AcLKD6PtUcMVx8sVE9fFbvtphrHHsF6ftzdgXYiUBnRxh67W8KHPG/gG
+KbguAyNSLJBvZb35nowLFdkxQuj8pOFhwGjYyFB7lgprGMmyZGRs76EiNZfioH7D8avU1y6y
+3V8kcDidfjI/ABkb2GhL5En9e9EPsB6gGJIBAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 7/15/2005 23:17'!
+                            z#H4sIAAAAAAAAAH2QQUsDMRCFz3vIfxjqYRXLsq0tSITSFosoeLGlF+khu53dBrPJMpm4Cv54
+s20P9uJlkpkX3nwvjJ6XoZ6IZNBfoSPNjBYqR1CEmrB1xFIkW2clJAAH1X1onBcmYKdtVh5E
+skQmrKooa+v5U5EXyaPi0MTJaJrBSzAaxnk+hdG9vJvK0RieXje3+VjmuUgWJ9/iO64PVKOz
+c62aLFhdYLQfCBE3rFdfqmkN+nUooHRNqw0ujMmidn0hzmZXkXpyAz0KhQYtS3iXxw5+TlPQ
+/jmeW0VvqPagqw0FjK/OovVIvKgYSYp0Q8r6knTL4A+uk5AOzyYxp1UNQkva8ppjrYfp3+4B
+SsrS3a6H9Giq3iCY/RHoMpDFrv/ryQ5IaR9RVkSOsn+D/wIborAyuAEAAA==! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 7/22/2005 11:59'!
+        z#H4sIAAAAAAAAAJ2QwUoDMRCGz3vIOwz10O4lFEsRgi644lEQPYqHuDvtRjaTJTOhffwmPSxW
+D4qnYZhv5vsTQZY27beqWjyhDKGHPiADBQFLfMAIMiBEtx8EwscndrlQHoEjxij3O8FoSiMx
+eSSx4gLphVJV+xAS5SlEZBStKsZxl5su+MmNaOAqoqRIzzZabyz1RuetVfv6eLR+GpGb5gdR
+X2qXs8NRp+EssFwAA7cexZ4lnEZp4A5u9LIYLqjVfKErNVPrOkfdgDiP/IIT2ky9fduZIwLh
+Ab6GhGsoOWFbF+G7/lW3qfU//+ovD1EnsXTmeN8BAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 9/7/2005 16:57'!
+  z#H4sIAAAAAAAAAJ2Rv07DMBDG5wx5h1MZ0kjIgoI6VCUSQfAAlA1lsMylNTh2uDtTeHucSG1V
+Fqp6sXz/vt/nE2Sp43qeZ5OVaPMBIQqEFvjHG0CiQLDdoIfI1q/hPXY9g/XQIbNeIxAatF8I
+Jnih4HiS51n9EKIXpJRkFJVnjK4dKkPXW4cLuCCUSH62+oya8E2lnmm9evzWXe+Qq+pPvkyC
+jCQ1toFSe3ENS5iBbV8opufrXs9606Twk3Y8xEfZjXbSKCguIYezTzGO0jxQLGDZoejRxeid
+KjAu5eAODiZUoU4zdd8m8tM9NcXwW0c4032tGe6EcVUm8RsQm7b0jD1q2f3GrucABh63cIyW
+Jtw26l+VeanOWvYp9Pkv4SIkaJcCAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 9/7/2005 16:57'!
+     z#H4sIAAAAAAAAAJ1RvU7DMBCeM/gdTmVII6EIWsRQlQxB8ACUDWWwzCU1OHa4O1N4e5xIbVUW
+UL1Yvrvv7yzIUsfuVqtsthFt3iFEgdACf3sDSBQIdlv0ENn6Dt5iPzBYDz0y6w6B0KD9RDDB
+CwXHM6Wy+j5EL0ipySilyhhdO06GfrAOV3BBKJH8YvMRNeFrmTDzevPwpfvBIVfVr36RBBlJ
+amwDJXh+DWtYgG2fKabny0HPetOk8qN2PNYn2a120pSQX4KCs08+UWkeXaxg3aPoKcWUnSow
+LvXgDo4hynxMdQKbH3ya8U7jV0VazhLEpm0+4YBa9q73mCMheNzB6V4Sw01T/qmyLMqzPuU/
+7tUPaqbvbkACAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 9/7/2005 16:45'!
+                     z#H4sIAAAAAAAAAJ1QPU/DMBCdM/g/PJWhzRJBizpEUIkg+AGErcpgzCUYEjvc2RT+PQ5DUbuA
+Op307n3dBZJQxW79pLJZHbR5g48BvoV8OQNi9ozdCzlEsa7DaxxGgXUYSER3BCZD9oNgvAvs
+e5kplVW3PrpAnJZCoVCZUN9OTD+MtqcSZ0whslvW71EzPRdJs6jqu089jD3JZnO0z1OgEIeb
+NpmWmF/gCkvY9pFjMtvu46wzTYLvdS8T3swn459sLZO+xGLPNdPENc7z1G+FYNNBDzSSTqzt
+gea3GBztcFgtOVw2xZ8pq7w46S//aa++AVVo4nrDAQAA! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'md 8/9/2005 17:39'!
+  z#H4sIAAAAAAAAAJ1RPU/DMBCdO+Q/PJUhrYQiKKhDVToEwQ+gbCiD5V5Sg2MH35nCv8eJ1FZl
+oaoXy/fu7n1YiKWMzdxtstF4LUp/wEeBr8E/ToNC8AG7LTlENq7Be2w7hnFoiVk1hECazBdB
+eyfBWx5n2ah89NEJhQQySZGNmGzdd/q2M5YWuAokMbjZ+jOqQJsizUzK9dO3ajtLvFr9waeJ
+kClISbUPaTy/xRIzmPo1xPR8O/AZp6tUflaW+/pAu1VWqgL5NTJcfPJhleJexQLLlkQNLgbv
+YQVtE4YHHE0UOVSdNJ2vtsr7HE6IJode3d+J4Gaa4ryDmJT/C3WkZO9zP3OUAEc7nCaZNtxX
+xb8s82lx0Teeoz77BcfsXHVzAgAA! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'dr 9/11/2005 15:27'!
+        z#H4sIAAAAAAAAAJ1QvU7DMBCeM+QdTkWizWJRxIAiEolUnTqACBtisJJLZCmxw91FLW+PTauC
+WUDcYvvuvj8LslRzf5smC0bbIsElHC8bZwUPAntytofOEehO/LzxfXIDL9I0qTZutqFJyCgq
+TRiHzj8aN05mwBwuCGUme12/zZqwVR6zqurtQY/TgFyWP+YZGMtIch+Uclie+Y1tFHySaw4L
+OdyNKNoLHM2W0Ax+AkUB1btgPVOPzj4jB1PfKqJYxRynwCUY3hnbPnQ5nFqPmiRbBvMx/myv
+CScUcJV5uTWIGZGfcELtt14izFd4sLiHOL5nuHlVv6qsM/Wvv/+L+/QDDIoHIRECAAA=! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'ch 10/3/2005 16:59'!
+         z#H4sIAAAAAAAAAG2OvQrDMAyEZw9+B0GHNEv2egg0kCfIGDK4jdIa/BMkm3bow9d2C116g0B3
+SPdF5Dik20kKKRjtBoTX4HZjUcHhkoNOSnEcpvGp3W6R+766LRjPkZJDHyf0q4JZVQdeIEXW
+Z8kTKZ63iKSgqf81F0tBPsZGiqX79vI9JLv6nMy/NvD4gNK3AGnDmWkkClSY/sO+ASJOP9nP
+AAAA! !
+!ByteSurgeonTest methodsFor: 'tests - bugs' stamp: 'ch 10/5/2005 16:44'!
+                  z#H4sIAAAAAAAAAIWQsQqDMBCGZ4e8w2EH28W9GQQFn8Bu4mDr2QZilLtIC7Xv3iS2dCqS4eD/
+4ftyZ5FtMV+PbSQiRt0D4WUcJqVRwu7si1SIaF9U5aMdJo2cZWt8AGXY0jygsbnWEp5QyxDB
+slaguELTgepPNDtc/Y0NI9m8t0gSkiBt2UcSHA8TaNx7pSKKN7Se7rCSvWWBMLbhafzZlG/j
+rDvjmvrnAYN3CKYGqFXs/l0SjeSv8Oc+b4E23t1DAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 10/29/2005 16:13'!
+     z#H4sIAAAAAAAAAH2QMQvCMBCF5wz5DwcdqkvBNWihFQdXFRdxCPUKhSQtuas6+ONNLKVFwSW8
+cC9834WReNs69q0pqgqJpJCiPCExevBIyJkUhKYOl6q1XWNQQdI44qGeSSkW5XH31LYzSHk+
+my0hZt9bdLwP6az9AfVNwUV9BvACKcQQw4meizpgFaSjwF2bPvDWFlkHbDWI5mlwuo5emuJL
+BZMEOHzApAEbWP2U54BQSHQkZ3H5v8t+fc0bEGM9ZT4BAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 10/29/2005 16:25'!
+ z#H4sIAAAAAAAAAJ2PsQ6CQBBEa4r7h00o0OYKSqIUGEsr/IEThkhy3OHeon6+h0QTKd1uksmb
+t4IgB++EvT1Brr5VKqnOCAImRoBolQTYLobGD2NvUVDKkIldXt8mw2i1UhRvU9XHpxlGi1CW
+q8qWehfAUqHzHAnZZ+Ju7BTzboCYCG4WkzLTs8aXRw4PWo8uWibM3IJ+gER7Si/vLf3PP8kL
+ceO4HRYBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 10/29/2005 16:11'!
+      z#H4sIAAAAAAAAAI2QMQvCQAyF5w79D4EO1aWD46EFFX9B3cThaFMoXK81yamDP96cRcG6OD3C
+I+97iSDLfvBCg6vQN2ma7I7IggSEjFKkCaNrdaiHfuwcGsgIJZBfVZdgCZtCVxa76nC3/eiQ
+y3LmL6HzLBR69BIJBk6GVeEBL1EXSbatIg3kb/jVuqCsdY9iFVlPDcv8HHHa8cMDjzeYN5o6
+W47JBr4yYQOZjbAi5vxx3c8/nppY4usyAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 7/11/2005 23:21'!
+              z#H4sIAAAAAAAAAJWQsQrCMBCG5wx9hwOHtktRBIeAQisOrgoupUMIVyg0acml6ODDe2mhShd1
+uVxy3/F/xCP5YzdYf7bkb8rlWiNRFIlifEUHDgl9FgnCtuaL7kzftChh1fDGhGfMJ8X19FCm
+b5EOh49ZCqF3g8FFhoRSjiN4QiTE1HJF5/OagyXEs0NjdcwKVQgaPRQFTkIyIzqcsId1yuAW
+fGOQLtijYqpc7MymYPEOb1de36RV9jVjl2Z//9BP3i9exgW5jgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:15'!
+                          z#H4sIAAAAAAAAALWQPQvCMBCG5wz5DwcObZaidAtYaMXBtYJLcQjxCoUmLbkUHfzxphXrx6SD
+S3LJPcf7JB7Jb7rB+p0lf1CuRHXinBXTHTpwSOgTzgjbOhx0Z/qmRQmLJvC51kiUBD4u9tuL
+Mn2LlGUvPQFj7QaDbwkSKjk14AqcsXsZVnQ+r0OshGg2aKyOODs+HBSNlIR4BvS4wxqWIjAp
++MYgldijClT1MTNbgsUzPD3D+Ep8kZGK5Off+bfT9O4bLeA7fMgBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:11'!
+                          z#H4sIAAAAAAAAAJWQMQvCMBCF5wz5DwcObZeidCtYaMXB1YIOpUMJJwSatuSu6OCP91qhiou6
+JJfce/c+jpF4148dHzriU+PP3jJqrYr5Ez14JORYK8L2Ig/Tu8G2mMLKiiE3Boli0YdFub81
+bmiRsuytF8FU+9HhElFy72VAlc4duINW6lnKiZ7zi+SmECwItjOBENRTzozR0KRLIVwkZrph
+C+tIhAmwdUhHHLARVfXhWUChwyu8UMW+ier4a0YSxX8v6CfuBzuViUiMAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - literalVariable' stamp: 'md 10/4/2005 16:54'!
+             z#H4sIAAAAAAAAAI2QMWsDMQyFZw/+D4IOyS2mkM3QQFK6BQJJ6RJucNx34GI7h6WjHfrj60uP
+g2ZpJiH5e9J7FrA8X4YsuyBvrhzg3rVW2+sIhQoYYrRixK42/pL6EGHpIYb67OIkMZq0Wm6P
+L18u9RG8Xt8ADYXMUoaELJZO9trR9++UAu9mOrhzxCih0L2Wod46aaUmLjOKbLrKWlrMJkP2
+i+pRtVq1Rk9mHY+speWM+bHSEz02FV6RhAQ+oIcbHd1o5iSU8Ul/s9QV+/MHvDSt+ffYqjF3
+/acg9RvvwWzuC/AD6lM0r7kBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:13'!
+               z#H4sIAAAAAAAAAJ2QsQrCMBCG5wx5hwOHtksQuwUsWPEF7Fg6hPYKgSatuQQdfHjTChVdFKe7
+477c/xGP5I9jsL5C2xHnrFwmdOCQ0AvOCIc+Du1oJj2ghI1DH5zdVZegHHYivknL6nRTZhqQ
+iuJjn4G25F0w+MyQUEuKFe7AGWNLGwl0/tDHWAnJaqBtm0SBZo5YLBTNnIR0Rdq5wh62WQRz
+8NognXFCFan6ZQUWr/Du1YivR/NM/PUhP8k+AMHye055AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/27/2005 16:18'!
+   z#H4sIAAAAAAAAAIWPMQvCMBCF5wz5DwcObZdA16CFKv6Cios4hHCFQpKW3FUd/PEmFa2b23Hv
+vXvfMRIfxjnwCf10Nm5GKQWh6yGiHf00ONSw4SS21iKRSnK5744P4yeH1DQ/WgVDII6zx/e5
+jseY0hedLfAEKYRYxmTDyG3PGDUUS5uhvNJQbj2ySZW3zNLADsLgqkJJcVUfsq935YCAd1hJ
+Uqyu1N9HXpy2Dzf9AAAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'dr 10/27/2005 18:51'!
+                              z#H4sIAAAAAAAAAJWQsQrCMBCG5w55hwOHtktQBIeAhVZ8ARWX0qGEKxSaNORSdPDhvbZQxUWd
+krt8P99PAlI49IMNFzTuWvtcayQSIiqmLXrwSBikiAi7hgfdG9d2qGAVODHjkvmkOB/vtXEd
+Upa9vaXQWgp+MDg75q2CUo0MPEBE0XRjDH3IG3YqiBd9a3XM9mp0TBVqGjkFyYLo8YQ9rFMG
+txBag3RChzVT5UdmKQkWb/CqyfFNWsmvjl0q//6cn3o/AdmRQFSJAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/24/2005 16:13'!
+                           z#H4sIAAAAAAAAAJWQvQqDUAyFZwffIdBBXaS2m7SCSl+gShdxkEsEwT9uInXowzfXgi0ubafc
+kO/knFxG4nSYes6xG2+VTodubHGOa0Zt21ayzFCDRkL2bYuwraVRgjUthrBj0cVKIZEvvJtk
+l7kyKyiKPmYeND2xnjp8OWU8aFEXoUHgAbZlLS+hUPPiHoLjBqeDKOtcTwbetGu2pldl6Ui4
+0kRYElZk9oTgrpAyFc6w9wQ8Ajcd0hVHrIQqNpr1BujxDu8rRB54pf/V4+j5f//dT7mfzM7K
+Y64BAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/24/2005 16:10'!
+  z#H4sIAAAAAAAAAJWQvQrCQBCE6xR5hwULkyb40x0qGPEFVGwkRTgmEMgftxu08OHdixDFRq32
+lv1mZ/YELLu2b+SEujvnbtfWXYVbiqJ1CMMgHYZw5MCQJAwYVaGNVa6sYGgiKtxaC+ZE+Sg9
+7m+538GbzdssprJhcX2Np9VRdL+hi/EI3SkMguGlFJw87Q1No/lqodLi5HpPf7RjuLKxWTbV
+dJnPMETM2S8yFI2Q9ZXWNIsVXJKUNfiADrlSlw/NeAQ1uNLrDJXP4yz56rGMk78/76fcD+uP
+KS+wAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/24/2005 16:10'!
+  z#H4sIAAAAAAAAAJWQzQqCQBDHzx58h4EO6kUqb1JCSi+Q0iU8LMsIgl/sjOShh29WwaJLddod
+5v/x22Ukzvqx4wLb4apM1rdDg9MFh0ZpdF0nnbdowCAhh65D2FQyaBHWDcawYXGetEaiUPR+
+mp8nZUMoSd52AdQdsRlbXLpy7o24b7GVwANcx5lvZmmOwfN3h724qsKMVvgxrlx1p8vSE7DS
+1s90iggNx+CvIm1POMI2EGEEXLdI8kZUbKNWYujwDi/mMvwaGAXh35/0E+QT84d3DZkBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 2/26/2006 10:07'!
+           z#H4sIAAAAAAAAAIVPvQrCMBCeM+QdDhzOQgm4BixUcXWpuIhDKFcpNGlIrurgw5u2FLu5HHff
+z913TJGP/eD4QtZfTTgbS1KKSF0Dgere+rYjDRtOdFnXFKNK9PZQnd7G+o5iUay4DFoXOQyW
+5oUzquGmRw18QAoxdUlGgcuGKWjA6ZqJI5SmHCbJ0wSXwoAPreOKU33kgLAHRGZEVFLc1RJ1
+Ma+CgaMX/KIl4y5Tfz/7AnUjU6YQAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/27/2005 16:18'!
+                   z#H4sIAAAAAAAAAIWPMQvCMBCF5wz5DwcObZeAa9BCFVeXShdxCOUVCklbkqt18MebVrRubse9
+7917xwh87MeOL3BDZfwZU2XsCClFgG3Io+7d0Fpo2nBEirpGCCrK6aE8PYwbLEKe/2gZtV1g
+Pzq8j5bc++i+6hmhJ0khlilS8Fw0DK8pWcJMmFea0p0Dm5jYYbrPbXLa0zZLlBQ39Wn2hdce
+FHlamywm9feRF/BhgzgDAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/27/2005 16:18'!
+                           z#H4sIAAAAAAAAAIWPPQvCMBCG5wz5DwcOsVACrgULVZwdKi7iUMpFCs0HuSs6+ONNI8VuLsd9
+PO/de4zERz85vqAN1y6ejSFkKQXhaCBi720YRqxgwwlo+h6JdBpvD+3p1dkwItX1albA4Ijj
+ZPG7smUfk/pWzQi8QQqRs0Rh5MYwxgpUPtbR3EpVCRnx2QqEODhuOcVHCQr2sFNairtePC6y
+lSNw+ISfp1lT6L8vfQDdFjPhCwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/24/2005 16:16'!
+                   z#H4sIAAAAAAAAAJWQsQrCMBCG5wx9hwOHNktRugUstOILVHEpHUI8odC0JZeigw/vpUIVF3W6
+XPJdvp/zSH43TL0/oh1P2lWoz1EkyvkOHTgk9GkkCLsLN2awY9uhgpVnvjAGiVLmk/Kwv2k7
+dkh5/vYmoe3Ju8ni0xC+V1CrQMAdIiHmE0PofHFho4J4kbe9idndBMMcQFPgFCQLYkKFLawl
+gxn41iJVOKJmqv6YWSJCj1d4heTxjWzSr45Mpn+v5qfcD4W5N3uFAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/27/2005 16:18'!
+                           z#H4sIAAAAAAAAAIWPPQrDMAyFZw++g6CDEwiGroYG0tITuHQpHYJRSsB2jK3QDj18nfQn2boI
+IX3v6Ykw0WEYPZ3QhXMbNVo0NETOWULbQUQzuNBbVLChjDTGYEoyr4u9Pj5aFyymul7tSuh9
+ojg6fJvq7JbVFzUh8ATO2NxlCiM1HWFUIOZjbZpGCgpRwcykTxoIsfekKddbBQJ26zClkJxd
+5Tfxz2TJBx7vsAiyfFvKvw++AJmuKP4bAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/27/2005 16:23'!
+               z#H4sIAAAAAAAAAIVPMQrDMAycPfgPgg6Jl0BXQwNp6QtcupQOxigQsJNgKbRDH1/bHdxOXYRO
+d6eTGIlPyzbzBcN6tdGgH6WgVCGiW8I6edSw48QOziFRJ6Voj+b8tGH1SH3/xSmYZuK4Bfzs
+M7zE5L7pLIEXSCFKl1QYeRgZo4amhFnKIw1tQc4nDAeoOarppLjn8F95VcCMD6i3JPdedX9f
+eQML1rQVAAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - temps' stamp: 'md 6/24/2005 16:12'!
+   z#H4sIAAAAAAAAAJWQwQqCQBCGz3vwHQY6qBcpvAkJGr1ARh3EgywTLLir7IzUoYdvNLDoUp12
+duf7+X6WkXjXj46PaIdT68/eMAaBKudH9OCRkJNAEXYXuejeDqbDDFYsgUJrJEqEj8pqf2vt
+0CHl+dsuBuOI/Wjxqai495KuswmBOwRKqXkUDD0XF3FmEC5643Qo9mZyzBVamrgMogXR0wlb
+WMcCpsDGIh1wwFao+iOzlASHV3jVlPgmbpKvjjRO/v6cn3o/ADyNzmeIAQAA! !
+!ByteSurgeonTest methodsFor: 'examples - paper' stamp: 'md 6/27/2005 16:35'!
+                      z#H4sIAAAAAAAAAI2PsQ6CQAyG5xvuHZqwyCADOpHIoOEJcCMMFyiGBA5se5HBh7fiIk5ObdP/
+7/dXkKVYjgdrzfkyBS9IQMgoiTWMQ6dDM41zP2AGEaEE8ml5D46wTdSzO5fF4sZ5QM7zn30M
+vWehMKKXEn2bQZWxVniCNWbtlICNTAQniPjjgr67UlBatVEo3ePNiQpqqN/oNZ1jRpIMvnKA
+xwdsk+j5fRr/85F5AfBI8s8QAQAA! !
+!ByteSurgeonTest methodsFor: 'examples - paper' stamp: 'md 6/27/2005 16:35'!
+                      z#H4sIAAAAAAAAAI2PMW/CQAyF5xvuP1jKUgYy0E6RmoGKgZWwRRmuyUsVKbkE2yeQoP+9x3Vp
+mZjsJ/v5fVaI7i5vr5/Wmu3HHLyCiSHQ3BrB2EfRztMyjCgoY2hgv6lOwTG6PHpettXu4qZl
+hJTlw3xFgxflMMFrBd8VVBcSK93IGpO6mIBWZ6Z3yuTXRUN/5BDT6rTBWEbXRnndH/bpXKvD
+7EnSwczjyym67yYnS6a5IyVqJwLWgv7wkceZ/hPG2PVm9cyn5gc/mvPmKQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:14'!
+                    z#H4sIAAAAAAAAAIWPsQqDQAyG5xvuHQIdzi4HlU7SOig+gW7icNhIBb2zyYkOffieVCi4dAl/
+yJ8vfzyyL1YzTgPmbqtrsU6EzL2zUkjBOHRA2IZZP2ACJ0I/k43L12wIH1pKEUFW7ghO04MB
+ztBb9jSPaH3ugjTWJ1An7abhDVII8dXBh+Qz7ByFQyq63CAO211Fc+jriozllvrJAz/dEhyq
+3XlKNVppKRq9Bza8oRIQv2RgcYFDtjtc9f8XP5MDk4cjAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:16'!
+    z#H4sIAAAAAAAAAIVPMQqDQBCsr7g/LKQ40xxEUkliofgC7cTiMCsRzJ3ZPdEij89JhASbNMsM
+OzM765F9sZjHOGDu1rkUy0jI3DsbSyEF49ABYRuW/YAJHAj9RDYun5MhvGkpRQRZuWVwmu4E
+cITesqfpgdbnLkBjfQJ10q4YXiCFEB8cdEg+w85ROKSi0wXi4O4qmgKvA/+lFRnLLfWjB767
+ORhUu8Ur1TRaSdHorb/hNTkB8S0KFmfYVb3CWf//+A0/gXfhMwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - returns' stamp: 'md 11/2/2005 12:05'!
+                         z#H4sIAAAAAAAAAIWPvQqDQBCE6yvuHQZSXNJYhFQHsRDyAtFOLMSs5EBPs3tiijx8/IOATcqd
+ndn9JpCE27ts+4buFAb2CdUdk1ZaCTU1mKqu7V1DFgdeDOf0NZRMj0hrdUSSbmmJ450BJzgv
+gYeWfLDI7TLhs6pwsj6EqzMepvs5tFLbzgtxWFEsTMall4pdHyDPbpwUs74yxkRTqNCqiDbg
+UuaohfqRwdOIHdsVl7nAv45ffF1g7B8BAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - returns' stamp: 'md 11/2/2005 12:23'!
+             z#H4sIAAAAAAAAAI3Qv2rDQAwG8FnDvYOgg5vFQ+h0NB4MeYEkdAkZjuYzGM6XRNK1GfLw9b9Q
+6qmjdPp0P2RQ295Dd43YwbKkGs1F8BFihiNH9QFqEBYorHSkiE1ffF66axvh+UXG1Hp/y0Fw
+Lp2jV67380qtqsUAr7hNapI7JPN89GPFj6nLrU4KbpuD5H7/kR3R/JYUYpPPc/GUfQ1Uz+8d
+LIwezdGqorfSydHpaQ46pD3TL44TvnnB2/DbMvHno2ngH3dYXO4H+SHPTWgBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - returns' stamp: 'md 11/2/2005 12:05'!
+                 z#H4sIAAAAAAAAAIWPMQvCQAyF5wz3HwIOtUsHocuBHQT/QOtWKhw1hYPrWZM7dPDHW3sFoYtj
+Xl7e9xJIwvllxslRTSGyr2lypicFCoTcgEz9fZysI407XhyH5hEN061QCvZ4atZzqaqNAXO0
+XgLHkXzQ2OplwndS0Uoioh0uHOf8FhVA2nFqoTG7llkxy52CrlgrGRHiORB+bPT0xA39iOW3
+4r8vPnEZGycCAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - returns' stamp: 'md 11/2/2005 12:19'!
+ z#H4sIAAAAAAAAAIXQv2rDMBAG8PkGvcNBB7eLhtAsovUQ6AskoUtIQaRfwCC77t2pzZCHr2wn
+lHjJeNL9+d0Z1N5Ose0T1rAs3Rp9ige8x5ThyNFqCzUICxTmHSnSsQSHr7ZvEgI/yFi22Hzn
+KPj0ztEjrzaXnlrXswR+4qZTk9yis8C7MEZ8nl650YnBzXErufTfsSOa/mSiBa6uqJ9BGfil
+hcWRojlZ7fljWRUq7R3t/bDEiI6qkDKS/nXc4Zdnvlde+lnFzbiS8DxsefcQs9P9AeRBABlq
+AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:09'!
+       z#H4sIAAAAAAAAAIWPMQrCQBBF6yn2DgMWq00KsVowRcQTxE4slnWCgWQ3zkyIhYd3gwEhjd3j
+8z/zRkn0/PL90NGFfZTA7aAGDAh1DTKF1A9tRw43TDpy3NfP0TPdC2Ngi1W9bKUsVwXcYRtF
+eewp6ill9FEdXl2YGd9oAL6Ya8RaUZM437E/DZRHmnJiwzK31hYGbsVi52UeOoSfBkaacCVy
+xMNs+++hD2K1T44KAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:09'!
+                              z#H4sIAAAAAAAAAJVQPQvCMBCdM+Q/HDi0XcTaLahgxcFVxaV0CPEKhTZKLsUO/ngvSqs46XIf
+uffy3p1H8jtL/qTduvLoNpf22mAvhRT55tJZfgKHhH4qBWFTcWMYUjeoYFIzcW0MEk2lFHF+
+2PY60Gm1+pglEGrXtWgHqT3qs4JCPQdwBynEq+SIzj+dKIjidDFndnV0HcsVX+3or7amLCM2
+WA4mNYVvFMQjxoQMS5gljMnA1y3SHq+oGVV8ccY1wOIN3oswPU1+0MiScI7/ziceYaDfuokB
+AAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:13'!
+     z#H4sIAAAAAAAAAJVQsWrDQAydb7h/EHSwvZim2Y40UIcOXdPQxXg4rs9gsM/hdKYZ8vHRJcQp
+WUIWSQ+9Jz0pguOX5/hjQ4V2DNiMw77HQSutqs04+YhAAYxYasXoWwFOKF0PQy+dKD+cA3Op
+tcqr78+DTXJer//1Ckp1mAb4664t7K+h2pwbdCSt1KWUiBAvVgxl+WL1JvJ2FyaB9R2cDXbe
+NU0mDpsyGT/7tJwmGcpnlkuZ3um1ENaSYjeAt9jDCqu+08yXkMcf3W4R+aJoyoc7lkX6yHMf
+VCdGMMVjjQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:10'!
+                         z#H4sIAAAAAAAAAJWQPwuDMBDF5wz5Dgcd1EX6ZwutUKVD17Z0EYeQniBolFykDv3wTRS0dCmd
+7h733uV3sUj2rMnepblgV0uFWdt0NQ6ccZZmba8tGjBIaGPOCOvSCeUsVY0CVpWLHpVCophz
+FqbX0yB9nJLkYxaB703foF4ekw8BuRgH8ALO2NSaiUJAEG72W5csb6Z3Mv+SM1ulVVEEDq6I
+PfOIKInQWAHh7FK+wgHWkXPtwFYNkjsYpfW7ZmzQ+IQFvIh/LtxF/vL/foq9AaAet1Z2AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/30/2005 17:10'!
+            z#H4sIAAAAAAAAALWRT0vEMBDFzznkOwx42O2lKIKHwC60iwevu+Kl9BDiFIJpUjJTFKzf3WT/
+VHFB2YOnIcyb93szYSR+8MRx7NFz5ZwUE+jaBfOyCc6hYRs8TFKKehNGzxghIiGXUhC6Lj1M
+6AfrUMGVTT6VMUhUJv2ZiVrBuxSiUVkXYYJDtZT5TzpuUT+D7R7jmMyaY9MTRq66xFWwmCNY
+bxZtW/7mtuMQ8SI7KT5y7mW9u3/T/eCQ1utvOxUHwulO6uxKp5NoyhAFy9nf5AoruC6S5hbY
+9khbHFAnVfNjZoaDx1f4wqfxm6L9m3FXlBd/1n9n2u/9CVSDkq5qAgAA! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:12'!
+                   z#H4sIAAAAAAAAACtJLS7xzCsuKSrNTc0rcc5JLC7m5eUsTs1JUwAyU4tKrBScgl0rEnMLclKL
+FfJSyxWKUktKi/KMggtLE4tSUxRsFUz0gDqQFGUijMsHMhPzgGZEWyWD2Ao1CrycnBBmMlzS
+WI+XM1aPVGst9VBsTc7PLcjMSXXMydEj2f0AjkkKYgUBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:13'!
+             z#H4sIAAAAAAAAACtJLS7xzCsuKSrNTc0r8U0tychP4eXlLE7NSVMoSk3Ozy3IzEm1UlAuSi0p
+LcozCi4sTSxKTdGDqkgsLk4tKrFScAp2rUjMLchJLVbISy1XQFWsYKtgogc0UwOhys4OzUBN
+hUy4I5zzgczEPKCx0VbJILZCjQIvJyeEmQyXNAY6IlaPl0SXWOrRwHMAEZabvEUBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/2/2005 22:00'!
+                      z#H4sIAAAAAAAAAJWRMW/CMBCFZ4b8h5MYQhYk1ohGIhIDGwLEUnW4mocUZCeR72g79Mf3lBQl
+Wai62X6f3n22FaL72DjgsjtzPIAvSTIrTxBFpAiBLpOZwF9t45rQVh45zatadOMcRB4piyBq
+TovyuP3i0HoI1fikgaQXWmVLax8hRTGqyjo43gNq3dnq1yen17wL6LsHzKT17MwjXTxMP9jf
+7WAdoGx+bX+lIuuD9M00k/+aTvHJJKo5wLBU0+dc836DU3Keu9ph5J+vOv2DHxrc3yuoAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/3/2005 12:00'!
+         z#H4sIAAAAAAAAAJWRPQvCMBRF5w79Dw8capeCa9GCgkM3QXERhxivoCRtyXt+DP54Hy1Fuyhu
+Se7hvpNEwLIKtQWO5daEtdQBcRwtNmBBoACGZHHEcCfd2No3Z4ecRueKZW4tmPvUMCNITuPF
+evkwvnFgqnCnN0kzmqSZtn8gRfFRlbZwuHpUUuqqF8ppl7cJPTtCVRpnrAbJuFe9GXfVg6mH
+GBVsuksVaRcke/WM/1Ud4oNJVBkPxRJJvnP14QIrZJ1pa98jfz7r8BNeoWtbkaoBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/3/2005 16:01'!
+             z#H4sIAAAAAAAAAI2RvQ6CQBCEawreYRMKoaEwVkYpSCxNTPQFLsf4kxw/7i3q47tAjEJBLHd3
+vp3ZO4GXA9cWKPaQa12EQRjkJ3gBE8ND0jDwcGctbF02N4c1RQxpuVoe761hFGnHxPlx9zJl
+4+CzbCJIFG6csYou4s/yh3GtNjYlxOjKZgiRJcNg0S/tjY33YFnTjwNVeNLYg7a0StIJMvIi
+HcFKzSqdBKR5UE/H7aGldSpQ/JtkHjR8aUtU0jFRnPQ3/fOc4w94A6gifWqkAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/17/2006 15:13'!
+                z#H4sIAAAAAAAAAK2SMWvDMBCFZw3+DwcZYi8ePIbWQ0KGDIVA8gdU5TU1SLaQzk5+fi42hSql
+bilF053e93h3HCPyPnQGOL2A37vTrm04U5laHxEZgQIiuJT6sL1q5y3ioX+VrumcbyxWtIi9
+R5jgRDcjylSe+NX1Z0EhpLfaCLfMP3IM2vbSeHJgLX5+ylwX08eyTCx/61fNGqrHqVtcKB0k
+wr6RjhGBV5RYk3zBcBfoOZme5inZGZpBSmNFIGySYJ7V4dw7tHzHFnkx7vl7efW3hBW5UbX5
+ku8H7DGdysb3r3eVHu0NlPEGiNwCAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/2/2005 19:08'!
+        z#H4sIAAAAAAAAAIWRMWvDMBCFZw3+DwcZYi+GJptIDQ10DyRbyHAol2CQZHM6px3y43tyWhp3
+cCcduvveeycJJdlx54jOe4rnojCJ/AWYXBf61pOFhdbU3ojf+JpWdWHK7f79E0PvKTXNtFtB
+G5PwEChKlrNwtElPuENhjCnHWg3IScfwmrVl4LhDxmBR51XgcuBBbY8ZMCPA1Ht0ercstwdK
+Qgw39HloE0hQI/aPDZrq0Vgqe1LHUw3f+2BKxGLhKTtE+oBJeg20ruo/xMRxNvs8+eMEzuuA
+8r9J5kHk6/iemVmUL7DKEf/9pi/Oz7t32AEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/3/2005 12:15'!
+z#H4sIAAAAAAAAAJWQMWvDMBCFZw36DwcdHC+GrKYxNKVjITTZSgYhP5OAZAndJc3QH1/JJjRZ
+ApkO3b173zsJWDYpWKDfwccvmF4rrdY7sCBRAkMarRhuyA8bfDw6tPQiWfxmLZgbrdVivf24
+GB8duOtuZjUdR5Z08hjlat/Sd1sU9EtTSYjO2OxZLa7Us3Gn3Hj1EJNZcc7X1fOg2hfklMgw
+I0lLN3wa8UP/CWhFy7opJ90t3JEoDEM+s0ibhzobRsFFyDozOX9CDqF/n7sl1FPfpv4A8TUe
+EnwBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - proceed' stamp: 'md 11/3/2005 12:15'!
+z#H4sIAAAAAAAAAJVQwWrCQBA9e8g/DHiIuQS8hjag4lEoKO1BeljWFxrYzS47Y/Xgx3eSKNoe
+hJ525817896MgOUtBQscdvDxI7WCLJssd2BBogSGlNmE4RotbPCxdahoKkpeWAvmUumz5XZ9
+Nj46cF0/9ApqO5Z09OikH7+VkFS9r3oKXWh4EqIzVuF8drP9Nu6owIuHGDWLY8C6GBv5Z+85
+RDLMSFLRQwDqcKJ7BHqleaEb/BH8cqLQNLpnTy2f8mzoBGch68wweQP5CofViD6Xaqr34XN1
++d+NfwAMAI3apwEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - quick' stamp: 'md 8/2/2006 10:31'!
+                       z#H4sIAAAAAAAAAI2PPw+CQAzFZ4b7Dk0YgIWobERJxDg6+GczDJezFy/CQe5K9OPbi5HBRbo0
+r2l/75XQ03E06nFAuvc3EYmo3vWjJXTg0CPlIvLYahaq7wbTYgmxzIUArrQ+71+yG1r0VRXL
+DIz16Gir+bqEJF2uVzzTFzfy1fVHTjbGqqZJGPkxkj4wSoZ/F1TosIFFxmEKINOhP+GAkgJm
+igAWnyCb/C+nyILZrDdnRHoDEL3HckIBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:14'!
+                z#H4sIAAAAAAAAAI2OsQoCMRBE6xT5hwWL85oUB9cEvELxB7xSLEJc4SDJxd0NWvjxRg5Brewe
+zAxvBFkOmIPzqLViDBcg9HPMU0ALK0IplLrxWhzh2dTKejvu7y7mgDwMP3kLU2KhEjHJbq7o
+klg4Wv9ieIBWakFajBaavjFanczb7ZiR6ubDAglv8O2BDXR9a/74q55VlfO54AAAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - misc' stamp: 'md 6/24/2005 16:15'!
+                         z#H4sIAAAAAAAAAIWPsQrCMBCG5wx5hwOH1iVgnQzawdIXsG6lQ6hXKKRpvUuwgw9vSgXFxe3/
+uPuP7zyyv+BkTYvFOEwW53KeCJn70WVSSMFoOyBs47C3qGFD6AO5rLoHQ3hTUooUzlU5m6XN
+ef6zAFvoHXsKAzpfjDEa5zXUul0yPEEKsUZaNTQk6e4IWex1VwqR68jfuG8alUjRqLedYUaK
+N8VHAxw+4EfkBAf1/58XcaG1CREBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/24/2005 16:08'!
+                  z#H4sIAAAAAAAAACtJLS4JSi3ISUxO9cwrLglLLApKTUzh5eUsTs1JUyhKTc7PLcjMSbVSUM4E
+SjsmJ6cWF+tBZROLi1OLSqwUNJyCXSsScwtyUosV8lLLFRAqFWwVDDX1gKYhKbGzQzJKE6y4
+qDQ3Na8EyX4rhWgrsIRCDUQB0CVgN1opqJuqx+rxkuICU009Qt4BAMVSq54GAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:13'!
+                           z#H4sIAAAAAAAAAJWQPQsCMQyG5xvuPwQc9EAOHFwKHig4uDjcgYs4hBql0NbS1I/BH2+8E+wk
+uIQmeXjz0EScWgoWNW08px3GlvDYBdIGrXRbdFSWBZM9QSR9ccFYUjAyAi+1Jub6s0VmiknB
+ZNWtH+iCJQZPd/iSsIBZVUtahjRNFlX1cLw68imzUbBX/QKeUBbF8IyDtIJxdi8K/TaW6XTI
+ghtGLxMI0fjUJalnMT78ZT2v6t9f8ALzp7BBRgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:13'!
+      z#H4sIAAAAAAAAAJWPsQrCQAyG5w59h4BDLUjBweVAQcHBSWjBRRyOM5WD6/VIIjr48B5XwdvE
+JSTk488XQZYWg9MGD57lpKlFfe0CGqtdnI59zyhlWTC6HgjNOATrUMHMRnxrDDI3n61mRhIF
+8123f+ohOGTw+IAvCWtY1k1My5DNJouqE0z3Ab1kPgrOKi3gBWVRTC1N2gqq7B4lulpMOTAm
+fQhkvXQS6y3KXv4SXtXNr+/f+Jj54UUBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:13'!
+              z#H4sIAAAAAAAAAJWQMQvCMBCF5w79DwcOWpCCg0vAgoKDawMu4hDiKYE0DXcnOvjjjW3BbOJy
+5O69e/k4QZYWozcWD4HlaKhFc9ERrTM+dRo9WumpLAtGfwVC23fReVQwc2lhay0y15NqmJFE
+wWKn90/TRY8MAR/wdcIGVlWd0jJL02RR1WCme4dBMiIFJzUI8IKyKMYnjeAK5tl/9OGfqJOy
+HPOApxFEckG0pHqDxH3+i31d1b8O8QaB5oFCUgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:13'!
+      z#H4sIAAAAAAAAAJWPMQvCQAyF5w79DwGH2qXg4HJgQcHBSWjBRRzO8wmVu3pcTnTwxxtbwZsE
+pyTk4+VLBMcG3mqDTc9xp0MDfWo9TKetTC3sOc8zlkIB5up8Z6Fo0gm8NAbM1WermRGioumq
+XT+08xZMPe70JWlBs7KStASp6ySqHOBwc+hjYqNor4YFPSnPsrENo7SiIrkXhN4eLzDi8ZYq
+RO7wl+C8rH5/+wKU3KsMMQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:13'!
+                      z#H4sIAAAAAAAAAJWPMQvCMBCF5w79DwcOtUvBwSVoQcHBtYUu4nDEJxSSGnKpOvjjjVUwm7jd
+4z7efRcgoYEzrLEfJHTsG/CpddA9m5g6NiPyPBOYM3noi3W9gaJZH+mN1hCpPlsWgQ+K5tt2
+d2frDIQG3OhL0poWZRXbEqSuk6pygv1oMYRER9FBTQt6UJ5l79G/rRUVyT0f6UlZ0coicBS9
+vmJdRMvjX6bLsvr19hOos0TZPQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 7/19/2005 16:00'!
+                  z#H4sIAAAAAAAAAJWPsQoCMRQE6yvyDw8szjQBC5uABwoWth7YiEUIKwSSXMiLaOHHG6LgdWI9
+wzJbwOWI5I3FIXI5mTyWKUOIjuGvlGGnkJyHpoWrfGstmNWHGmbkomm5G/cPE5IHU8SdviZt
+aCVVXZspwzCbkk3Ot4BY5gGazroRetJbqS0tU1O/7i9K/NMQnZfq16UXfhsTXwsBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:20'!
+                       z#H4sIAAAAAAAAAJWPMQvCMBCF5w79DwcOtUvBNWhBwcHFwYKLOITwhECShlxqHfzxxrZgncTt
+jvfuve8iOJ7gjVQ4OI5nGZrYBjQeSkuT1iP6uzQd8jxjmBsFqNZ6bSBoodPFVikwV5MqmRGi
+oOWu2T+k9QZMDj19nLShVVmltJmlrmdR5WAOnYWLcyRBFzEo9KQ8y8YxjOiCiq/6tUWUCdBN
+8PW7tUiQ179AnTZl9evvF6kz1lZCAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - fields' stamp: 'md 6/27/2005 16:20'!
+                  z#H4sIAAAAAAAAAJWPMQvCMBCF5wz9DwcOtUvBNWhBwcHVQhdxCOEJgSQNuVQd/PHGVrBO4nbH
+e/fedwmcjghWaRw8p07FNvURbYA2yua1U3ZAUQiGvVCE7l0wFpIWJtu3WoO5fquKGTFJWu7a
+/V25YMHkcaOPkza0quqcNrM0zSyqGs1xcPBpziPpJEeFHlQIMY1x4pZUftWvHZLKgNcXeZMr
+vbFlZjz/xZmPqvrX20/j3nxIPgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/24/2005 16:14'!
+                  z#H4sIAAAAAAAAACtJLS4JSi3ISUxO9U0tychP4eXlLE7NSVMoSk3Ozy3IzEm1UlAuSi0pLcoz
+Ci4sTSxKTdHj5dRwCnatSMwtyEkttrNDk9YEagWbZ6WgHleSkVnsnJ9XklpRopCck1hcrK4H
+NR/ITi0qsVJAMkohL7VcAdUwBVsFiLOghmjqEXYeALKxBxvTAAAA! !
+!ByteSurgeonTest methodsFor: 'testing - method' stamp: 'md 6/24/2005 16:12'!
+       z#H4sIAAAAAAAAAIWOPQ+CMBRFZ4b+h5c4AAuJjEQZJIwu4mYwacolkNSC7SPy861EE2VxPO/j
+nstwfMKopcIR3A1NMdxGjVmIwEG3ZKH8oNfIaGPBkzVpdZ+kRZOIIDpU5Sxf9y7PV+vYvy6x
+GYXRdpfG1LdnO3m8rPDKXe+KwTBmJqWlc3UdJm+/J1jO6EtFBg/6ldGePu2XmDj5X/8Jy42/
+FvoAAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - multiple' stamp: 'md 10/10/2006 16:53'!
+       z#H4sIAAAAAAAAAJVPuwrCQBCsU9w/LFgkaYIoWAQUjFimMaVYHJcRA5eHdxv0810jKrFRt1mG
+nZ0Hw/MOndUGOfjUlnlvueoslAqyTds3DEcOHpyowMMeBZi27iqLlCYO3LtmVpx77VAmSpFM
+lBXbq65Fw69WH5RY3geztbXyH4Uvj6oxIY1hLIIPT+09HKci/byb+6YlTYUUzImrGl56QAtr
+/w5ADS40jnBIvoouBuf/6/8Q9gZCUn5gcAEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+           z#H4sIAAAAAAAAAIWQMW/CQAyF5xvuP1jqACwZ6HaCSK3UvWqqdkAMVmroSXeXyHZaBn48TkAC
+JiZbsp+/96wk+kF9wpaaLlPTUxsxfSGL904o7YCp7XIfEwV4sp7iH/EL72VZeTd/bd4OmPtE
+Utf30wXEIspDpqINlZ8AmyBW4QjeOTefegNQqx3DerytA5d3ZMwBbd8O7D55MOxmFLhJwGer
+AWZXMoyT76i/IzfAKpOieUXeT3CpZ6bferet4BIJRYg1wI19KPQPdwHM0/OieviEE/B68LtB
+AQAA! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+      z#H4sIAAAAAAAAAIVPywrCQAw897D/EPCgBSnocdGCgj9gxYt4WOooC7vtkqyPgx/vWhXryRyS
+IZNkJhES1wjO1KhajyqgtsZtDctUqUzgjsSoWx+sg6ZBwrAX8IJPUqhstKxWN+ODg5TlD5mT
+bSTy2aOJFZqDpp2WVOlOKkvRYX4Jaxp+79CT2bSaZh7R9CTLxDjUseU0P+72Pw0KbJNMTPmU
+XO0Lels3IuCoqeeTGlyp75TmNMmL/78+ANExvkAqAQAA! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+       z#H4sIAAAAAAAAAIWPMWvDMBCFZw36DwcdnCwe2k1QQ1u6hzpkCRmE+9IIJNncnZMM+fGV3ZQ0
+U6d7cPfufU8h+oEh+g5tn9AO6IKPG8/y1mfFWa01grgnRtenIUQ4eiga4Qh+4S95rK1ZvLbv
+Z5+GCGma++2SQhblMSFri/zpaOukTLqQNcYsZl0C0GnP9Dz91pHzyrNPzpf78mC/5rHEbieD
+mQ38Q+youiXTtLlCO9JD+G1QTb6dNbuarl28CLgc/eGmjBPdkReYp2X9f3trvgGjxPdhRAEA
+AA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+      z#H4sIAAAAAAAAAIWPMYsCMRCF6xT5DwMWq80W2gUU7uD64yI2yxZhfSsLSXaZyXpX3I83UUGt
+rGbgvXnfmwRJP5i862DHADuhG5w/OBYL32utJA9idGOYBg9Di7xjOIM/+CTrWqvlp/36c2Hy
+kN3uVV3RECXxHBCTRTwaaozkSf+klVLL654B6NLItC3Zaeb47dgF47I/B/R7njO2KQfqesC3
+uoaqB5mKUhBgUxL7qvhbrdqa7j84EXAy9NSXIn7ppXEusVnV77/W6gJs76FZOQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+               z#H4sIAAAAAAAAAIWQMW8CMQyF5wz5D5YYgOUGukVwUiuxVxxiQQzW8ahOSnInOwcd+uObHJUK
+E5Md2e+9z0nQtMPguUXTBzQD2o79gUUbxDPEWqPwFxK0fRg6D0ez3KO7Qt7lS1eVNYuPZvvN
+YfDQun6eLqmLmmQMiKkYOjo6zZV+yBpjFlOfA9CmXmhTvNMo8ZOFg+O8nw0uexlz7LEIzCSQ
+O7Cj+X8ylcmd2dE6IHEm1eldz4v0ZM2por9zWBWSHD2gU8SNnuAzz9uyev0B1vwCGJwjFkYB
+AAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/30/2005 14:52'!
+      z#H4sIAAAAAAAAAIWQPU/DQAyG5xvuP1hiaLp0YDxBJECMSIgglqrDKX1LI91HZDulAz8eJyDx
+sbDYls9+/L6nEH3CmGKPrmZ0I/ohppfI0qHswXe1KM7qvROkAzH6mschIdCF1RhO4Bt+lcuN
+d81td3+OeUyQtv39uqahiPKUUXTmBtoGsUzv5J1zzVLbAfRama5ntk5cHiPHHKLNG+DwzJOd
+3c4LblngT92BVou2KALWQM1VhkYTKD8dtNQnmzD4A/RY91/tNa0W4Bx23u02JujbBxW80V+f
+/32Edx9btdPpVQEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+                      z#H4sIAAAAAAAAAIVPy2rDQAw872H/YaAHN2AMuS6JoYX+QA29lB4WVw0La3uR1MchHx/FTbBz
+ig4aSQMzIyXRVyo59tQV6lPMb5HFeyeUv8DUT0NJmQIebKb0Q/zEB2m8e3zuXv7iUDJJ296Q
+G6RRlL8HGrWj8TPgPYghjvDOap753zOgWnRwZkJVz2gtU68To3AyIbV+qFEhmkXAbiCNlsq2
+2Uha6LScr3nayruPBpd3ogixBqyyY6RfrNNjj+2mufu/dycKFZygOgEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+                       z#H4sIAAAAAAAAAIVQPU/DMBCdPfg/nMSQVqoylM2CSCCxI4JYUIZTuFaWbMc6X0qH/njOARQ6
+sfjOftb7EiryQjngSH2m0WN4Qy57a02hcACmcYrZB3Jwozv5E/EDH8u+tWbz2D+dMeZApeuu
+0S34VITnSEl6Sh8O3l3RCRewxpjNstMJw4xCFfSKeFBJGmViuK9qMnN6RsboUBkG5Ty88ly/
+Vw6zcPC3dQfNagYq4prdMlfOzF7NiJ7HXQOoNh3cRRLUaHpbvJYOZFqffzN1TVUcrBnan16w
+FGJx8KcDSPQJVy1ojNtt+3+T1nwBN1dPCoYBAAA=! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+  z#H4sIAAAAAAAAAI1QTUvEMBA955D/MOChu7AU9iQELah4Fyt6WPYQ4mwNpGmZmeoe/PFOqtIV
+9uAhyTCZN+9DkOURx+QDtiOG6NOzJ74b+jHh8YY6ttYwpgMQBm3GhA4utMb4jnQyVluzum3v
+j750uGnOzawhZhaaeszSYn51sHOsL3yCNcas5lrJMMhAcF14ZKL84Mn3L1HenFdMObro8EST
+StkVoJmB9O3CQbXogPLjqg38XT1SVAWid7eBCsIi0cFVj+LVo6duFsoNyLC0f201lTLvrdnX
+P/l4ZiRxcJICZPyAMzmote3luv5nsF+siLWUogEAAA==! !
+!ByteSurgeonTest methodsFor: 'testing - sends' stamp: 'md 6/27/2005 16:15'!
+                              z#H4sIAAAAAAAAAI2QQUsDQQyFz3OY/xDwsBbKHnqSQRcUPAriih5KD2FN14GZ2SHJWgV/vLNr
+S6WCeElCCPnee0qiD5QDdtRm6jyGJ2S5w/Rxzb1Ya4TCFpi6IWYfyMFZmcm/ER9uamvOb9rb
+d4w5kDTNr4MF+CTKY6SkLaUXB2snpcMnWGMMzHPBUKcDw9VE0JHTPTLGZ6+vbvdnAb995LEo
+W0/fzPyNvx05qI7KZk7ZLE+AmX3RpaX2S6gg7lU7uIykWAwj97N2aUCH4/pgs6km7saaTb1P
+C0WI1cGPWCDRDk6DKV5XF4v6Xxlb8wXwQdObqgEAAA==! !
+
+TestCase subclass: #IRStackAnalyzerTest	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #IRStackAnalyzerTest category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:36:52'!
+TestCase subclass: #IRStackAnalyzerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!IRStackAnalyzerTest methodsFor: 'as yet unclassified' stamp: 'md 2/27/2005 17:41'!
+             z#H4sIAAAAAAAAAFVPwQ6CMAw977B/aPCiFxKuIxz0RqIX8AcaVmFxDLINjYaPt2BCtKf32r73
+2kgh1qYfLV0odoOWYgbjvxhCxObekWm7CLOUYhuoAsrqNBmryYOjpxTCTX2Fvg0Kspwpan2l
+fmS62weyt0MuROKpIfNgCToNyzJoaix6jGZwIWHZOIXubCJ5tIuR4OKu8Smn/16zHlAvjaND
++3qzJ5uuqKzU9kHKKg4HDIF8VH8PFZClHwa6Pn7+AAAA! !
+!IRStackAnalyzerTest methodsFor: 'as yet unclassified' stamp: 'md 2/27/2005 17:41'!
+                               z#H4sIAAAAAAAAAFWNMQ7DIBAEaxf84V6A5BbJRUqaFHY+gMgloGBA3LlIYv89YDdxtxrtaBiJ
+Jz/ngNd0RxLdCjYFIDb25dA/HcMqRNeYGuCrRx2Jy2LZpwh5IXfDOSvoN1lf/1Z963Fq4BJN
+eH+wgDnGHlItI6uC4QGGCAurU3WAXv4AZt9jyJ0AAAA=! !
+
+Object subclass: #BCounter	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #BCounter category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:00'!
+Object subclass: #BCounter
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+
+BCounter class	instanceVariableNames: 'count'!
+
+!classDefinition: 'BCounter class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:01'!
+BCounter class
+	instanceVariableNames: 'count'!
+!BCounter commentStamp: '<historical>' prior: 0!
+    A simple counter with state in the class  BCounter reset  BCounter inc  BCounter count!
+
+BCounter class	instanceVariableNames: 'count'!
+
+!classDefinition: 'BCounter class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:01'!
+BCounter class
+	instanceVariableNames: 'count'!
+!BCounter class methodsFor: 'as yet unclassified' stamp: 'md 2/10/2005 18:03'!
+                  z#H4sIAAAAAAAAAEvOL80r4eWMA9N6ACFGqMgOAAAA! !
+!BCounter class methodsFor: 'as yet unclassified' stamp: 'md 2/22/2005 11:13'!
+   z#H4sIAAAAAAAAAMvMS+blTM4vzStRsLJVgDC0FQz1AAdMAEsYAAAA! !
+!BCounter class methodsFor: 'as yet unclassified' stamp: 'md 2/10/2005 18:03'!
+                       z#H4sIAAAAAAAAACtKLU4t4eVMzi/NK1GwslUw0AMAaIa02RIAAAA=! !
+
+Object subclass: #BSBenchmark	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #BSBenchmark category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:01'!
+Object subclass: #BSBenchmark
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!BSBenchmark class methodsFor: 'as yet unclassified' stamp: 'md 7/5/2005 14:38'!
+        z#H4sIAAAAAAAAAEtKzUvO4OWMK07NSVPISy1XAAvoAQC85YI3FwAAAA==! !
+!BSBenchmark methodsFor: 'as yet unclassified' stamp: 'md 7/5/2005 14:43'!
+                       z#H4sIAAAAAAAAAG2OMQ6DMAxFZ4bcwRsbB4jE0vYEBakDSiUILolK4ioxqpA4fIEMdMCLJfu/
+r9eh10ZkC0QcUTOFCIyRIyxCZMdNlnCZGaspDEi+XhPgkA31N6sZ3jhHENk2CZHQSGy1gQX2
+1eFgfXxYNhLyrT8HlfJs0F9pPIPaWM2uo1EVq0qSOtHw+N3+T2gO257+uhL5wfCi4ORerRSw
+dVjTffLFDyBaP5gCAQAA! !
+
+Object subclass: #BSExamples	instanceVariableNames: 't metaobjectaTest a b'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #BSExamples category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:02'!
+Object subclass: #BSExamples
+	instanceVariableNames: 't metaobjectaTest a b'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+
+BSExamples class	instanceVariableNames: 'metaobjectaTest'!
+
+!classDefinition: 'BSExamples class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:02'!
+BSExamples class
+	instanceVariableNames: 'metaobjectaTest'!
+!BSExamples commentStamp: '<historical>' prior: 0!
+       The TODO List for Bytesurgeon!
+
+BSExamples class	instanceVariableNames: 'metaobjectaTest'!
+
+!classDefinition: 'BSExamples class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:02'!
+BSExamples class
+	instanceVariableNames: 'metaobjectaTest'!
+!BSExamples class methodsFor: 'instance creation' stamp: 'ch 1/17/2006 16:08'!
+                     z#H4sIAAAAAAAAAEu0UkjMc1RIslJIdOLljCtOzUlTyEst5+XkhMgAGWA5ACP+VkMoAAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/20/2005 21:26'!
+     z#H4sIAAAAAAAAACtKTUyxUshPSytOLeHlLE7NSVNILC5OLSqBCSrY2ioY6vFyxpkCAHAQJHwr
+AAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 12:15'!
+                            z#H4sIAAAAAAAAACtKTUxxzs8rSa0osVJILqko4eUsTs1JU0gsLk4tggopAEVSk0vyixRsFZQz
+84pLHJOTU4uL9Xg540wBOgfXxkAAAAA=! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 11:39'!
+z#H4sIAAAAAAAAACtKTUzxS8xNtVIoTs3h5QQSaQqJxcWpRSVgEQVbBfUSdT1ezjhTALr0eCMq
+AAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 11:54'!
+                            z#H4sIAAAAAAAAACtKTUzxT8pKTS6xUihOzeHlBBJpConFxalFEBGF5BwgT8HWFsRJ0+PljDMF
+ANigZOY0AAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 12:01'!
+                    z#H4sIAAAAAAAAACtKTUwJTs1JTS7JL7JSKE7N4eUEEmkKicXFqUUlYBEFWwXlzLziEsfk5NTi
+Yj1ezjhTAGYM07A2AAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 12:19'!
+            z#H4sIAAAAAAAAACtKTUwJS8wpTbVSKEvM4eUsTs1JU0gsLk4tKgGLKNgqGOrxcsaZAgD3jlaK
+KQAAAA==! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 3/2/2005 12:23'!
+                         z#H4sIAAAAAAAAAK1QuwrCMBSdM+QfDnRJloKOAQf/wMFNKoR6Uwt9yE2Kv+9N1KXUzeXC5Tw5
+kaabQ6QBnrvoykWaHZharbQSJMDHSJwcDExmHlAxpYWnk2c/Oi8OFjM7XLBJsI2tdbHakqIP
+Z15I1Fqt4qQD2kFe0WVEbNaU0ldczQ57m/HmR9S/Yr4h6pplD+Iw8/he8Nmn+5G7ZaQpfaas
+X0d7LqZgAQAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/3/2005 17:57'!
+   z#H4sIAAAAAAAAAH3PvwrCMBAG8LlD3uHAxS4FcZFAh76Bg+AmHPGqhfwplyvq23tpdangkJCQ
+313uyxSvFjJ5cCmMnp4d37IF1B0kWWBypjKVgh4wZ2KxsC28hQ2TTByPyBjOg9wtaquy6sas
+K7QNOK9XrSsvSlZi/vFLOmZ8/ZoFoR53tarDP7FX0cKJMWbHwyjzUJcyx0jcJw5L6ocOrpGn
+QFE+uZs33uu6FRQBAAA=! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/3/2005 14:54'!
+                           z#H4sIAAAAAAAAAH2PvQrCQBCE6xT3DgM2SRPwHw4s8gZ2dsISNyrkLmHvQsjbuxe1CWgzsMzH
+7Exgf7MI3MKRnyq5BwtSRewshGuTmUzdBhQCS7TIE3vCSjgO4s8k5C7P+LDjXylKs8zRcNSt
+npqWHEUWxNzji1QiNP1gtE6+xgZb7LDHAcdi/ndNL3qWphP33pi66MbBsY+foeULNhTWVAIB
+AAA=! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/5/2005 12:10'!
+           z#H4sIAAAAAAAAAJVQuwrCQBCsU+QfBmxyjeAbDizUykpRwSKkOJKNBvLQvQv+vptTRCxEm4W9
+mdmZG0t1tqS8YdrwInfEGpZKGD5Z7Sdco8GUhkEYCJLDWEvsNCJEHXOOnr22hilTaEQd4/XO
+5Fqut4ZNdSzcWd++DpWofug9/teiyA/ckriHwUdKiY60lFWudoiYfFL8N8UzGmCIEcaYYIqZ
+8swHaIQ2U3BFRXZHF+r2eLlq2loaQ1GniXCTt/jPSn7Mta9MWa7l1on4Wz7lGwo66Q9R7m20
+NCTbAQAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 14:23'!
+                             z#H4sIAAAAAAAAACtOzUtxzs8rSa0osVJILqng5SxOzUlTSCwuTi2CiCgABVKTS/KLFGwVlItS
+k1Mzy1KLHIvSi430eDnjjAHciPuKQQAAAA==! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/13/2005 20:36'!
+                            z#H4sIAAAAAAAAAGWOvQoCQQyE6y32HQI2d82B7YKFjbVPICxrToX9kdkcvr4JXqFnE8LMl8x0
+rtcTWgmUYs4MkhYInKhz5iQNwTZ6PeR+xK0Hijq9807VmWLvDPkgB9qBZUE9R8QSpg2yvk9Z
+BWXN2yKD5X4D4x9h6ZY07Ec1vbvYyZMxN5SfpkvhKmvd6Q1jSweM5QAAAA==! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/24/2005 11:15'!
+                           z#H4sIAAAAAAAAACtOzUsJSi0uzSmxUkjM80/KSk0u4eUsTs1JU0gsLk4tQhJWsLVVMNEDAIOl
+bGIxAAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 14:15'!
+                        z#H4sIAAAAAAAAACtOzUsJTs1LSS2yUshPykpNLuHlLE7NSVNILC5OLSqBCSok5wAFFGwVQHJ6
+vJxxxgATlFsPOQAAAA==! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'md 4/21/2005 14:24'!
+            z#H4sIAAAAAAAAACtOzUsJTs1LSS0KTs1JTS7JL7JSKE7N4eUEEmkKicXFqUUlYBEFWwXlotTk
+1Myy1CLHovRiIz1ezjhjAKT6/z8/AAAA! !
+!BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/5/2005 20:10'!
+ z#H4sIAAAAAAAAAJ2OPQrDMAxGZw2+wwdd4iXQVdA7dMhWEjCOAoHEAdnJ+St36BDSpZN+35Oy
+pLHbGCpR5kMUWRaJZVOumSNHFiaEnEULo0FjNR64qZRd0zNoWDmkkT0q88Llgu996z6qKxTz
+1OkuRjs6nfu+FRfrGVzH5qL+h+8fFw33KnwDX1YnbQsBAAA=! !
+
+BSExamples class methodsFor: 'as yet unclassified' stamp: 'dr 3/13/2005 15:54'!
+
+BSExamples methodsFor: 'accessing' stamp: 'ch 1/17/2006 16:08'!
+
+a	"Answer the value of a"	^ a!
+
+BSExamples methodsFor: 'accessing' stamp: 'ch 1/17/2006 16:08'!
+
+BSExamples methodsFor: 'accessing' stamp: 'ch 1/17/2006 16:09'!
+
+BSExamples methodsFor: 'accessing' stamp: 'ch 1/17/2006 16:08'!
+
+b	"Answer the value of b"	^ b!
+
+BSExamples methodsFor: 'accessing' stamp: 'ch 1/17/2006 16:08'!
+
+BSExamples methodsFor: 'example - bugs' stamp: 'md 7/9/2005 21:26'!
+
+bug1	self t: 3.!
+
+BSExamples methodsFor: 'example - bugs' stamp: 'ch 10/3/2005 17:28'!
+
+BSExamples methodsFor: 'example - bugs' stamp: 'md 7/15/2005 11:46'!
+
+BSExamples methodsFor: 'example - bugs' stamp: 'ch 10/3/2005 16:56'!
+
+BSExamples methodsFor: 'example - bugs' stamp: 'ch 10/5/2005 16:29'!
+
+BSExamples methodsFor: 'example dispatch' stamp: 'md 6/27/2005 17:09'!
+
+exampleDispatch	^5+5	"reification by hand"	"MultiSend send: #'+' , ' to: 5 withArguments: 5."!
+
+BSExamples methodsFor: 'examples' stamp: 'md 4/22/2005 16:42'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 10/4/2005 16:50'!
+
+literalVarRead	^Object!
+
+BSExamples methodsFor: 'examples' stamp: 'md 11/3/2005 15:41'!
+
+origreturn2Squared	^2 squared           !
+
+BSExamples methodsFor: 'examples' stamp: 'md 3/2/2005 12:22'!
+
+receiverArgs		^self returnParam: 1.!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 3/5/2005 12:24'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 3/3/2005 17:54'!
+
+receiverComplexArgs		^self returnParamWith: (2 raisedTo: 3) and: [17] and: Transcript.!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 3/3/2005 14:15'!
+
+receiverManyArgs		^self returnParamWith: 1 with: 2 with: 3 with: 4 with: 5 with: 6 with: 7.!
+
+BSExamples methodsFor: 'examples' stamp: 'md 9/11/2005 19:01'!
+
+return2Squared	^2 squared           !
+
+BSExamples methodsFor: 'examples' stamp: 'dr 4/5/2005 20:18'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 7/16/2005 14:15'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 3/4/2005 10:53'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 3/3/2005 14:17'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 6/7/2005 18:29'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 3/5/2005 11:47'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 7/10/2005 09:53'!
+
+run	^ 3 + 4!
+
+BSExamples methodsFor: 'examples' stamp: 'md 11/17/2006 15:09'!
+
+superMethod	!
+
+BSExamples methodsFor: 'accessing' stamp: 'md 7/9/2005 21:25'!
+
+t	^t!
+
+BSExamples methodsFor: 'accessing' stamp: 'md 7/9/2005 21:25'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 7/10/2005 09:15'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 10/29/2005 15:46'!
+
+BSExamples methodsFor: 'examples' stamp: 'dr 10/27/2005 18:47'!
+
+BSExamples methodsFor: 'examples' stamp: 'md 11/26/2004 14:52'!
+
+!classDefinition: #BSExamplesSub category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:07'!
+BSExamples subclass: #BSExamplesSub
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!BSExamplesSub methodsFor: 'as yet unclassified' stamp: 'md 7/15/2005 23:12'!
+                  z#H4sIAAAAAAAAAEsqTTfh5YwrAQAqgAeGCAAAAA==! !
+!BSExamplesSub methodsFor: 'initialization' stamp: 'dr 11/16/2006 15:15' overrides: 16990961!
+                    z#H4sIAAAAAAAAAMvMyyzJTMzJrEpV4OUsLi1ILVJACOkBAHH4acMeAAAA! !
+!BSExamplesSub methodsFor: 'initialization' stamp: 'md 11/17/2006 15:09'!
+                        z#H4sIAAAAAAAAACsuLUgt8k0tychP4eUEcxTAJERIDwC8AiMeHwAAAA==! !
+
+Object subclass: #BSInstVarAccess	instanceVariableNames: 'object offset newValue'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #BSInstVarAccess category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:37:07'!
+Object subclass: #BSInstVarAccess
+	instanceVariableNames: 'object offset newValue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!BSInstVarAccess commentStamp: 'md 11/2/2005 19:18' prior: 0!
+                      A BSInstVarAccess is an object that describes a access to an instance variable. It's like MessageSend, but for InstVars.!
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 3/1/2006 10:38' overrides: 16963839!
+             z#H4sIAAAAAAAAAMtLzE3l5YzLT8pKTS5RSM5JLC5WSMzJ8cwrLglLLPJLzE0F8kusFPLT0opT
+S/QAVIIpNS8AAAA=! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:30'!
+                           z#H4sIAAAAAAAAAMtLzE21Ukj0S8xN5eWMy0/KSk0uUUjMyfHMKy4JSywCiRcrZOalpFb4p0HV
+6QEAsCxinzQAAAA=! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:25'!
+                           z#H4sIAAAAAAAAAMtLLQ9LzClN5eWMgzEB/DusLhMAAAA=! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:26'!
+        z#H4sIAAAAAAAAAMtLLQ9LzClNtVJIzPNPykpNLuHlhIkpWNnCRQFN0bPvKAAAAA==! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:25'!
+                    z#H4sIAAAAAAAAAMtPykpNLuHljIMwAH/YmpoPAAAA! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:25'!
+            z#H4sIAAAAAAAAAMtPykpNLrFSSMzzTwKxeDnzwbSClS1cDAC+Y1kqJAAAAA==! !
+!BSInstVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:26'!
+                        z#H4sIAAAAAAAAAMtPSytOLbFSyCvN5eWEcBSsbEFcADWS9mAaAAAA! !
+!BSInstVarAccess methodsFor: 'evaluating' stamp: 'md 11/2/2005 19:31' overrides: 16962752!
+           z#H4sIAAAAAAAAACtLzClN5eXlzEstD0sEMhUy0/wyc6wUouMU8pOyUpNLFDLzikvCEoscS6wU
+8tPSilNLYvV4OXHLKhSUAtkw4/QAkR2+jmAAAAA=! !
+
+Object subclass: #BSMethodWrapper	instanceVariableNames: 'method class selector'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-MW'!
+
+!classDefinition: #BSMethodWrapper category: 'ByteSurgeon-MW' stamp: 'GDK 6/6/2021 09:37:09'!
+Object subclass: #BSMethodWrapper
+	instanceVariableNames: 'method class selector'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-MW'!
+!BSMethodWrapper commentStamp: '<historical>' prior: 0!
+                       I provide the features of MethodWrapers, but implemented by Inlining the Before/After methodsIn before/after methods implemented in the Wrapper class can be called ("self something"), butdirekt instVar access should not be used. (Will not work as it would try to access instVarsof the wrappee, not the wrapper).This does not yet wrap method in ensure block for after.TestMethodWrapperCounter allInstances do: [:i | SystemChangeNotifier uniqueInstance noMoreNotificationsFor: i]!
+!BSMethodWrapper class methodsFor: 'instance creation' stamp: 'md 2/26/2005 16:27'!
+  z#H4sIAAAAAAAAAMvPs1JIDE7NSU0uyS9SyMxzzkksLgYKgWlezrji1Jw0hbzUcoVkZAmFYqgO
+JM16vJwAHwzeh00AAAA=! !
+!BSMethodWrapper methodsFor: 'before after' stamp: 'md 2/22/2005 13:35'!
+                    z#H4sIAAAAAAAAAEtMK0kt8k0tychPAQDS76CACwAAAA==! !
+!BSMethodWrapper methodsFor: 'before after' stamp: 'md 2/22/2005 13:35'!
+     z#H4sIAAAAAAAAAEtKTcsvSvVNLcnITwEAml/QHgwAAAA=! !
+!BSMethodWrapper methodsFor: 'accessing' stamp: 'md 2/23/2005 12:24'!
+        z#H4sIAAAAAAAAAEvOSSwutlJIdM4B0grFqTmpySX5RUCBYCiTlzMZLGVlC1Wkx8sJUwYWhCnU
+AwD0u/CbSwAAAA==! !
+!BSMethodWrapper methodsFor: 'private' stamp: 'md 7/29/2005 09:34'!
+                             z#H4sIAAAAAAAAAIWQMQ7CMAxF5wy5g1UWWMpeiQF2Jk6QBpdGmCQ4rhBSD09J0wGpEuv/733F
+cZ6cxxN2gfHYCbJWlfNJDBFIj/BiEyMytG/IqPM3aDO9N1+80mqEkkBOYNRalaA5wDYhdWDJ
+pAQUwn2IFyS0EriBzYydUfpw3YFjSMIu1lrNS//0TK3YWmWLMZKxOAldU55Yr1V5ZmkeeW46
+NiHL/C+LPO0blgs+B/S2XFvs36r+AGpu/O9WAQAA! !
+!BSMethodWrapper methodsFor: 'installing' stamp: 'md 2/26/2005 16:24'!
+                z#H4sIAAAAAAAAAMvMKy5JzMnh5VSCshRKMlIVyosSCwpSi5R4OYtTc9IUMvNyMvNSnVLT8otS
+HdNKUov0oBJFqemZxUC+X35JZlpmcmJJZn6eHgCnEijOUwAAAA==! !
+!BSMethodWrapper methodsFor: 'accessing' stamp: 'md 2/23/2005 11:41'!
+                       z#H4sIAAAAAAAAAMtNLcnIT+HljEvOSSwutrMrTs1JTS7JL9IDABfbSHQZAAAA! !
+!BSMethodWrapper methodsFor: 'change notification' stamp: 'md 2/26/2005 16:24'!
+              z#H4sIAAAAAAAAAMtNLcnIT/HNT8lMy0xNsVJI9E0FCThnJOalp/JyaiTnJBYXK9gqaKBIKKTm
+lWUW5eflpuaVOJZYKSiDlWlqKmSmuSXmFKdaKUTHFafmpMXqAY0AMlKTS/KLCJsCU4ndIBCt
+kJmXk5mX6pSall+U6phWklqkBwCMG4hzwgAAAA==! !
+!BSMethodWrapper methodsFor: 'change notification' stamp: 'md 2/23/2005 11:15'!
+                z#H4sIAAAAAAAAAE2MMQ6EMAwE6xT8IdL1PCAtFcVBcS+IghMsgS1ip+D3lxw6RLkzu5shoSjk
+iRUjBq/I1JnPWdk+rJ4SXAayLYRHgZFEPQXojDHU1OmswBZb5vgcyhzHGpx97aArL7ZVwk9V
+9ual3V60CFK6i3/l+i8LMSr9ngAAAA==! !
+!BSMethodWrapper methodsFor: 'private' stamp: 'md 7/29/2005 09:34'!
+    z#H4sIAAAAAAAAAE2NMQrDMBAEaxf+w+IqafIA/cDgKgmkMC6Ec8YHiiTuTqTJ4yPHLlItzMKM
+UA5+phuFxYGlbbqDQCvCm21FThyNBJbwoq5tWOBD6KOalNk4RcUzOYyON4QP9mXdrODlLoXq
+vdND/6hih1N//dMgF10Hrikf3K9/nqbLF6btH/yiAAAA! !
+!BSMethodWrapper methodsFor: 'installing' stamp: 'md 7/20/2005 09:21'!
+                     z#H4sIAAAAAAAAAE2MwQ0CMQwE3/dID9YVkFLoIeQ2iaXEjhwfiO5BCATz3Z05hWV56j1su2Ho
+DeQNdLc0J4yuDzpgqLwcxlKpmA7KLUlFoDeizoVzclahJAcZso7J/XWPMdIetoVe6JRv5/Jn
+xM864E1/LuITWhORzZkAAAA=! !
+!BSMethodWrapper methodsFor: 'change notification' stamp: 'md 7/20/2005 09:21'!
+z#H4sIAAAAAAAAACvNK0pNzywuSS3yyy/JTMtMTizJzM/j5QyuBIrlOmck5qWnQmRSixRK8zIL
+S1M984pLEvOSUxXy8n3zi1KR9RW75RdZKRSn5qTpAQD54bwsWQAAAA==! !
+
+BSMethodWrapper subclass: #TestMethodWrapperCounter	instanceVariableNames: 'counter'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-MW'!
+
+!classDefinition: #TestMethodWrapperCounter category: 'ByteSurgeon-MW' stamp: 'GDK 6/6/2021 09:37:47'!
+BSMethodWrapper subclass: #TestMethodWrapperCounter
+	instanceVariableNames: 'counter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-MW'!
+!TestMethodWrapperCounter commentStamp: '<historical>' prior: 0!
+             A simple Wrapper that has state (a counter) as an instvar of the wrapper. !
+!TestMethodWrapperCounter methodsFor: 'wrapper' stamp: 'md 2/24/2005 11:07' overrides: 50347464!
+                   z#H4sIAAAAAAAAAEtKTcsvSvVNLcnIT+HlLE7NSVPIzEvWAwABHqnGFwAAAA==! !
+!TestMethodWrapperCounter methodsFor: 'accessing' stamp: 'md 2/22/2005 15:15'!
+               z#H4sIAAAAAAAAAEvOL80rSS1S4OWMgzL1ADW2gHQTAAAA! !
+!TestMethodWrapperCounter methodsFor: 'counter' stamp: 'md 2/24/2005 11:08'!
+ z#H4sIAAAAAAAAAMvMS+blTM4vzStJLVKwslWAMbUVDPUAK0lUWRwAAAA=! !
+!TestMethodWrapperCounter methodsFor: 'initialize-release' stamp: 'md 2/22/2005 15:44' overrides: 16990961!
+                      z#H4sIAAAAAAAAAMvMyyzJTMzJrErl5SxOzUlTKEotTi3RAwDYJHq3FwAAAA==! !
+!TestMethodWrapperCounter methodsFor: 'counter' stamp: 'md 2/22/2005 15:44'!
+                 z#H4sIAAAAAAAAACtKLU4t4eVMzi/NK0ktUrCyVTDQAwDrq8OQFAAAAA==! !
+
+BSMethodWrapper subclass: #TestMethodWrapperSimple	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-MW'!
+
+!classDefinition: #TestMethodWrapperSimple category: 'ByteSurgeon-MW' stamp: 'GDK 6/6/2021 09:37:48'!
+BSMethodWrapper subclass: #TestMethodWrapperSimple
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-MW'!
+!TestMethodWrapperSimple commentStamp: '<historical>' prior: 0!
+        A simple example for MethodWrappers: Use BCounter to count entry/exit.!
+!TestMethodWrapperSimple methodsFor: 'before after' stamp: 'md 2/22/2005 14:27' overrides: 50347460!
+                   z#H4sIAAAAAAAAAEtMK0kt8k0tychP4eV0cs4vzQPyFTLzkvUAlt3l+hoAAAA=! !
+!TestMethodWrapperSimple methodsFor: 'before after' stamp: 'md 2/22/2005 14:26' overrides: 50347464!
+                         z#H4sIAAAAAAAAAEtKTcsvSvVNLcnIT+HldHLOL80rSS1SyMxL1gMAvOwo6BsAAAA=! !
+
+Object subclass: #BSTempVarAccess	instanceVariableNames: 'context offset newValue'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #BSTempVarAccess category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:37:48'!
+Object subclass: #BSTempVarAccess
+	instanceVariableNames: 'context offset newValue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:32'!
+    z#H4sIAAAAAAAAAEvOzytJrSjh5YyDsgBrTxQbEQAAAA==! !
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:34'!
+        z#H4sIAAAAAAAAAEvOzytJrSixUkh0zgezeDmTIQwFK1u4IADTHMwBJgAAAA==! !
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:34'!
+                        z#H4sIAAAAAAAAAMtLLQ9LzClN5eWMgzEB/DusLhMAAAA=! !
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:34'!
+        z#H4sIAAAAAAAAAMtLLQ9LzClNtVJIzPNPykpNLuHlhIkpWNnCRQFN0bPvKAAAAA==! !
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:35'!
+                    z#H4sIAAAAAAAAAMtPSytOLeHljIMwAPwNu+MPAAAA! !
+!BSTempVarAccess methodsFor: 'accessing' stamp: 'md 11/2/2005 19:35'!
+            z#H4sIAAAAAAAAAMtPSytOLbFSyCvN5eWEcBSsbEFcADWS9mAaAAAA! !
+!BSTempVarAccess methodsFor: 'evaluating' stamp: 'md 11/2/2005 19:36' overrides: 16962752!
+           z#H4sIAAAAAAAAACtLzClN5eXlzEstD0sEMhUy0/wyc6wUouMUkvPzSlIrShRKUnMLHEusFPLT
+0opTS2L1eDlxySkUlALZMKP0AMvBS9VcAAAA! !
+
+Object subclass: #BTester	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #BTester category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:49'!
+Object subclass: #BTester
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+
+BTester class	instanceVariableNames: 'val val2'!
+
+!classDefinition: 'BTester class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:49'!
+BTester class
+	instanceVariableNames: 'val val2'!
+
+BTester class	instanceVariableNames: 'val val2'!
+
+!classDefinition: 'BTester class' category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:37:49'!
+BTester class
+	instanceVariableNames: 'val val2'!
+!BTester class methodsFor: 'as yet unclassified' stamp: 'md 10/29/2005 16:10'!
+                 z#H4sIAAAAAAAAACtKLU4t4eUsS8xRsLJVyMvMAQBVhymsEQAAAA==! !
+!BTester class methodsFor: 'as yet unclassified' stamp: 'md 10/29/2005 16:10'!
+                       z#H4sIAAAAAAAAACtLzClN5eWMA9J6AKlROBsMAAAA! !
+!BTester class methodsFor: 'as yet unclassified' stamp: 'dr 11/16/2006 15:14'!
+   z#H4sIAAAAAAAAACtLzClNNeLljAMyjPQAwa0tOA4AAAA=! !
+!BTester class methodsFor: 'as yet unclassified' stamp: 'dr 11/16/2006 15:14'!
+                               z#H4sIAAAAAAAAACtLzClNNbJSyE/KSk0u4eUE8o0U4qFcPV7OOCgLAILEP+koAAAA! !
+!BTester class methodsFor: 'as yet unclassified' stamp: 'md 11/2/2005 19:06'!
+            z#H4sIAAAAAAAAACtLzClNtVLIT8pKTS7h5QRyFaxsoVw9Xs44KAsAVzKUZicAAAA=! !
+
+Object subclass: #ByteSurgeon	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #ByteSurgeon category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:37:50'!
+Object subclass: #ByteSurgeon
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+
+ByteSurgeon class	instanceVariableNames: 'methods saveOriginal keepUpToDate'!
+
+!classDefinition: 'ByteSurgeon class' category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:37:51'!
+ByteSurgeon class
+	instanceVariableNames: 'methods saveOriginal keepUpToDate'!
+
+ByteSurgeon class	instanceVariableNames: 'methods saveOriginal keepUpToDate'!
+
+!classDefinition: 'ByteSurgeon class' category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:37:51'!
+ByteSurgeon class
+	instanceVariableNames: 'methods saveOriginal keepUpToDate'!
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 09:42' overrides: 16964803!
+                z#H4sIAAAAAAAAAMvMyyzJTMzJrErl5cxOTS0ILQjJd0ksSVWwslXwL0pJLUpNcc7PyUlNLsnM
+z1PISy3X4+UsTixL9S/KTM/MS8zBrQ4Auld0O1oAAAA=! !
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 09:53'!
+                   z#H4sIAAAAAAAAAMtOTS0ILQjJd0ksSbVSSPRNLcnIT/Evcs5JLC7m5UTlK2QWO6VmJJZl5hcp
+ZKaFFJUCdUQjG6CQmJLimJODbo5CLpjnkplcolCWmFOaWhwL1O+WmFOMzQB03bF6vJwgCADn
+XgVbqgAAAA==! !
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 10:12'!
+          z#H4sIAAAAAAAAAMtNLcnIT/HNT8lMy0xNsVJI9E0FCThnJOalp/Jy1ijkgvkKNbycUJaVLaoi
+hfycFM+S1Fw9Xk6N7NTUgtCCkHyXxJJUhcS8yuDEkszitEorhWgrkG4FuHG2tmBWrKZCZlpI
+UWkqUEVxak6aQkZiTkks0CReTgAJs/AxmQAAAA==! !
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 09:47'!
+              z#H4sIAAAAAAAAAE2MMQ6EMAwE6xT8IdL1PCAtFcVBcS+IghMsgS1ip+D3lxw6RLkzu5shoSjk
+iRUjBq/I1JnPWdk+rJ4SXAayLYRHgZFEPQXojDHU1OmswBZb5vgcyhzHGpx97aArL7ZVwk9V
+9ual3V60CFK6i3/l+i8LMSr9ngAAAA==! !
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 09:42'!
+                      z#H4sIAAAAAAAAACtOLEv1L8pMz8xLzLFSSPRNLcnIT/Evcs5JLC7m5UTlK2QWO6VmJJZl5hcp
+ZKaFFJWmWilEIxugkJiS4piDYY5CLpjnkplcolCWmFOaWhwL1O+WmFOMzQB03bF6vJy8nADu
+v98mqAAAAA==! !
+!ByteSurgeon class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 09:48'!
+          z#H4sIAAAAAAAAACvNK0pNzywuSS3yyy/JTMtMTizJzM/j5QyuBIrlOmck5qWnQmRSixRK8zIL
+S1M984pLEvOSUxXy8n3zi1KR9RW75RdZKRSn5qTpAQD54bwsWQAAAA==! !
+
+Object subclass: #IRInliner	instanceVariableNames: 'node num reifications maxTemp variables tempOffset control'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRInliner category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:38:01'!
+Object subclass: #IRInliner
+	instanceVariableNames: 'node num reifications maxTemp variables tempOffset control'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRInliner class methodsFor: 'instance creation' stamp: 'md 6/14/2005 16:48'!
+       z#H4sIAAAAAAAAAMvPs1JI9MtPSeXljCtOzUlTyEstV8gD8qHCegD0UlypIQAAAA==! !
+!IRInliner class methodsFor: 'instance creation' stamp: 'md 10/4/2005 16:02'!
+            z#H4sIAAAAAAAAAMvPs1JI9MtPSVUoLc7MS7dSKEssykxMykkt5uWsUcjMy8nMSy1SqOHlhDGt
+bBWKU3PSFPJSy/UUEMJ5QCOgJlnzcnIqAAHcJCRD9Xg546BagEwAA4jUyX0AAAA=! !
+!IRInliner methodsFor: 'name-offset table' stamp: 'md 7/1/2005 14:54'!
+          z#H4sIAAAAAAAAAEtMSQlJzS2wUiiuzE3Kz+HlLAHy/NPSilNLFIByMHE9AKKXWzUoAAAA! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 7/16/2005 22:19'!
+                      z#H4sIAAAAAAAAAEtMScksyczPS8wJSywq5uUsSyzKTEzKSS1WyEzzy8yxUoiOU9bQjAXx8kug
+Agg12amVxbF6AInzHmdEAAAA! !
+!IRInliner methodsFor: 'private' stamp: 'md 9/23/2005 13:37'!
+                           z#H4sIAAAAAAAAAEVQMW7DMAycNfgPHJslQ0YBHQK0g4Eig5Ot8MDILKpGlgSRbpEij6/EOKgm
+UnfHO/KMAaOjo6C77Cz4yFK6ztzga85w64x+wI+Xz30Ix8U5Yk6FX5KFd8u1bySjhf84JHmd
+s1wr1hkAMCsSkAUmYvERxacInpVXJaeykNL1NVP7DKCqQnP6preq3a7wUz9o0H3EcP2lAngv
+DqkOt6ragPiZeKBMKP+D7zlwmiz0Q992WpwmySmfUl5Z48PowW7mtp1CgQaP4/YP0BQR3zMB
+AAA=! !
+!IRInliner methodsFor: 'private' stamp: 'md 9/26/2005 13:09'!
+                    z#H4sIAAAAAAAAADWNsQ7CIBRFZ4b+wxvhF9hcTFoTTapbw/CE14RIAQsM+vVCidt9N+ee90SH
+XtM9o35JsD7lHQbGx/loTh7d50s7APZ0DYaSPDABkO1GaaZImOXAGFs47waw6WK9ua2yiuhd
+qL4QTWLk0gmHKVdqKltUAtqYgV3P6BL9EUBj6n5sR9HZBg8xxEeISv0AealjA7YAAAA=! !
+!IRInliner methodsFor: 'private' stamp: 'md 7/21/2005 12:17'!
+      z#H4sIAAAAAAAAAEtKzEnMS04NLklMzg7wD7BSyMwrLini5QRTCpnFrrkFJZUKmWkhRaWpVgrR
+ccWpOWmxejD5nMTiEqAi9/ySfAVeTs7MNLfEnGKQOiTpxJQUTxCvNLkkMz+v2DGtJLXISqHa
+MwhJVKEgvyAkv6A2FmwI1C7cZjilpuUXpeI0BOg8kDMVkP0G9ZgeAGNWR6nwAAAA! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 10/29/2005 15:26'!
+       z#H4sIAAAAAAAAAEvOzyspys/h5YyDsgAhZ1OxEQAAAA==! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 10/29/2005 15:27'!
+             z#H4sIAAAAAAAAAEvOzyspys+xUkgMrsxNys/h5YSKKFjZwsT0ADOMfVMlAAAA! !
+!IRInliner methodsFor: 'private' stamp: 'md 7/10/2005 09:19'!
+z#H4sIAAAAAAAAAG2QQWrEMAxF117kDjrBHMAwiy5KaRezme7KFDKxTASOnVoyaSGHr22cJoVZ
+2Jj/v54kW/p+S9PMGsizxE6t4HG54hesnaoSkH2eZvnR8PEpMeHttBmuZwHiUp9D79nLGdUp
+1Qj6DIzOAs+OJAsJ/YCtUYYcKdxcWEjGJ+euaRiQOUQGEzJVcxZghVyl6pPsJcg2V1XaNC9B
+wj5NyavdNshCvhcK/rDWQ1+3fyjr/mMQv9q9wa4HGTEuxHgg11L1IPNHv9VIufMpvXwwCBPK
+GAyk2fSC289d0nTHyKeS+wV4kaKttwEAAA==! !
+!IRInliner methodsFor: 'gen' stamp: 'md 7/16/2005 22:24'!
+                        z#H4sIAAAAAAAAAG1NuwrCMBSdM+QfztgiLXQNODgWnLQ4Crf21gbSJCSpUsR/txV00eXAeV/Z
+7rpOJ+0smROFqEDHeWydkVJENj0C635W+Mi46zQo2GkspVgQarsSbFAtwhkPKURWH2obU5gu
+6y78FIe9ThzIKGQ3CppawxGUvmc58vK3GJML3PDo338oUP1Leecb51fn+QK1a7WlzgAAAA==! !
+!IRInliner methodsFor: 'gen' stamp: 'md 10/29/2005 15:37'!
+     z#H4sIAAAAAAAAAEtPzXPOzyspys/h5eUsTs1JUyhKzUyrtFJQToYIK5RnlmRYKeSV5urxcgJJ
+BStbEEdBW8EQKBBXzcvJ6RnkmVdcUlSaXJKZn6dQUFqc4ZNZklqUmGOlADYRapIehtLikvyi
+1JDU3AKw+Qq6QCMVMM3LLwjJLwBqVqgFAHtgFDitAAAA! !
+!IRInliner methodsFor: 'gen' stamp: 'md 10/6/2005 16:18'!
+  z#H4sIAAAAAAAAAEtPzQvILy4pTi7KLCjh5eXUKE7NSVMozsgvzUkJSs1Mq7RSUC5KLS7NKdFU
+yEwLKSpNtVKIjgMrAmoNAsvEAmXcEnOKU62i4zyDglMLS1PzklMV8lLLY/UAs3aLRWAAAAA=! !
+!IRInliner methodsFor: 'gen' stamp: 'md 7/16/2005 22:24'!
+               z#H4sIAAAAAAAAAEtPzQtKTU7NLEst4uXlLE7NSVMoSs1Mq7RSUC6CiiuUZ5ZkWCnklebq8XIC
+SQUrWxBHQVvBECgQV83LyekZ5JlXXFJUmlySmZ+nUFySX5QakppbANakoAtUp4ChqCC/ICS/
+AGiAQi0AcRK5SoQAAAA=! !
+!IRInliner methodsFor: 'gen' stamp: 'md 7/16/2005 22:24'!
+                          z#H4sIAAAAAAAAAEtPzQtKLS7NKeHl5SxOzUlTKErNTKu0UlAuAosqlGeWZFgp5JXm6vFyAkkF
+K1sQR0FbwRAoEFftGeSZV1xSVJpckpmfp1Bckl+UGpKaWwDWoaCrYFirBwAcFwbHYQAAAA==! !
+!IRInliner methodsFor: 'name-offset table' stamp: 'md 6/16/2005 14:17'!
+ z#H4sIAAAAAAAAAEtPLfFLzE11yy8KSc0t8E9LK04tsVLIT0vj5YwrgYsoJEIE9QABWp5JLwAA
+AA==! !
+!IRInliner methodsFor: 'name-offset table' stamp: 'md 6/16/2005 14:18'!
+     z#H4sIAAAAAAAAAEtPLfFPSytOLXHLL/JLzE21UkgMrsxNys/h5YwrSc0tgEgqZOalpFb4p8Fl
+9Xg5AZXmFi46AAAA! !
+!IRInliner methodsFor: 'initialize-release' stamp: 'md 11/17/2006 15:19' overrides: 16990961!
+   z#H4sIAAAAAAAAADWPywrCQAxF1130HwJudCP4FsFV3fsNw/RWA9OZkknr4+udKG5OQnJzIBxZ
+2QV+o64rAXfsnXKKmU5nurC33smLIh7LklD0w7XrMtT2dVXN5gIPniDUQ++pbYLLmZzcxh5R
+MwnyGNTuJxdG0I8ZsS0nv9KkqHiq6f6y/6h4Voa1YWPYGnaGveFgOJIveUmBBkkeaBfmcvkq
+xY62SSHg+8nyA8fdu6/vAAAA! !
+!IRInliner methodsFor: 'public' stamp: 'md 10/12/2006 14:52'!
+         z#H4sIAAAAAAAAAD2OMQ7CMAxF5wy5gyX2HqCIgQ5IZaFST2DStIoITuW4Ekg9PA4tTLb8v9//
+gbJnOY/iuQbshQNN1poVVBCG1Zrs4wgukXCKNRywWCtrNr0+QfMW3y88+UQdstJgLmNDXRK3
+FAPp+scrWi8lr6AVRWnwgMPQFuTiJCTKe6NvSrWXsMbcMSI5haN7dLduNxxVGcPrujzn/Pv5
+AK4WlGvZAAAA! !
+!IRInliner methodsFor: 'public' stamp: 'md 10/12/2006 14:49'!
+                     z#H4sIAAAAAAAAAD3OPQrDMAwF4NmD7yDongO4dMlQSJcGcgLHUYKpKwfZhhZy+Cp/nWSk50/y
+lJBzjWNkNGC7zJ4mrdUCMskMi1YJwwguUuYYDFz6LVtptQfMDepvxq7whJFay+LBvJbdukdu
+KHiS598XWzrIBlZbKIoDgh2GZiWLyz5SOm/a1lTHGVqp3gZLTnTrXu2zPQJXmYz+8yjvOZ1/
+fjmfgMLcAAAA! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 6/14/2005 16:49'!
+                   z#H4sIAAAAAAAAAMvLT0m1Ukj0y09J5eXMA5IKVrYQrh4AHhLHexsAAAA=! !
+!IRInliner methodsFor: 'private' stamp: 'md 6/23/2005 16:30'!
+    z#H4sIAAAAAAAAAFWOMQsCMQyF5w7+h4zeIiJOBYVDEVx00E061F7qFXqtNj1c7sebq4PnkCb0
+5eV9T51NewzeBWx2sUEJhK+Z4AfeLre195feGCSKifZRwk26QDnBMBNi/h0JPZo8SqhNCwOU
+5uiK3bMuXtChkbfyHfrujgm2S6UqaOLPxffEdGMDqzU4e009M029EpaKhYP2NCrsA/EnzxnI
+QkJnndHZxcD5jDcGMHMRH5hPusNDTCPk2VpC3phcqaqFYgOXWpSED2PjTvgoAQAA! !
+!IRInliner methodsFor: 'private' stamp: 'md 9/30/2005 14:49'!
+ z#H4sIAAAAAAAAACsoSi1ILEp1yy/yzMvJzMvMS7dSSAwuKQIyeHk5cxMrQlJzCxSsbBXy8lNS
+FXJTSzLyUxTyizLTM/MSc3wh0nq8nFAtCpnFMEZaSFFpqpVCdFxxak6aAqY1zkDz4FbFohjh
+lJOfnK1A2AiwOhQzFHApDS5JLEnNTc0rKYar1wMA1c2HDvsAAAA=! !
+!IRInliner methodsFor: 'private' stamp: 'md 10/26/2005 11:56'!
+                     z#H4sIAAAAAAAAAG1TwYrbQAw9++B/EOkloY3p2dDChnZhaXcpm6WXpYWJR3aG2DOuRknWJR9f
+jew0m1IHYmvmSXp6knrC3hDeBrrzrfPON6s2VLsSjL7z7ARVsAjORybwiBbtE3Z9hA55G+y9
+eUnmZIGJDJvk+JCc9OuGmginPEu/1/7lB3hf5NnkKJZPLqP59/wcXq4nIIv5BYcI0f3GIgVV
+fgIYGYPFKnS9axF6cp7XLP8NmLZd7fnWkRAcv78KV/FPjMV5/WuPZvfNUESCPr0+hTsutXhB
+XWpKiVKRwQ4Q2Qgd9ByhTpHPQC1ZgBcvQ81egVcQVz8E/tz1PJTwHLGtAYkC/ShGtWZ5BssG
+lTBE9DYCB+DtJVwBCWKqKpBNVcq1hMGKA6nDOyCUwoQvoatdZdgFn1wI+9ZUCEfHW5UUJAhG
+TSAjsbRYO4+j2uD33QYpKqE8GydBqps/ru61J1rhOW8Jb6xVecrXkyD2Is/SA46ETRcO+Ii8
+Jz8ZKsOaDXGSlXidiPsqiT9mHGFT12a1e+mwBG86UcObdohO9PQQyDVO7PMgFcUsF7gRTiqc
+tY5Duj9Ij6UeVV1PXTr+Lqdgg7SjPMAJ9DZJJ8UcpC1TpODbQXbhqPKkNkpsSb8NYacrIssR
+COXQeDgibM1BFwiJRdLNIISHEbzBWoBCY95Ng/72asc+Xm/ZQlI90V7qfpbGn1dHGCm6hPn1
+0nBIR/8NvPwn8EKG+obIDKKt1vlTRS/+AKNv78YfBAAA! !
+!IRInliner methodsFor: 'private' stamp: 'md 10/25/2005 12:00'!
+                     z#H4sIAAAAAAAAAI1TUWvbMBB+9oP/w9E+NKHMrK+GFrKNQhkZg5TtobigWBdbzJbCnZzOIz9+
+J9lJnTBGMEjc59N33306bQm3ivDR0ZNtjDW2+uw05qBWniRIkz206Gunx22pfj9juwUwlj2B
+RdSoA8L7NE2TSQz5PXzM0mQ8LpEV5pHmiB/45PeY6CX8ij0Dmz+YCedQSRI+9R5XHVXo7HdF
+jATbsA1KJx0c1YtIQZByYGw22YEqrl3pjbP8xeXwkqMqa9jLx1R+Cyr3ECHDQdyiLJEZzOaZ
+OrHm5ZAkkmIWu45KDJCUSGaH34aX6BUoqydnCM2mh3u4VlR1LVrPxZhhhzMrtLqYvxc7c3Qa
+3g6OSm9YeieX0bULqgJ+l8WOh2o5nBQvhPtRNRzIL5S7xko8+2l8ncONCL+ZCry00Fmdyxr8
+byNFIX6HJU2ulJbJqRFkN95Z1cBOZuMqTeLxiJoA/xAUdLz0XbjvCfnuncnZphclb3EYw80L
+t2GonfsVBTK0jlBAZeENoVY7DFOF5FHDuhcT+yF5jRtJFBmzdhz025MOH06f1cRWEMvGFyGK
+YnYOs9NH412A/kn84Yx4DooXRKoPloU+X+MryP4CXtnbwgAEAAA=! !
+!IRInliner methodsFor: 'private' stamp: 'md 9/26/2005 13:09'!
+z#H4sIAAAAAAAAACsoSi1ILEp1yy/yzMvJzMvMSw8uSSxJzU3NKym2Ukh0zs/JSU0uyczP80/z
+DPLLT0ktVuDljFPQ8AwKTi0sTc1LTlXISy3X5OXkVEhMSXHMybHCpscaKF+ZX1pUnJqTBgDi
+O5/VcgAAAA==! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 6/14/2005 16:51'!
+                            z#H4sIAAAAAAAAACtKzUzLTE4syczPK+bljEPmAgBKDHDWGwAAAA==! !
+!IRInliner methodsFor: 'reifications' stamp: 'md 7/16/2005 22:25'!
+   z#H4sIAAAAAAAAACtKzUyrtFJIDK7MTcrP4eXlLE7NSVNAFVUozyzJsFIoKSpN1QMAwxWaGTAA
+AAA=! !
+!IRInliner methodsFor: 'reifications' stamp: 'md 7/16/2005 22:24'!
+          z#H4sIAAAAAAAAACtKzUyrtFJIDK7MTcrPUSjPLMkA8vxKc5NSi3h5OYtTc9IUQGoykxNLMvPz
+ihUSSxCqC0pL4Ir1AJaUO7hKAAAA! !
+!IRInliner methodsFor: 'public' stamp: 'md 10/12/2006 14:52'!
+                       z#H4sIAAAAAAAAAF2OsQ7CMAxE5wz5B0vs/YCgLh2QygJSB+YQ3BI12JWTSCD140nViIHJls93
+7wSXYB0asEMST9NFusBu1lqt4CkmgVWriGEEx5SEg4FD9TRa7R+mhe6TcMgyIdPVSkSBZRt7
+5omlp+CprP+cwigCioGNURKJHwgVcPPp2W+E7JJnimZv1NRCWqm7DZZcwVg3V/VYzqN/n/Nr
++Rm+NCj4EuUAAAA=! !
+!IRInliner methodsFor: 'reifications' stamp: 'md 7/16/2005 22:26'!
+            z#H4sIAAAAAAAAACvOyC/NSQlKzUyrtFJIDK7MTcrP4eXlLE7NSVMoAopmJieWZObnFSsklsDl
+FTLTHJOKU/OAItFxaYk5xamxeryccSVFpal6AApiKYtQAAAA! !
+!IRInliner methodsFor: 'private' stamp: 'md 6/21/2005 13:47'!
+   z#H4sIAAAAAAAAACsuyMksCU4tLE3NS061UsjMKy4p4uWMy8tPSVUohgorgBU5ppWkFvnle5Xm
+FkDVKeQkFpfoAQBRGWuEQgAAAA==! !
+!IRInliner methodsFor: 'private' stamp: 'md 7/13/2005 17:11'!
+                       z#H4sIAAAAAAAAACsuSUzOds5ITc62UsjMKy4p4uTlrFEAi2akZqZnlCjU8HIic61sFTyDgkEC
+jnmJOZVVqUUKiRCGX35KajHUFD2gptScNIXE4uLUohIrFANtFQz0ADq7KM93AAAA! !
+!IRInliner methodsFor: 'accessing' stamp: 'md 7/21/2005 19:32'!
+                 z#H4sIAAAAAAAAACtLLMpMTMpJLbZSSHTJTC7h5QRTCplpfvklfpk5VgrRvJyccFUKVrYKUAXF
+ICozPy+xqBKoOqSoNBWoFiwXC+S7JeYUgwSQFOWllrsV5edCLYrVQzE3O7WyWCElH6jDKjUx
+OUOhRqE4NSdNITElJSQ1t8BKASQYy8sZCwD9JMKLsAAAAA==! !
+
+IRInliner subclass: #IRInlinerAccess	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRInlinerAccess category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:39:52'!
+IRInliner subclass: #IRInlinerAccess
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRInlinerAccess methodsFor: 'gen' stamp: 'md 7/7/2005 17:51'!
+                 z#H4sIAAAAAAAAAEtPzXNMTk4tLvZLLQ9LzClN5eXlLE7NSVMoSs1Mq7RSUM5LLS8DiSuUZ5Zk
+WCnklebq8XICSQUrWxBHQVvBECgQV+0Z5JlXXFJUmlySmZ+nUFySX5QakppbANahoKtgWKsH
+AK/6sXhrAAAA! !
+!IRInlinerAccess methodsFor: 'gen' stamp: 'md 3/1/2006 09:25'!
+                             z#H4sIAAAAAAAAAOVSwUrEMBA959B/GNaLIha9BjysC8KCoGjZiyhkm+k2kk1KJnUV1383aQoV
+d7cXL4I9tDTz3st7M7NCMy1LJLpztkSUGWNbIC88rtF4gm3GTLsGfgnxcwoXecYIdQUOVfXO
+4ahJPNgoX/MOdJZAg0Yg3zqJDuXMao2lV9aAwU2eBXErERQVuG4gYwCquhaakMNjcPJNQ0g5
+1ZrDRzhm8/u5Ie/apNS0VN8oj07ohXBKLHWgXz1ESPhP6WCpjFRmle/SCY0MOTo/u0VvHUZz
+QzQ2PBE/qZQjD75GsMuXEG6y32ESOQc4bCHxed4LB0mTdKuK8JBunzz4i51M0JErujrvAD+v
+CR14FbrF0QDHce6qFPE4TMWnznW8k9HmLiKE74E0tilsEwufT2kDCtf2C/C7DYiO/9IG1Ipm
+1nh8GxlQmQD/eQnC+3mYe/4Ff1+nE6IEAAA=! !
+!IRInlinerAccess methodsFor: 'gen' stamp: 'md 7/16/2005 22:26'!
+z#H4sIAAAAAAAAAHWQPwvCMBDF5wz5DgcuilhwDTh0LDiV0kUUanu1gTYJ+VMR6Xc3aTtpXO5C
+7nfvPe6BIq1rNKaseoeUEuEGYCcIbQ/HhBKDfQsaeftisBkDBU9uOzYjhxkRskHgpsBBLWLA
+20I7ZHChhNzg7SvZZnkmjNWutlwKUM50YcHrhG0vdke9SyKksVLjii6WUUxJVUg1jyag5Oof
+i3PEOMca+bj6ReZnblFX/W+272goGn8V7r/KSqeWRaF4/r/xJ0o+6Rg2YJYBAAA=! !
+!IRInlinerAccess methodsFor: 'gen' stamp: 'md 11/2/2005 21:02'!
+                               z#H4sIAAAAAAAAAJWSTUsDMRCGzznkPwx4qQgLXgMeiicvUmrpRSrE5F27kI+aD6uwP95sWmXF
+tepxZt73mclMnuAWAdI+GnDOeopJJli4FKnnbBSJK7pZ3uE5wymQw77hzGU75K18XcHu6IIu
+S5KzWYRpKW59NnqJrn0TdLYLXgH6nLp2FTIE3XPGqi4cFQX5Ik1GQWwaPk350IwwoxGl1nNj
+BFVjedhcKcR4i/168BToJPPfwJM05V0K3vyNd30Q/8T6vrNfZ1scLHWBtVJkXeq8k2YtQyTt
+C0VAqi31ROUEE32H6umes8+mX+hH66YekD2M/lLzDtqKNXBnAgAA! !
+!IRInlinerAccess methodsFor: 'public' stamp: 'md 10/29/2005 15:35' overrides: 50347931!
+          z#H4sIAAAAAAAAAGWPPQ7CMAyF5wy5QyT2HiCIAZCQykKlnsBNnRKROpGbSgw9POnvwujn731O
+HA3I6WoTslZQJ3bUSTGpnCdWkRH6xqOapJBiQG+VCZQ4eK1OMJcKKVZUX9Syz5UIjI/AJXlH
+WXd4CyXFYdz5DqnasmI7ESGZ99LG9h5a1Otr8prylCUC2raco9EkF2i4oQ2csV1+/ke2H+6i
+5U6mGvBABusE5lO9qg2Y+9Z9n2Mfh73zAzWkzmMpAQAA! !
+!IRInlinerAccess methodsFor: 'public' stamp: 'md 10/29/2005 15:35' overrides: 50347941!
+                           z#H4sIAAAAAAAAAHWOMQ6DMAxF5wy5Q6TuHICqSytVokuROIFJDI0aHOQEqQOHb0gJW0fb779v
+SwE5XnHwjLWCLrKlUYpVpUNkNTPC1DtUqxRSBHSD0p4ie1erU59TlRQ/tr6oDKTMDIx3zw05
+S8l3iBN7GAs+IrX7rtorZoj6lcNobt6kx3JDOlOalBQCjGm21aKj9RTK/0V+/o8UUy5KWA8O
+SGMXQb/bZ7sDm2Cwn8cyzaFkvlCqVS0rAQAA! !
+!IRInlinerAccess methodsFor: 'public' stamp: 'md 10/29/2005 15:36' overrides: 50348047!
+   z#H4sIAAAAAAAAAE2OMQ6DMAxF5wy5g6XuHICqSytVolMlhs4mmBI1OFEIUgcOXwMBdbT9/vuO
+FBwaKgHrFC2/tZrB8pgihEg4NI5g1lqN5DownlP0roRTThVabWx5gZWQTMBIdx8rdpbFd4iF
+PYw7/iZ+5l2ROwIm069ham++lcfWhkJpxTKCVgrbtlp2k0nW83ilzkfhdvtZkPzfy6b+H91l
+W5dwDTpkQ3VC88nHJd7Z72MawsH/AC/XFPolAQAA! !
+!IRInlinerAccess methodsFor: 'public' stamp: 'md 10/29/2005 15:35'!
+                   z#H4sIAAAAAAAAAHWPQQ7CIBBF1yy4A4n7HqDGhZqY1JVJTzCFqRLpQIAmLnp4AaE7l8y89z/j
+0RmQeCY1RuuxFzBGr+nJ2SY0heiF8wjLZFBsnLOAZhbSUvTW9OJQ7aJ2nP2E/iQKlkQHHm/W
+D2Q0pdA9PbF7bMOfSI8662qRgyhfRUZ1tSr9rjSkNaWX4IyBUkMerTJqS+GCczmihR//Iy0p
+FyVqAgOULwH5rsssz/pzXxcXGv8FLtFKaS8BAAA=! !
+
+IRInliner subclass: #IRInlinerMethod	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRInlinerMethod category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:40:07'!
+IRInliner subclass: #IRInlinerMethod
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 3/1/2006 09:25'!
+                z#H4sIAAAAAAAAAH1SPU/DMBCdPeQ/nMrQRECkrpEYKqZKIKRSsSCQrvG1seTYke1QVbT/nXNT
+SKGhHuL4vt69d7cm80ihsnLq1m1NJvhEJGIHPmCgwxt2ifCkV+BIrbYFXOF3JGxUqAowbZ1z
+SJ9Q3MGTk+RI3lutqQzKGjC0yZNEjEprfHBtGQANoHO4hZV1gFpDXxiN5A6sI1ABlAkWEELd
+wAe60S8olHKqdQGfiRCz+exYOuI1ra8eVCCH+gWdwqWmAqYHvKUyUpl1fimHaVlJkduc2/Jw
+C5PzeE9GsiBMrRhwxv4XVDedQoJPIvYcx68oUbyuY1UWhWn8UYAph4o6gZiySCds6pviafkM
+JFteC4wTEoOqgOhg4zmn2jWXxrmqEqOZU8PphLP8v9wfmTC/XH7Yf1SO0Zo2FMMlbLOwTefa
+H67TLUzTMXc5vuHFQP8cHM8zi3/beml1dtzMDvuNv++9OvkXMm0RzvMCAAA=! !
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 11/17/2006 15:19'!
+       z#H4sIAAAAAAAAAGWNsQoCMRBE6xT5hwVL8cA2YGV1oI1cLRyXPRNIsiG7QUT8d+NZKFwzMDPM
+vBumM4ojewwjs9aKMcxQ0M8PA5v4q+DuxRlINXZaNQVz+BjYwr4F1ydopfpLn1hKncRTglzZ
+nbxgGUPbkUWYKGYf0H6J8PferdYsVHDAmBcm7BpGqTWD8kB5aV5vurvh4MsAAAA=! !
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 7/7/2005 17:53'!
+         z#H4sIAAAAAAAAAEtPzfNNLcnITwlKTU7NLEst4uXk5SxOzUlTKErNTKu0UlAugkoolGeWZFgp
+5JXm6vFyAkkFK1sQR0FbwRAoEKdQzcvJ6RnkmVdcUlSaXJKZn6dQUFqcATNWD0O2uCS/KDUk
+NbcAbKaCrqGCHicnphn5BSH5BWCZWpDTAIsY48WwAAAA! !
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 9/23/2005 14:56'!
+                            z#H4sIAAAAAAAAAHWOPQvCMBCG5xvyHw4cxYJrwcmpg4tmdmmvJmDvQnLxA/G/m2ZwqS4vvB+8
+PBfiA6mT4UQ8UDQGEl1HjOTHZ4urVFO8e3Utcp4aA0Wx3c0G17gtwfmFBqA7dpw05l69MIac
+nHU+7YWVHtosBvPx9/9vHaknf/s5UIlkaQoVCzeFBGCJIcFKqM37Axt0hHLqAAAA! !
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 9/23/2005 14:56'!
+        z#H4sIAAAAAAAAAG2NMQsCMQyF5wz9D4EbxQPXgpPTDS7a2cXL2YKXlDZFRfzv9g4R4VwCL99L
+vgvxntRLfyTuKe2Ele5qwECm64CJwvCw2ORfireg3iKXsTVQJ9rtFHCFm7o4PQ1Ad+g4aypn
+DcIYS/bOh/y5bxeF6f3X8gerJHI0xlmK6+oBWFokOokzeb0BLnsIDdcAAAA=! !
+!IRInlinerMethod methodsFor: 'private' stamp: 'md 11/17/2006 15:19'!
+       z#H4sIAAAAAAAAAJ2TO2+DMBSFZw/8h6t0aRQJqaulDihTh0oRibogKrn48lCNnRrTphI/vsZA
+ShqKSkd8zvnuQ5cM5U4jK18E7vGtRpmgRxqoDDNYojQVNB4ZfdF7gIdwsILED98jsi5boWSn
+A5ZHgM2dffTIbYUihSpXteAhFuknhZujVgkiX0ORHnSNFCKPEOfTvUNjgsU7av+nwHRWuyau
+lBJNrvhWsKrVYlf82xDoTD46hz/0dNHUueIaLHhoLBoNDYzzQAjqsnZjHS3sY7FPVup1Nc0e
+tbYQ7zKz7PNCFpKDITdLr1DyxTvZu9AfuFslDZ7Mv/B9NvanTyyxslZidGIjbo+FgbvtzL+x
+rs91hrXrzC3LPVm9MIWSTDwxbUfiitppSUSRJTk07ehTG2pVt5f5zfRJWze4qNPl47aL59F/
+/AXbpKOG6QMAAA==! !
+!IRInlinerMethod methodsFor: 'gen' stamp: 'md 11/17/2006 15:19'!
+                   z#H4sIAAAAAAAAAJWSwUvDMBTGzzn0f3jUiyIOvAY86E4DRZnDoxCb1zaQJiV53RjO/92XdWvV
+2cMCpTT9vvd7X/IqdC/BF4g6E2IHkRRhg44i7DLhugbkHaTXNdzOMhHRlhDQlFsJF23vg42h
+Wu5FN71orMHm56AxoJ57a7Eg4x043MyyTOSFd5FCVxAoByoEtYXSB1DW8lfV9RWU09yUDwiG
+wDjyoICaFtYq5L9QSut7ayV8co7FcnEonXhtF+tHQxiUfVPBqA+LEh5enzBGVeESCzRrhA/j
+tHHV7MQe0WlOu+/65F/qbIVNO+YXglV5aUIkoBqhsCrG/N+meuNlOk9TqLTNMYhZDVLt9Tw5
+ryYb+iGSTB1WwhO6PTz04cKZ/KNtGn5UyENehvVEnhC+Zj9BPFwDn5bXo3aSchTIpBB/SMOM
+nBlu8E2nGyTyVNL6duVb3v/i530cwNk3eQJsdkoDAAA=! !
+!IRInlinerMethod methodsFor: 'public' stamp: 'md 10/29/2005 16:18' overrides: 50347931!
+z#H4sIAAAAAAAAAG1RvWrEMAyePfgdBN3zAIYOpdxBlqOQsXRwEuVqcGRXVloK9/B1fIkvQ0d/
++v4kO0rI8jIJsgHbCTu6anWDjAtDZLRz7xFiSJIGdlEAKS2McNNaJfQTDIGEgzfwZFeXRqu7
+1jxDmWePaBnPgVvyjrJ/DWpAqxqx869IbxvW4deCNGD2PBQ4EivabG2ileGzBOH4GkY0903y
+mPILGOfwjac5ym8nlmXH0/rY48COY7uqlkFcoGSO6/c4Bc62/8i8TauhVtuJctHC+mEbWzoV
+8NGnLu6mS5BSycB7EWQKPnzPnC9s6l98lIjCW+JopV7pssw9cmr+AE7N1DbTAQAA! !
+!IRInlinerMethod methodsFor: 'public' stamp: 'md 10/29/2005 16:18' overrides: 50347941!
+                              z#H4sIAAAAAAAAAIWPMQ6DMAxF5wy5Q6TuHCBSl1ZC6oKQOEEIhiIFOzVh4/A1oWTt6Pj9558Z
+V+D0gJEYrHFd4hknrXYji8QmMrilD2B2rbRaIYzGEyamYM2tz6lKq5O1d5MByUTHUBO/MMwo
+viIWthgvfAJsf28dfDZAfyhPk0v+nSUwPGmQgvmSrFGmY5DuV6hmKfafaKilaMvHLnKLg0ul
+QLMtPfBafQGVTsdsHgEAAA==! !
+!IRInlinerMethod methodsFor: 'private' stamp: 'md 6/21/2005 12:12'!
+   z#H4sIAAAAAAAAAB2LvQqAIBRG5zv4Dt+WQgStbj1AU2M03NBMKAU1Iujh+9kO53CS9cvVJRd6
+W9ZoBMkWJWqEaCzCsb8pK5jXjJpxCyLKdlvwfxpSVpxcVYPBeSjJB6c+uvY5bgqnL6sGN4Km
+RjwPjZfFawAAAA==! !
+!IRInlinerMethod methodsFor: 'public' stamp: 'md 10/29/2005 16:18' overrides: 50348047!
+z#H4sIAAAAAAAAAHWQPW7DMAyFZw26A4HuOYCKTgUCuENRJL2AYtGpAJmSKRrNkMPXVmRDQ7ry
+/XwPZEzB9mjAnoU9XUGrO3jKwpAY7XgJCClmyT37JJBxgrtWWmUMA/SRhGMw8FJrDlo9suYN
+imMtSZbxGLmj4GkhmEpavDths1+RvurtjNOMVCobfmvcr4c6B5KV/qdw0L1Hh6aMKfK0RrvT
+1gqEv4+7Vgqsc93qnHvxkbLZdr0+FXfuU7kgN8V0p0YERpmZvmOqkyCyQ/6cxwuyoWUwZLEs
++8jBcxZwmMWTLQ1NYOn4N9JmzELaPzT428c8pjrzDzPs3Xv9AQAA! !
+!IRInlinerMethod methodsFor: 'private' stamp: 'md 6/21/2005 13:47' overrides: 50348063!
+          z#H4sIAAAAAAAAACsuyMksCU4tLE3NS061UsjMKy4p4uWMy8tPSVUoLkksgssppGUWFZcopKQW
+l2TmJZZk5ucpgPU6ppWkFvnle5XmFkC1K+QkFpfo8XICAOa4lxhbAAAA! !
+
+IRInliner subclass: #IRInlinerReturn	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRInlinerReturn category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:41:02'!
+IRInliner subclass: #IRInlinerReturn
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRInlinerReturn methodsFor: 'as yet unclassified' stamp: 'md 11/2/2005 12:13'!
+ z#H4sIAAAAAAAAAI2QS4vCQBCEz3OY/9DgxWUh4HXAQ/C0N8mKlyXCmFTWQM+MOw9WIT/exAdE
+COKxH/VVdf/Crj202TOkFB2FqCMMbAzUSTGq1JK+im/8JdgKZPGfSWGTGfpGnzYwR/qkRdZD
+5gHcUDi4xHWBtjkrmnmExPGD2mbjExT9jMi6rnNmRVdZn6dATN5uNSeU2TSucjZ6x+/xVrfl
+csh27fULbWyd1bzVPlDter2Crg7UEUkx5ThMX7vNH3b5E/0uLaUYbtmN/ptdAFwdebh7AQAA! !
+!IRInlinerReturn methodsFor: 'as yet unclassified' stamp: 'md 11/2/2005 12:13'!
+       z#H4sIAAAAAAAAAEtPzQtKLSktygtLzClN5eXlzCvNVbCyVQBR2gqGerycxak5aQpFqZlplVYK
+ykWpxaU5JQrlmSUZVmA1umA1cQrVvJycGp5BnnnFJUWlySWZ+XkKxSX5RakhqbkFcJWaepiq
+CvILQvILQDK1CrycAMrEVt6PAAAA! !
+!IRInlinerReturn methodsFor: 'as yet unclassified' stamp: 'md 11/2/2005 12:24' overrides: 50347941!
+        z#H4sIAAAAAAAAAD2OMQ7CMAxF5wy5gyVW1AMUsYCEVBYq9QRu4paI4ERJKjH08ISQdrT9/vs2
+HCmkC00uUAs4pGB4llKskC8pgA+E79ESrFJEshMoxyk428JhLKFGij/ZnqEAOeEx0M2Fjq3h
+rNu9md19Gz4T93XXyNrhMalnSZO+Op0fKxWNkILzCKh191ssKhnHcft+cx8rXm1SiBEtsqIh
+oXr1j776Tvkymc99efu4VXwBgBoAyBABAAA=! !
+!IRInlinerReturn methodsFor: 'as yet unclassified' stamp: 'md 11/2/2005 12:16' overrides: 50348047!
+                       z#H4sIAAAAAAAAAF2PQQvCMAyFzz30PwS8yn5AxYuCMC+KCp5jl2mxpiXrwIM/3jq7IZJTHu99
+LxGKHi0ZwGMSx9edrHywd63VCxx3SSAK4ePiCV5adeRbsIGTBG9gVsKVVl+rWcLgyJGIQpsg
+NXvHGfvPnyLYNAbqQ/1ZeptcYBBKvfApxGyaykf0lXhftKrcEzHZ21BEzTo0+ZcBXSmdh7MA
+5c6zS7efos5Mv81LpBC1Uhf0yJaOCe29ABdZbt1z2z9iN3a8AW2TBWQ/AQAA! !
+
+IRInliner subclass: #IRInlinerSend	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRInlinerSend category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:41:14'!
+IRInliner subclass: #IRInlinerSend
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRInlinerSend methodsFor: 'private' stamp: 'md 10/6/2005 16:16'!
+                               z#H4sIAAAAAAAAAKWTPWvDMBCGZw/+D0c6xIZimu9g6JClkKVDki2koNpnR1SWUn20DeTH92zy
+4UFxhwoM4u597r0X5BLlq9IVE2vLso8wOIGxzGKF0hqo2M9Cl3AKw6BVTZ9huVrjp0OZIUj8
+TsLgrKTWUxLSCaLIoCjA7JUT+Qp5cUzhgenSNTNiUDqFrUeiMUP+hXoXAy822iHJwiDoHZzZ
+w6XZo0prIZbnKUTL1VIaq11muZJQ6zdYHaihaTTPWF0mrW2ZxHFync2EgOt+IGh4Y3MLBlLl
+CLQyZlZpkK6ihqEBO/r+SMuLFybMOcsd7aCV+OY62CVwnxl6mWEnM/Iyo05m7GXGdfJ7yMSL
+TDptpl5m2snMvMysk5l7mXnD1JkGYFV6ef05Xbcpp7/gX48u6pNx/xE4MLO2mssyrm/H6l2J
+5h3Wxm83g+QXFdaNIJoDAAA=! !
+!IRInlinerSend methodsFor: 'private' stamp: 'md 11/2/2005 19:00'!
+          z#H4sIAAAAAAAAAJVTsWrDMBCdNegfDrrEFAxdDR1Mpm4hCV2CC6p1cQyylEpym0I+vifFSZ3W
+Tt1Bg+/evXvv7lyhXlgUzatCzo7gvPDYoPYONBw5631nj/C0XOFbi7pE0PiRcqbbJsQbcVhj
+s4d7eEg5RUPModrGhFlivf3MbZUyzmYx7HamVTLGM7jbW1MiygTq7dq2mMGGMxZxtkNYLLF+
+R5v+TAhbtVEdZQp6syH+c3UCxhL5EOTCkxQJXOmIXrSRGAxh6Y0FMk1uXLAzJvOkpjc8IWWu
+VAZdc9SSWrp2700GOiHs8Gi+pV80DZDGQlrkskPHSdx0OYluRSrzc8kY5+/l/cG4OBWM8YXR
+TPUb6FYRf5ttbrTHg/8vaVdWjN1tSXlr1DTa+QlcxFXHICFqXxst1LOwDiRdwiZDUe7gCECn
+NdQzpG/3m50b5lf0XWkRD5Ozl96Pnn4B4o0qxwMEAAA=! !
+!IRInlinerSend methodsFor: 'gen' stamp: 'md 3/1/2006 09:25'!
+                           z#H4sIAAAAAAAAAH1STUsDMRA957D/YaiHtqgLvQY8FL0UBMEWL6Iw3UzbQDZZkqyl2P53J7vV
+pbprDvuReW/mvZdsyS7Jqrnf1iXZGDJxhBAxUvMHx0zYugR5B+l1DbM8E4HMBjzpzUHCFX4T
+Ya/jTjaw2xbWdWH6k1fkSd07Y6iI2lmwtM+zTIwKZ0P0dREBLaD3eICN84DGQNccrWJZzhPo
+CNpGBwixrOAD/ehiFCo1N0bCZybE4nlxbp3mVXXYPepIHs0Leo1rQxLmzby1tkrbbf4fh605
+RcDmWT/rY6McWvjLCRwnB8P2ZE8xeVhRWXVJCV6ZODE2pcH6f1lnr3FHbTLsVUxmvDWgZgqK
+S68S08GJ3lwgFfp8PtRVo0UMAX6CwHwI0jqbpMuhC0zbPDnyzpj9jG/40DAso+esp+nrUK6d
+mfZ2O6fI5KqOsn+gq1auakun9HxL9+nSs4QBznuHy78AKK+wJAQDAAA=! !
+!IRInlinerSend methodsFor: 'gen' stamp: 'md 3/1/2006 09:25'!
+               z#H4sIAAAAAAAAAJVSwUoDMRA957D/MNSLIi54DXgQTwVF0eJRmG5mt4FssiSzLcX67066bRet
+ezAQQpL35r03SUP+jbx5iaEiMoXaQWJkaslzgl2hfN+CvoO8XMNtWahEroZItt5quOgGGmws
+r/QedDOAxhpCfo6GIpmH4BxVbIMHT5uyKNSsCj5x7CsG9IAx4hbqEAGdk13TDxXQGzEVIoFl
+sJ4DIHDbwRrj7IcUGnPvnIbPQqn56/xQOut1fVo9WqaI7h2jxaUjDU+UEjaU48PSemN9U54x
+k9xK0L3hs7tsakFtN0ZX4xD4rLYxMfCKpGMV2TVlx394G4pc5rbaCvOxpGHRPdKuJp0dEboc
+JEXM7xXloaTbYULx0A1xHsyInVQ5AnRGqF9Kp6f6Z7gTbzrdCaLPIV3oFqGT8y+ZH+M/KL8B
+3stWSdQCAAA=! !
+!IRInlinerSend methodsFor: 'gen' stamp: 'md 6/23/2005 15:17'!
+                          z#H4sIAAAAAAAAAGWMOwrDMBBE6y10h8EpQwRuBTmAW9t1Gnsdi8QroU9CCLl7ZLUu5sHMg7mz
+DCzzHg6KGvdoFEV+Lghsl4/BKVaFt02rgeRNKyqEue4FZ7RluOGriLq+k5hCnpJ1Ap/j2vPE
+9sVBH2xMLvDIm6+fuLTQRMcP50fnq/mpgj/tAFWWrgAAAA==! !
+!IRInlinerSend methodsFor: 'gen' stamp: 'md 6/30/2005 14:48'!
+                          z#H4sIAAAAAAAAAGWMPwvCMBDF5xvyHQ4cxUDXgJNTV83sYq8m0F5C7oKK+N1Ni4PQ4T14f/jd
+iS/EwyIqp8RKTzUgNI1YKI4vhzv53/ARNTjkOlsDzdEdl4B77FpxxbcB6M89i5Z605gYc5Xg
+Q5QfwG4OoqmQpzmvWDx0aAG2mJR9yuvyMc2++3OnSLkAAAA=! !
+!IRInlinerSend methodsFor: 'public' stamp: 'md 10/29/2005 16:19' overrides: 50347931!
+  z#H4sIAAAAAAAAAGVQzWrDMAw+++B3EPQ68gApPWyFQndoA30C1VE6M8c2sgo99OGnpEkInW7+
+9P3JPhZi+eyEuAa8CPt4s+YJigtDZsL+GghyKlIc+yzwtMaaQqEDl6JwCjVscNBX1rxU9Q7G
+vaozMh0SH2PwUZ2XiAqsWcxn/o1iM2EfC3JK3GO4CLpfDVj1WKsWtJqqZRT3M6ZSu08t1a+D
+dB31peEG2/Y4QHcnPsXyRV1ipc2lttbAMG+06aNGs+1/l2md3/so84oBo6PxkObcrDw6//i+
+97nMHf8AXZ5xJZMBAAA=! !
+!IRInlinerSend methodsFor: 'public' stamp: 'md 10/29/2005 16:19' overrides: 50347941!
+            z#H4sIAAAAAAAAAH2PwQrCMBBEzznkHxa89wMqXhQEPWihX7BNthpMN2Wbggc/3hitFkSvM29n
+Zh0PJHFNbRAqAesojk9a3SAZUaAXwq7xBBykQ19HNBe4aa0G8i2YwFGCL2HR5IBCq+dZuYIM
+pPMehbZBduwdp+h3R2Lf4RN+Iq5eWrLnlTPi8JGL144eoznnBrKbYNMjeUbOsARaKbR295BG
+E13gYfp3WrD8jeSkPz5/z0lwgx7ZUJarYzWLad11P3b9MG28A1FcOVyBAQAA! !
+!IRInlinerSend methodsFor: 'private' stamp: 'md 6/29/2005 15:37'!
+ z#H4sIAAAAAAAAAC2OwQrCMBBEzznkH+ZWvZSeAx68+AFS9CAV1nSbLqYtJClY6Mcbg3PZGebB
+zkSfdrmyDNs5OK12zOsUsWtVrjkh5E4sJVnmiDdvEXbxnm0yeBgmO2KHVlmHEl7sZI53SaNB
+RcFVR8jQhpUzjkJ4igm9OEk38it3ub+Qjz+g6boa6v+b+t6gqbV6lpiHZq++BubL4LAAAAA=! !
+!IRInlinerSend methodsFor: 'public' stamp: 'md 10/29/2005 16:19' overrides: 50348047!
+          z#H4sIAAAAAAAAAD2OMQrDMAxFZw++g6BryAFcOhUK7VTI0FlxlNTUkY3tQIccviJ1Mkp6/30l
+ih4tGcCuJMeTVis4ziVBTIRz7wlWrVUmP4INXFLwBk411Wr1Z80FNkIyERPdQrqzdyy+Qyzs
+YdzxifhZd23tiFjsewvTcA2DPLY1tEorlhFq88sVoeSw2OICZ3O829RA9WmlevTIlrqC9lN1
+Z1mP7vtY5pj3hh8e5L3DCgEAAA==! !
+!IRInlinerSend methodsFor: 'private' stamp: 'md 10/6/2005 16:16'!
+ z#H4sIAAAAAAAAAHVPu24CMRCsXfgfpoMTCRKtEUXKa4EuCtJxXsAStzb2nhASH589U5AmLvY5
+MzsuxL7L5zImiQ5izRNFOqGBWAqe1vzp3Abtdke3kbgnMN2X1qxQefAav12YGPoKXU/IFE4P
+h/lM9WcfmHP0BN1QLzGDx+FL72KBFT4RGnRlJznwuVaP4RivuAe5uAm5fKm+rdTedN6rfrtt
+uUgeewmR1X3MtKchVWKz/h+ZYtrH1Ly0FTv9b0rqqM5+NB7eN62x5hd5uoU2LgEAAA==! !
+
+Object subclass: #IRNumberer	instanceVariableNames: 'num seen'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #IRNumberer category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:42:16'!
+Object subclass: #IRNumberer
+	instanceVariableNames: 'num seen'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRNumberer class methodsFor: 'as yet unclassified' stamp: 'md 6/21/2005 13:44'!
+       z#H4sIAAAAAAAAAMvPs1LILOLlLE7NSVPISy1XKEr1K81NSi0CCesBACCmrjYeAAAA! !
+!IRNumberer methodsFor: 'private' stamp: 'md 5/12/2005 21:17'!
+                           z#H4sIAAAAAAAAAEWLuw2AMBDF6hTZ4SZA1EiMAE0mgPAQkUgi7gPr82noLMtmjJZncEeJB+hW
+F++KZep6ahvvBCgvBygVXJ/ZVzqTJA0WI0Qqyz+T6MQacBhKxJN7dwOYA0UoYgAAAA==! !
+!IRNumberer methodsFor: 'private' stamp: 'md 5/12/2005 21:20'!
+              z#H4sIAAAAAAAAAGVPuw7CMAycO/QfbgQhVWKNxMrI0hF1KMlVREoTYZNOfDwJUsVrsXUP2+fF
+q7/32VqqJlEDLz1vmdGybTZKRvhoQ3b80rbw03EMSoNz2zQv3+jcp6Ur/BshiaOc8nyhGMQ8
+V7k0mENF2GH/M6BrqJVRCBeK0sGlctdwtFc8ylQNECb8/VINdetQytA9AWb+HnnrAAAA! !
+
+Object subclass: #MOExample	instanceVariableNames: 'i'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #MOExample category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:42:23'!
+Object subclass: #MOExample
+	instanceVariableNames: 'i'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!MOExample methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 10:04'!
+                 z#H4sIAAAAAAAAACtKTUzh5YxTyFTQVsgEAFr83xcNAAAA! !
+!MOExample methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 10:11'!
+    z#H4sIAAAAAAAAACsuyS9KtVIoS8wpTeXlzFSwsoWw9RQUFAApXTG2HAAAAA==! !
+
+Object subclass: #MOP	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #MOP category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:42:23'!
+Object subclass: #MOP
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!MOP class methodsFor: 'as yet unclassified' stamp: 'md 10/4/2005 16:10'!
+                               z#H4sIAAAAAAAAAI2PvWpDMQyFZw/3HQQZMjUPINoLpSXQtSlZSgZxowSDfy6WnVCavntlu4F0
+KHSSdI7OJ2SDZHIOwccZYkCgJ0cig7nA3k4ZLoNpFR/gWauNgdIHBD6vU/QInwsf4W6s6a/V
+YHoYKjQVzyG/aLel9DhNLILwjs2q1I6ljLAI5Bnmom13T5SqtDK61RUrr0x70NnYw1sqrKju
+JJ4dTTov7z1nUpqPY+Po2RpCuBqVWS0EYXdYQhEbjtje3P2g1+Tkn+xNjon/gusLrty6fG7K
++PvqYHbfOTyFcIABAAA=! !
+!MOP class methodsFor: 'as yet unclassified' stamp: 'md 7/20/2005 10:21'!
+                        z#H4sIAAAAAAAAACvNy8wrLknMybFSSHTOSSwu5uWE0ApwGafKktTg0qL01Pw8PQC/vdIZLwAA
+AA==! !
+
+Object subclass: #Metaobject	instanceVariableNames: 'class'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Tests'!
+
+!classDefinition: #Metaobject category: 'ByteSurgeon-Tests' stamp: 'GDK 6/6/2021 09:42:33'!
+Object subclass: #Metaobject
+	instanceVariableNames: 'class'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Tests'!
+!Metaobject methodsFor: 'as yet unclassified' stamp: 'md 7/19/2005 19:45'!
+              z#H4sIAAAAAAAAAMvMKy4JSywKSk1MsVLIS8xNVcjMs1LIT8pKTS7h5axRKEvMUajh5QRRVrZQ
+cQWoJj+gcqguPV7OkKLEvOLkosyCEoXijPxyKwX1ssQihSKwweo6YIMKijLzSoJLgGS6tUJy
+EVBTHFBYDwCMgTV+hAAAAA==! !
+!Metaobject methodsFor: 'as yet unclassified' stamp: 'md 7/19/2005 19:45'!
+     z#H4sIAAAAAAAAADWNMQ6DMBAEawr/YTsalAeYP6RxRBnpYiziCM7W+YDv4whotljN7kQuOpA4
+TRIsmJaAyBbp8wtesdG8/uuwDzTDNC8hLl5iVpRv2i3ajQTlHLfdDWaJrE5rTj28PEzzvg4v
+3bN6RovTl1e9FZU8ALMONhCRAAAA! !
+
+RBValueNode subclass: #ByteSurgeonNode	instanceVariableNames: 'reify operation tempOffset'	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #ByteSurgeonNode category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:42:33'!
+ProtoObject subclass: #ByteSurgeonNode
+	instanceVariableNames: 'reify operation tempOffset'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!ByteSurgeonNode methodsFor: 'visitor' stamp: 'md 4/28/2005 14:42'!
+        z#H4sIAAAAAAAAAEtMTk4tKAnLLM4syS+yUkgMKMpPL0rM9ctPSYUKKvByxmEThuh0qixJDS4t
+Sk/NzwNJWikUp+akAQAqZvW1VQAAAA==! !
+!ByteSurgeonNode methodsFor: 'testing' stamp: 'md 6/21/2005 13:50'!
+             z#H4sIAAAAAAAAAMss9k0tSeTljCspKk3VAwCOCuCsDgAAAA==! !
+!ByteSurgeonNode methodsFor: 'accessing' stamp: 'md 6/21/2005 13:49'!
+    z#H4sIAAAAAAAAACtKzUyr5OWMA9N6ANg5LWwOAAAA! !
+!ByteSurgeonNode methodsFor: 'accessing' stamp: 'md 4/28/2005 14:45'!
+            z#H4sIAAAAAAAAACtKzUyrtFJIDE7NSU0uyS/i5YSI2CKE9AAckXbHJAAAAA==! !
+!ByteSurgeonNode methodsFor: 'accessing' stamp: 'md 6/16/2005 14:19'!
+                        z#H4sIAAAAAAAAACtJzS3wT0srTi3h5YzzDPLMy8nMSy1SyEstV0hPLYHIuOUX+SXmplopFKVm
+plXqAQBs26Y8MwAAAA==! !
+
+isRealVar	^self isSelf not and: [self isThisContext not].!
+
+IRTempAccess methodsFor: '*bytesurgeon' stamp: 'md 10/29/2005 15:42'!
+
+isThisContext	^self number = -2.!
+
+IRTempAccess methodsFor: '*bytesurgeon' stamp: 'md 3/8/2006 14:06'!
+
+varname	sourceNode ifNotNil: [name := sourceNode name].	name ifNil: [name := self method compiledMethod bsTempNames at: self offset].	^name.!
+
+IRReturn methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:19'!
+
+inlinerClass	^IRInlinerReturn !
+
+!classDefinition: #IRStackAnalyzer category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:42:36'!
+ProtoObject subclass: #IRStackAnalyzer
+	instanceVariableNames: 'stack'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!IRStackAnalyzer commentStamp: 'md 7/19/2005 18:12' prior: 0!
+                              I interpret IRMethods or just a sequence of IRInstructions and record stack-effects. I return the number of items pushed on the stack. This is usefull if you need tobalance the stack after e.g., inlining code at some point in a method.!
+!IRStackAnalyzer class methodsFor: 'instance creation' stamp: 'md 2/27/2005 17:40'!
+                             z#H4sIAAAAAAAAAEvMS8yprEr1DLJSSMzzDPJNLcnIT+HljNMoTs1JU8hLLVfIzCtJLSooSi1B
+VqGpUFySmJytBwAWMQngPwAAAA==! !
+!IRStackAnalyzer class methodsFor: 'instance creation' stamp: 'md 2/27/2005 17:40'!
+ z#H4sIAAAAAAAAAEvMS8yprEr1y09JLbZSSHTOz8lJTS7JzM/zTwOL8XLGaRSn5qQp5KWWK2Tm
+laQWFRSlluBUrqlQXJKYnK0HAG45Ba9XAAAA! !
+!IRStackAnalyzer methodsFor: 'initialize-release' stamp: 'md 2/22/2005 12:21' overrides: 16990961!
+          z#H4sIAAAAAAAAAMvMyyzJTMzJrErl5SwuSUzOVrCyVTDQAwB8HT/iFwAAAA==! !
+!IRStackAnalyzer methodsFor: 'interpret' stamp: 'md 2/27/2005 17:35'!
+                        z#H4sIAAAAAAAAAMvMK0ktKihKLfHLT0kttlLIzCsuKSpNLsnMzwtOLSxNzUtO5eXlxCKqkJJv
+pRBtBZZRqFEoTs1JU4Ab5olQDzUyVo8XAGdn7zhrAAAA! !
+!IRStackAnalyzer methodsFor: 'stack' stamp: 'md 2/22/2005 12:22'!
+   z#H4sIAAAAAAAAACvIL+DlLC5JTM5WsLJVgDB0FQz1APQ/hpYYAAAA! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 2/22/2005 12:21'!
+                             z#H4sIAAAAAAAAACvILwjJL+DlLE7NSVMAcvQArk9BwREAAAA=! !
+!IRStackAnalyzer methodsFor: 'stack' stamp: 'md 2/22/2005 12:22'!
+        z#H4sIAAAAAAAAACsoLc7g5SwuSUzOVrCyVYAwtBUM9QAMpfdTGQAAAA==! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 2/22/2005 12:23'!
+                         z#H4sIAAAAAAAAACsoLc5wKS3g5SxOzUlTAPH0AHUjB2ITAAAA! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 7/13/2005 14:54'!
+ z#H4sIAAAAAAAAACsoLc7wzCsuCUssslIo4eUsTs1JUwAJ6gEAQ4+ysBoAAAA=! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 2/22/2005 12:23'!
+                     z#H4sIAAAAAAAAACsoLc7wySxJLUrMsVIo4eUsTs1JUwAJ6gEAGURzJxoAAAA=! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 7/13/2005 13:59'!
+                     z#H4sIAAAAAAAAACsoLc7wySxJLUrMCUssykxMykm1Uijh5SxOzUlTAEnqAQBOH8NGIgAAAA==! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 2/22/2005 12:23'!
+         z#H4sIAAAAAAAAACsoLc4ISc0tsFLIzEtJreDlLE7NSVMAieoBAHyvtikbAAAA! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 7/13/2005 17:22'!
+                     z#H4sIAAAAAAAAACtKLSktygvJL+DlLC5JTM5WsLJVMNADAKGIeVEWAAAA! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 7/22/2005 11:19'!
+                         z#H4sIAAAAAAAAACtOzUuxUihOzUlNLskv4uWEsRTySnMdi9KLFUoyc1OLg1ILUhNLrBSigdJp
+CgX5BbF6YKVgtp6CUlFqcmpmWWqREky0tDgDLFxcmlOiBACQv7+HZAAAAA==! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 2/22/2005 13:29'!
+            z#H4sIAAAAAAAAACtOzUuxUihOzUlNLskvUijJDy4tSC3yT7NSKOHlhAvnleY6FqUXK5Rk5qYW
+B6UWpCaWWClEA6XTFAryC2L1wErBbD0FpaLU5NTMstQiJZhoaXEGWLi4NKdECQBDtbMNcQAA
+AA==! !
+!IRStackAnalyzer methodsFor: 'accessing' stamp: 'md 2/27/2005 17:33'!
+                              z#H4sIAAAAAAAAACsuSUzO5uWMA9N6ANjb5OEOAAAA! !
+!IRStackAnalyzer methodsFor: 'instructions' stamp: 'md 7/13/2005 14:54'!
+         z#H4sIAAAAAAAAACsuyS9K9cwrLglLLLJSKAEAwJ0Vaw8AAAA=! !
+
+SqueakParser subclass: #ByteSurgeonParser	instanceVariableNames: ''	classVariableNames: ''	poolDictionaries: ''	category: 'ByteSurgeon-Compiler'!
+
+!classDefinition: #ByteSurgeonParser category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:42:40'!
+ProtoObject subclass: #ByteSurgeonParser
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!ByteSurgeonParser commentStamp: '<historical>' prior: 0!
+                             Modified Parser for Bytesurgeon: This adds support for <ARGS: aNumber> access to unamed arguments!
+!ByteSurgeonParser class methodsFor: 'bytesurgeon' stamp: 'md 6/29/2005 13:57'!
+             z#H4sIAAAAAAAAACtILCpODS4pysxLd8sv8szLycwDMq0UEiFivLycccWpOWkKBNQpZIJEUous
+FPIyc/QAvAULK1UAAAA=! !
+!ByteSurgeonParser class methodsFor: 'bytesurgeon' stamp: 'md 9/12/2005 11:59'!
+             z#H4sIAAAAAAAAAFWMwQrCMBBEzznkH/aol35AwZsKuTZ3IZSxBNpNu9kKQj/exKrgZXb2wbw5
+SIZXiTxckzgeI5faUtgZxUogBbDbq7VmoyhEmzXltCc6ZIx3epvOyelvfKQBZRAUrvuXf12N
+NbfqEkzpgQ66Cn+eyzTr02sQpVzTY1nBPRp6AXIpc6yzAAAA! !
+!ByteSurgeonParser class methodsFor: 'generated-comments' stamp: 'md 10/4/2005 15:57'!
+ z#H4sIAAAAAAAAAKVXTW8bNxA966D/sFghQH1Nb5bhwHVaoEhsGHDcHIIWoLS0TGQ/VC7lVpD8
+3zOcJblD7uxKaHWwJc6bN58kh1uhW6k/ymdVK6Oa+rapKlmb+XyWv1NFdlWLSl7Dv121ktp+
+kRth1Ku89wsrVQu9f9xXq6aEn1upVVNcL+fvWiO0yR7l3ztZr2V2J81LUzwIY6Sul/N59/ty
+PosEAT/Dz2FRdbC3+TEBPmhVKesJVfF4K2R0vshq22ihlWypvhFG2qDbzOtbYNuRBFcdCXjc
+JWUWPofFzubgTrat2Ei0m6TlD7ApViWJCqEPkCGEf5L7fxpdRIY89lnp1qAfHMq6871bT82c
+aSdj9A8LURR3VBnMh4yBzTy/yvM+hw6a5fl1nnvj20SKJL5YwNHnnWSy9XLrLq1Xiu6hX5V5
+wYKhAaKDfh6P3iOnJrQWe8sOMojB4/c++DZDQTCybuoiYu6RYICnZkhpbTC9XTpCVKNcAfJZ
+tSZssA9Je4wCIZq/IMxf/91qKAPscEJxWGhpdrq+KbodNgF11jp87Lo1B973aiQK9O73esq/
+WA9T8zMa+KVs1t+xht/AK/x1ozeuPP3Bkud/hmqtLMj2gwW6kL7x4B5/3yRoamoInwAfpxqK
+njPImxF/+/4NfBj5JcCSXd13pcsr9WCIJwntMw3cN/BlU1t30nIh6a1o16KQM1Zo9z0EOJS5
+UwJk6P1PcTfl+QXNpt9aQHhjm523hdHxos8Kzi9R8kIma72TffDgp0dmVyIsM23Zq1gGlx+8
+v/B0e5R1MZFICH4J2XDggFs7mu6aCURAG47qhD3KjSL3DnGAYp5OQHrDYJSC2WKoE4DY69nE
+HUZjHcSRDXjCXYYqXGDn6LjmzBg3E/DA1eiidSLYdDu/gyYu2+5uHNXO2Ns2AXFZ+g/VPrF5
+BybY4qRdcEZtTqv40jAtNixNBMpsaeJ5q5NPlCdwkPz+z9wNYmYos6dz0/B0Rhae0iScmEvt
+wWcPWjybD+mN9EbPZpw+UMOfjpcZZ+DVSy3UncdIb/RO0sHrsCiV+QKL7up8FmU7BPxmVx2i
+VuVAfq/Kbrx275FEiosOEL9TOFhmcesXocXaDLhuYb1jao1W9eY68eQRV52rC8jlAEdgXVtS
+cJzIDjoART09DfVnywnGalcalWBHoKK0jwPoj08RPEFn9gOPATt3oKJ7MNKXgB2cWnhyCKpQ
+2d8TSr0OHYuDe2722huJHR0Nauhi1+hvRMEOI65Dvc5Fby1VuUxeDaTk0OnzYDkd21cgAKAU
+Fd6XwcGkYynwYWfo9mFp20AZhYB/6RjkkZ6TAoCTmZheRek2Jbe7QUZag+1IDpe2I4fhepHD
+jTQiA52usZ22mtrY0+49nd9HeijGXol6b4+E0Yjo+7ifGI7DJ3LIDSt1zrMyDG9EcjEqOYxK
+3kYlyxGJf7PxQmwfXhT1zXKe/wDj3ycedhIAAA==! !
+!ByteSurgeonParser class methodsFor: 'generated-accessing' stamp: 'md 10/4/2005 15:57'!
+      z#H4sIAAAAAAAAACtOTszLSy1yzkksLubljHOqLEkNLi1KT83PC04GywAA6BINpyEAAAA=! !
+!ByteSurgeonParser class methodsFor: 'generated-starting states' stamp: 'md 10/4/2005 15:57'!
+                        z#H4sIAAAAAAAAACsuSSwqycxLDy5JLEl1yy/yTS3JyE/h5YwzBABZQF60GgAAAA==! !
+!ByteSurgeonParser class methodsFor: 'generated-starting states' stamp: 'md 10/4/2005 15:57'!
+                            z#H4sIAAAAAAAAACsuSSwqycxLDy5JLEl1yy/yTS3JyE8JSCwpSS3K4+WMMwYAODXH6SEAAAA=! !
+!ByteSurgeonParser class methodsFor: 'generated-starting states' stamp: 'md 10/4/2005 15:57'!
+                    z#H4sIAAAAAAAAACsuSSwqycxLDy5JLEl1yy8KTi0sTc1LTuXljDMCAHLTUEYcAAAA! !
+!ByteSurgeonParser methodsFor: 'reduction actions' stamp: 'md 6/10/2005 15:09'!
+          z#H4sIAAAAAAAAAEsq9k0tSbRSyMtPSeXljHOqLEkNLi1KT83P8wOKKOSllivwcgJBUWpmWiVE
+mUJJRmZRikJZYk5pqkJicXBlblJ+jh4AY3jlE0kAAAA=! !
+!ByteSurgeonParser methodsFor: 'generated-reduction actions' stamp: 'md 10/4/2005 15:57'!
+           z#H4sIAAAAAAAAACtKTSlNTnVMLsnMz3PLL/IvADEScyIiIgpSizLzUyIMrRTy8lNSixV4OeMU
+8jJzAPjrGPQxAAAA! !
+!ByteSurgeonParser methodsFor: 'generated-reduction actions' stamp: 'md 10/4/2005 15:57'!
+       z#H4sIAAAAAAAAACtKTSlNTnVMLsnMz3PLL/IvADEScyIiIgpSizLzUyKMrBTy8lNSixV4OeOg
+LIXEEitDAJXvEdM5AAAA! !
+!ByteSurgeonParser methodsFor: 'generated-tables' stamp: 'md 10/4/2005 15:57'!
+              z#H4sIAAAAAAAAANWVTU/jMBCGz3vgP0TKBW6N81W4VSsh7QG2UivR00pOMttaJE7XdpD674m/
+GscEQoU47C3vM+PxjCceM6i6Era4qOHqx5/w+iq8jrNgEYSYMXy60RIF4V/CuLgzOg1CBqJj
+dFVVlsWWaZCPY+QyBrbeyyAyEX9RS2Jlj7W8lat1aqtSkJbet+z3UX7gerfbHYGRttpF1jn6
+hDNSzsnivPXndCQT51C2tDK59sjNNUHyOIq6LZ+fiDis2J5bHhv+2E5Rl+VOhC00R2OI1U6c
+kz1tgJqMEi/DRDqVmJe4Ak1SSXTOFoyXXKpVd1Uztc6lvSZiyzoYk3tccw89ktoDXVMAm2c/
+D9gjG8EI3VuGHLY5NUVbe5ZvZUnfMv4AAn8E+lUr99gm0NvK1O04X51k6Xfz1uvOjE4XMv8G
+OMd7WGN2pvovfvANkeO+AbPpRRR9mcYXUHUfOorZyZSicTpZdfYOfecscu8o5/RyRqvWvGBG
+5LxVKFN9ODLSEEFewC0hiyYry6KpGrTzsFWGpObwrwNagkVoQONRk8Vy4hYnAf2fCLgxDLls
+3ZnQifTlg1+i4o59Ul1pbQaEo51r9I1UzsSWin5qcvQRm1ptfhJxaCsLYgvWfacsTCxU5zhY
+vAs4p/PF8ID1T5dm0fACOgz9/+zmFf/ZMvRyCAAA! !
+!ByteSurgeonParser methodsFor: 'generated-tables' stamp: 'md 10/4/2005 15:57'!
+                  z#H4sIAAAAAAAAAN1ayY7cNhA95+B/IOCLfSOLZJH8j5wDOEAOBgIHSPz/yHtVUkvqmd7c0ngS
+YEBKFFk7a+v5/veXb/98/f71r2+/fvn9zz8+/PLbx08fPn7KIbUgJUgKUu0PryPUGHIOmkJu
+QfWzbSwppFBqwNMIJdQceqgtDG5LMWgNSYKOkHJoAFtDayFp6IkoOr720EeQGEYmugFEgoNA
+jN2xkooUR8hYBIismFrIHVCBNmKqoeAbqCs4APIKDoA+kJRAW8EBPBYgJX04V43SBBoraACV
+FcdBJtYT6Kz4BkIVRAdtn68KI4EXTdwjWAFeSgHnOthPpI1cg2XwCxDgFGwSipA5QARTJxQT
+q5BLHWdL9bSUoxAJRn8uNqqN3cbhe6JP4tN0sPrk2ylFTn5M/IA4cPFz4ueMhkHGDbF/m+k+
+U3+CFvU9GwFA32cEAuwKdQH7yhYkxC3rGmTFvoDI+ubsS3JiDrgKAkQqznnqABBoemQtpdm+
+y8bE0zi3ct4YnS4NrQcc1JMQhUYsZmRC63thVi7H/SQolNJDJnNTSseTPI4gGUsjThqdfNYD
+DkuAn7SSVynJNxjVUoY7ymx6BxHUPYiQCa2YbCYSZHejIoKxQiD7W+1K18tdv0PhSkT3ar09
+5+nutQFyv7cCUo5HAC0HAC1ygP2dPCUSolU+8BB0gO4T6EUCB+gqR8aw2bKBQczeAAT2i60C
+A86Da8uJQN+xoYx5glFU7OjMwmpL0WnH6mBmFiWWSoFc3pFiL3OqWZdoWws3Fm6sjqM7Hl4k
+4BrmZvCJ3EXblHGfKrMWgFMuzKSMfovYFPX6lvPw/5gfuNMF5HSwC1jlNX3D8FoUW2mtJCCm
+dI7UHqfi0zjTChepFvBBfYAP6ENWWaSYuDkaJHVIelHN/EaAWKGemY0DLg1G7dspq05mqtPd
+S2ZZtlZ8qj5Rr3bd+Jb92Hm+t34SQnow12f6LAuE0XeoFnJZqoWM+sPHZuOwMSWfxCffAOHa
+VH1Sn/wY64Hhih7FyoJhlY9NDkUcijgUcSjix7NvoW5ggy2dh8sX9cF/6bJkfEdJoJeKn/9D
+7Ztr3tY7WfWF2fH8bHZqAQkwsE4QSOG5cToMhmUOLIn14QRhXdMuESd38y955POIA9GkyZgy
+fYOPlAJ8cJ4+WKbH0Z+Hr/gSb4B4KSxeCouXwuKlsHgNLF4Di9fAfvWylyc2+TnxczKdc0TZ
+D2SWF4iuZc4vDshvUz0ivapHJIIqR1B6RCKoByiqRAav6Tnl1TNbEWsnIqc+AoA/4ByLPFBS
+lP1rXwJakibPC09R/bXQXRisCxBnxuwCrIjZBVh1rg5rvCv1OqTUnkRTyP65MAokUakly/YK
+ZYJFTW/QAZjJ0tfIoh6AHChwgxd66LT0Vp4reZsKn0taxBIz8cRMPDETS8wKfXu1t+wbT97a
+DGFBEa+jYKZjI1FwKj4tKJiU+MYT0CK3WSs3WLPs1UOETcWnFWvirMkbWF7pBxX4kspTyWqe
+/BK4Ye90AEQZzJE33BdG6PKKECqYBYIKZq85qmqeEpyYr6jJfMUkmsqQjC0UzZMNmDuVUenM
+36jwym0pLCqvAnsGcwLVymNl6P8mD61kUTZpZ81L2rlqG9cyt40hrnizsB/lB1uelvaVJYTL
+OtjZDymb93FTc5XtUozssk8r5H8ya9NfpQLTLQVevFPqclPzfrVZP7Y2b5R09mNP9g4jQNpS
+O30fhAwi62SRgDhxpIA6M5vKz4vRGusxntIDxqb5kVu/0BbJXS60RbK1Ujiy9ugWM206BRa+
+Zd94Mpd4qcliLoAjw1Sz6t2mpTXSyro10l5pgXHxBFAtpKuHdPWQrt5r4acFkuqqayOrOlDs
+nnE0mqLTFDc0xQ1N8WW7RlZ+T+p5GrK+sulmQiimDI7WR/RY3mVNULfqzaZm0yIkvi2sWTbS
+PBtpno20vmGtOwHdWesr1vi28HQ9/3gPSayyNdo2SePJrDfWLmPueD3crWIVpD9UVjUvqOaS
+Ke4ARGQPSsoeQPoOQPIOMsljF0r2kInsYSdxBxXntvxYoExJp0fZpGf8V5j2WlOLLaUjfqmZ
+KqVX+mAq77APprLqg/UDGkE5e2mzBjhDuwGnziFfnoagz0LI/VkINT4LQZ+WQ36aBnlWkqkd
+0RdtZf9/IHjZ9FZu2zS9ReVyUqTv4fdJzW/wLwrgiD/OXS+UtPzsQimVbf2nrO7m6/n8BX/W
+0bWrP3l//he7BWfECCoAAA==! !
+
+IRAccess methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:19'!
+
+inlinerClass	^IRInlinerAccess!
+
+IRAccess methodsFor: '*bytesurgeon' stamp: 'md 6/23/2005 14:08'!
+
+offset	^number!
+
+IRAccess methodsFor: '*bytesurgeon' stamp: 'md 7/1/2005 11:30'!
+
+IRAccess methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:22'!
+
+IRAccess methodsFor: '*bytesurgeon' stamp: 'md 10/12/2006 16:22'!
+
+!classDefinition: #ByteSurgeonScanner category: 'ByteSurgeon-Compiler' stamp: 'GDK 6/6/2021 09:42:56'!
+ProtoObject subclass: #ByteSurgeonScanner
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ByteSurgeon-Compiler'!
+!ByteSurgeonScanner commentStamp: '<historical>' prior: 0!
+                   Modified Scanner for Bytesurgeon: This adds support for <ARGS: aNumber> access to unamed arguments!
+!ByteSurgeonScanner class methodsFor: 'generated-initialization' stamp: 'md 10/4/2005 15:57'!
+                              z#H4sIAAAAAAAAAFVOwQrCMBQ797B/COyw9SI6FGE3wZsI3seUunX4sHSj7RgTP97aydR3SvJC
+EtLkSCh6yIMch9bUR9FF7D5jXLCnylGrhRmh5bCIWJzGabZG0ghlZYLVFhyTokl5vpm5M703
+ZEsvcKBu84j5K3IpqhueCCz9KYNw068hYx1Aze5qpXan3uXF/46SB3ca7G+U8RDH0PWfECWs
+K/3eM74VL/dwfHDwAAAA! !
+!ByteSurgeonScanner class methodsFor: 'generated-comments' stamp: 'md 10/4/2005 15:57'!
+                   z#H4sIAAAAAAAAAIVSTU/bQBA95+D/MDgtsQOmvZaEpAjEBamXSq3UDKCJPSQr1utovXy4Qvx2
+dsfBCRESB8szO2/mvXm7dU7GsD3nW2WUU5U5q8qSjYuiXjwuOFcl6V/35Zzt5Lg3+579uDqA
+BI+gDdMpjKKxpUI9daA3lBXMafZvq0OytskTay42XTtkUK8pApafVpXxojp0sot+hncqUmDA
+bLo1wnREvU96Q75DGI7e6ZWJvCCnHrgThRm80ciCziqzEMYeDgBm1zi4GoIPE/91WTqUYVRy
+C51R9j/YBOsgbCCQO24eK1u0Kwge8DgUynvt1FZ1U0w2YSouzJUh2/xuynml5arwBffwJ37F
+fRxihgd4gojPOMVvOMExHnoZn0JEHdW1WpjwcsJcT4gn3jW8kZp2bA05vuxEesBHMlszHpfK
+cb2iXCzBWqTn7buU9TGOg4FxHBz0cSgvyVLu1leMX+AonK7YqqpY34GcPJBVNNd8uq13I8Wr
+HkVesWnO/EBp9G3Qh4vKwp+/oL0ySxrIWmpqcEtysCRTaIZ+Mkohm/h/fzAapFH8CgFpdzBb
+AwAA! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                              z#H4sIAAAAAAAAAEvKzEssqgyuzE3Kz/FM4eWMMzIHAJkBHSYTAAAA! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                      z#H4sIAAAAAAAAAEvNLSipDK7MTcrPCcnPTs3zTOHljDMzBwA3f+MoFwAAAA==! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+              z#H4sIAAAAAAAAAEstKsovCsnPTs3zTOHljDOzAACME8i+EQAAAA==! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                      z#H4sIAAAAAAAAAMtLzE31TOHljDMyAQAT/q8PCwAAAA==! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                              z#H4sIAAAAAAAAAMtLTU8sySxL9SvNTUot8kzh5YwzMgIANK2jyhUAAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                  z#H4sIAAAAAAAAAMsrzU1KLfJM4eWMMzIEANCauewNAAAA! !
+!ByteSurgeonScanner methodsFor: 'generated-tokens' stamp: 'md 10/4/2005 15:57'!
+                              z#H4sIAAAAAAAAACtILcrMT/FM4eWMMzYGAOP0QbMNAAAA! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+                             z#H4sIAAAAAAAAAHWPMQuDQAyF5wz3HwJ2aIcKOgpO7Vi3bmLhuEbvQFSSSP9+vaOFDjZDeJD3
+Pl7E2akwIDT2KEpLbsCtzDTpxVu2TokxyDUMQdEAYOjvvFK1SWjTSklkcjM/G6vOV9mxLPCU
+x+svFv6Cu0je5uXDSBGf3A9MaaZlZr1Z0UTv9gpiXR/O+O3WfpLxtTL690lvgQY9WvoAAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+               z#H4sIAAAAAAAAAHWPMQvCQAyF5xvuPwR00KXYjoVOOurmViocZ+odlLYkKf59764KDtcMIeTl
+feSxNWN50opx6IEF50IruxDhKGdnyFhBAs8X//ICWinw/Z0WrMOo2tSSEwjtRM+bEevq3aEq
+4VhE9R+rNsFdJId6Oz9gxOevoWn2CL8P2gesdBsSdNsOzjqq1fHdEM4TydWwpARRyysfrYLa
+Wi8BAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+      z#H4sIAAAAAAAAAH2PQQuCQBCFz3vwPwzkQS+BQQQLHqRrXaJTYjCuYwo2yuxa0K/PdE8F3Qbm
++96bsQY5SQJlqasBhEwv1RGdafQq2mwhXvuVdTRMcxSZUYTY7RsUNI4EoCT3JGIdZgDIlQ4v
+MQRKQS86/0Ojp19FDNDWZxlJ51dY2gzyrpj6fv00DdM5/kvxt2dcnWjoxfknHigtlh1l1rY3
+vk9Zn1jvyEwe0C70G2QYiKsMAQAA! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+                  z#H4sIAAAAAAAAAHWMMQvCQAyF5wz3HwJddCnYsauOunWTCkdMvYPSliTFv+9dJgd9Q3jw5X1K
+cekCKM8TqvHWBqBdhBc7pyiRjAWzXvIrGwYAzNMgO/elwt2PL1GYVnneolHqm0N3wmNb6bcW
+/orHai55pzxz1fv3A30tvK1i16jm9rGw3+QDXoqKbsoAAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+       z#H4sIAAAAAAAAAHWMMQvCQAyF5wz3HwJddOlQt6466tZNKhwx9Q5KW5IU/753mRz0DeHBl/cp
+xeUUQHmeUI23NgDtIrzYOUWJZCyY9ZJf2TAAYJ4G2bkvFe5+fInCtMrzFo1S3xy6Do9tpd9a
++Cseq7nknfLMVe/fD/S18LaKXaOa28fCfpMPvM8l4soAAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+       z#H4sIAAAAAAAAACtOTswz4eUsTs1JUyguSS3Q4+VMLi0qSs0rcc5ILEpMLkktUsgsdslMzyxR
+4OXkVMhMCykqTbUCMjmjwQRYp0JRanJ+UYpvYklyhpWyhpGRgqYeSBbZWE6cBseCTAaC8ozM
+nFSQ8WDVcQpg3UWpBflFJT6JxSVg02OxOVDB1lZFVwHmtmioTpDXjEHqsZsEAJMJRxX6AAAA! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+               z#H4sIAAAAAAAAACtOTswz5eUsTs1JU1AoSk3OL0rxTSxJzrBS1jAyVtDUg0oVl6QWANnJpUVF
+qXklzhmJRYnJJalFCgq2tirqCgqZaSFFpalW0XEKENXJiXlmsUD1UH5RakF+UYlPYnEJ2GwA
+vjO9d3QAAAA=! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+           z#H4sIAAAAAAAAACtOTswz4+Xk5YwuTs1JUyguSS3Q4+VMLi0qSs0rcc5ILEpMLkktUlCoq1NR
+j1Uoz8jMSQ0pKk0FqolTgOhITswzBQAtD4vURgAAAA==! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+                    z#H4sIAAAAAAAAALWQMQvCMBCF5xvyHw7s0C4dHBQCHURH3ZwMFWJ6tYHSlktKwV+vaSsIFjfX
+e9/xvjtndLMVIEA5qkt0nrpUgOmZqfH7SrM2nhitO9i79YgtSwEAKv5C8EZ+IGpktEPUTSGj
+S4KBhbCkfvB65h95no8bQ2VrOnNPSyqYZZEMGNoyMJPPaI9MpuXipL2p5CpebzBJQ/p5GkD8
+H/cE30LqilOjef02HzvnCVPXsj9q50fHkC0nT7yIBFyXAQAA! !
+!ByteSurgeonScanner methodsFor: 'generated-scanner' stamp: 'md 10/4/2005 15:57'!
+                              z#H4sIAAAAAAAAALWQMQvCMBCF5xvyHw7s0C4dnDTQQXTUzclQIaZXGyhtuaQU/PWatoJgcXO9
+9x3vu3NGNxsBApSjukTnqUsFmJ6ZGr+vNGvjidG6g71bj9iyFACg4i8Eb+QHokZGO0TdFDK6
+JBhYCEvqB69n/pHn+bgxVLamM/e0pIJZFsmAoS0DM/mM9shkWi5O2ptKruL1FpM0pJ+nAcT/
+cU/wLaSuODWa12/zsXOeMHUt+6N2fnQM2XLyBLPOriaXAQAA! !
+
+----STARTUP---- (6 June 2021 09:44:11) as /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/Cuis5.0-4526.image!
+
+
+----QUIT----(6 June 2021 12:55:34) Cuis5.0-4526.image priorSource: 425971!
+
+----STARTUP---- (14 June 2021 13:19:35) as /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/Cuis5.0-4526.image!
+
+
+OMeta2CuisSmalltalkRecognizer subclass: #Obfuscator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Kernel-Methods'!
+
+!classDefinition: #Obfuscator category: #'Kernel-Methods' stamp: 'GDK 6/14/2021 13:25:18'!
+OMeta2CuisSmalltalkRecognizer subclass: #Obfuscator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Kernel-Methods'!
+!Obfuscator class methodsFor: 'as yet unclassified' stamp: 'GDK 6/14/2021 13:25:55' prior: 16961990!
+                    z#H4sIAAAAAAAAAMtPSistTk4sSQ0uSrZSKOaqUSguVqjhAhLxCsV6UDo1J00hN7EkOcNKQTk3
+tSQjP0WhPLMEyCsGKokrLgYAwje3M0UAAAA=! !
+!Obfuscator methodsFor: 'no messages' stamp: 'GDK 6/14/2021 13:28:21' overrides: 16961347!
+                  z#H4sIAAAAAAAAAE2OMQvCMBhE5/RX3JYE22LXgoIIjg52FClpG7TQfF9JIiL0xxsRxeXg3rvh
+pjFabyZsskz07JyluKOhmU1vA5SI4Xh3nfU1BRRbnBcQGAuhxUeA7OPg2dWgUCbVQlWIXKNa
+a5h4MjSwKyGVzKEIK7DG7EeKTUx5RQ5ZJMX/MDEtL5kQYkkH9jfjTZ9efsFn9GtP1/H0bjp7
+AYpZ4m7NAAAA! !
+
+----SNAPSHOT----(14 June 2021 13:28:27) Cuis5.0-4526.image priorSource: 563372!
+
+----QUIT----(14 June 2021 13:56:21) Cuis5.0-4526.image priorSource: 564556!
+
+----STARTUP---- (16 June 2021 14:57:05) as /run/media/grahamkelly/MyDriveLinux/Projects/DbSt2/dynabook/Cuis5.0-4526.image!
+
+!ClassDescription methodsFor: 'fileIn/Out' stamp: 'GDK 6/16/2021 14:58:37'!
+            z#H4sIAAAAAAAAAEtJTcvMyyzJzM+zUqjgKk7NSVNACCnYKlQoZKa5JeYUp1opRDvn5xZk5qQW
+KaSWJeaUJpYAxSpi9QBgi02wQgAAAA==! !
+
+----SNAPSHOT----(16 June 2021 14:59:12) Cuis5.0-4526.image priorSource: 564637!
